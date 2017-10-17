@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav"><a href="{:url('Userlist/yt_userlist')}">【返回列表】</a></div>
+		<div class="right_content">
+		<form action="/{$Request.module}/{$Request.controller}/detail_userinfo/update/{$userinfo.id}" method="post" enctype="multipart/form-data">
+			<p><span class="left_inp_name">昵称：</span>{$userinfo.username}</p>
+			<p><span class="left_inp_name">手机号：</span>{$userinfo.phone}</p>
+			<p><span class="left_inp_name">姓名：</span><input type="text" name="name" value="{$userinfo.name}" autocomplete="off" class="text num"></p>
+			<p><span class="left_inp_name">身份证：</span><input type="text" name="idcard" value="{$userinfo.idcard}" autocomplete="off" class="text num"></p>
+			<p><span class="left_inp_name">银行名称：</span><input type="text" name="bankname" value="{$userinfo.bankname}" autocomplete="off" class="text num"></p>
+			<p><span class="left_inp_name">银行卡号：</span><input type="text" name="card" value="{$userinfo.card}" autocomplete="off" class="text num"></p>
+			<notempty name="userinfo.card">
+				<p><span class="left_inp_name">开户省：</span><input type="text" name="cardprovince" value="{$userinfo.cardprovince}" class="text input_city"><span class="left_inp_name city_inp_name">开户市：</span><input type="text" name="cardcity" value="{$userinfo.cardcity}" class="text input_city"></p>
+				<p><span class="left_inp_name">支行名称：</span><input type="text" name="bankbranchname" value="{$userinfo.bankbranchname}" class="text"></p>
+			</notempty>
+			<p><span class="left_inp_name">信管家账户：</span><input type="text" name="a_account" value="{$userinfo.a_account}" autocomplete="off" class="text num"></p>
+			<notempty name="a_account"><p><span class="left_inp_name">信管家密码：</span><input type="text" name="a_account_password" value="{$userinfo.a_account_password}" autocomplete="off" class="text num"></p></notempty>
+			<p><span class="left_inp_name">博弈大师账户：</span><input type="text" name="d_account" value="{$userinfo.d_account}" autocomplete="off" class="text num"></p>
+			<notempty name="d_account"><p><span class="left_inp_name">博弈大师密码：</span><input type="text" name="d_account_password" value="{$userinfo.d_account_password}" autocomplete="off" class="text num"></p></notempty>
+			<p><span class="left_inp_name">股票账户：</span><input type="text" name="s_account" value="{$userinfo.s_account}" autocomplete="off" class="text num"></p>
+			<notempty name="s_account"><p><span class="left_inp_name">股票密码：</span><input type="text" name="s_account_password" value="{$userinfo.s_account_password}" autocomplete="off" class="text num"></p></notempty>
+			<p><span class="left_inp_name">代理代码：</span><input type="text" name="invite" value="{$userinfo.invite}" autocomplete="off" class="text num"></p>
+			<p><span class="left_inp_name">上次登录时间：</span>{$userinfo.login_time|date="Y-m-d H:i:s",###}</p>
+			<p><span class="left_inp_name">注册时间：</span>{$userinfo.reg_time|date="Y-m-d H:i:s",###}</p>
+			<button type="submit" class="admin_btn" style="margin: 20px 0 0 50px">修改</button><a href="{:url('Userlist/yt_userlist')}" class="back_a" >返回</a>
+		</form>
+		</div>
+	</div>
+</body>
+</html>

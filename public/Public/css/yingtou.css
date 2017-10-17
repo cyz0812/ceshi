@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+.yingtou_box{
+	width:1264px;
+	height:860px;
+	background:url(../img/yingtou_bg.jpg) no-repeat;
+	padding:40px 0;
+}
+.yingtou_box .iphone_box{
+	width:400px;
+	background:url(../img/iphone.png) no-repeat;
+	margin:auto;
+}
+.yingtou_box .iphone_box .yingtou{
+	width:338px; height:587px;
+	margin:121px 29px;
+}

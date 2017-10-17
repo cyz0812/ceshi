@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<title>出入金系统</title>
+<meta http-equiv="Cache-Control" content="no-transform" /> 
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<script src="/Public/js/jquery.min.js" type="text/javascript"></script>
+<script src="/Public/js/jquery.cookie.js" type="text/javascript"></script>
+<script>var conUrl="/{$Request.module}/{$Request.controller}";var rootUrl="__ROOT__";var overlay=false;</script>
+<link href="/Public/jump/css/jump.css" rel="stylesheet" type="text/css" />
+<script src="http://cdn.bootcss.com/jsencrypt/2.3.0/jsencrypt.min.js"></script>
+<script src="/Public/jump/js/jump.js" type="text/javascript"></script>
+</head>
+<body style="font-family: 微软雅黑">
+<div class="jump_left jump_content">
+	<div class="jump_box">
+		<div class="tongdao">
+			<div class="method_box">
+
+						<foreach name="switch" item="v">
+							<a data="show"  href="javascript:;" class="method_a" id="{$v.sign}">{$v.name}</a>
+						</foreach></div>
+		</div>
+		<div class="remind deposit pc">
+			<p><b class="blue" style="font-weight:normal;">出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。</b>入金由第三方收取手续费为付款金额的0.3%(如付款1万，手续费30),单笔最高10万元，最低500元，到帐后处理时间15分钟左右，请耐心等待！入金的时间为每个交易日上午08：30至次日05：30分，未及时到帐号请联系客服！请先开通网银，申请各家银行UKEY或U盾或K令，各家银行额度限制请向客服索要详表。农业银行不支持K码/K令，请使用K宝。</p>
+		</div>
+		<div class="remind webllpay pc hide">
+			<p><b class="blue" style="font-weight:normal;">出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。</b>入金由第三方收取手续费为付款金额的0.3%(如付款1万，手续费30),单笔最高10万元，最低500元，到帐后处理时间15分钟左右，请耐心等待！入金的时间为每个交易日上午08：30至次日05：30分，未及时到帐号请联系客服！请先开通网银，申请各家银行UKEY或U盾或K令，各家银行额度限制请向客服索要详表。</p>
+		</div>
+		<div class="remind zfb_deposit pc">
+			<p><b class="blue" style="font-weight:normal;">出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。</b>入金手续费为付款金额的0.3%（如：付款1万元，手续费30元），单笔最高为10万元，最低为500元，到帐后处理时间为15分钟左右，请耐心等待！如30分钟以上资金未到帐号，请及时与联系我司客服联系！入金时间：每个交易日08:30至次日凌晨05：00。首次使用请用手机下载支付宝</p>
+		</div>
+		<div class="remind weixin_deposit pc">
+			<p><b class="blue" style="font-weight:normal;">出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。</b>入金手续费为付款金额的0.3%（如：付款1万元，手续费30元），单笔最高为10万元，最低为500元，到帐后处理时间为15分钟左右，请耐心等待！如30分钟以上资金未到帐号，请及时与联系我司客服联系！入金时间：每个交易日08:30至次日凌晨05：00。首次使用请用手机下载微信</p>
+		</div>
+		<div class="remind withdraw pc">
+			<p>出金银行卡：以入金时填写的姓名和出金卡号为唯一依据，只出至入金时填写的姓名和银行卡。出金手续费：是每笔2元人民币，出金最低金额为500元，全部出金的不受此限制，请客户出金后耐心等待！周一至周五每个工作日的8:30-18:30期间。</p>
+		</div>
+		<div class="remind capital pc">
+			<p>交易帐号的自有资金为０，申请调整限仓手数则不执行，强平线=持仓手数*下表对应的每手持仓强平金额，请自行控制好持仓手数</p>
+		</div>
+		<a href="javascript:;" onClick="window.location.reload();" class="reload_a">刷新页面</a>
+		<input type="hidden" value="{:input('account')}" id="account" >
+		<input type="hidden" value="{$out_orderid}" id="out_orderid">
+		<div class="content_box">
+		
+		
+		<form name="direct" action="http://www.xmmrtc.com/allscore/allscore_pay.php" method="get" id="deposit_form" class="jump_block">
+			<input type="hidden" value="付款" name="subject" id="deposit_subject">
+			<input type="hidden" value="" name="body" id="deposit_body">
+			<input type="hidden" value="XRJ{$out_orderid}" name="out_orderid" id="deposit_out_orderid">
+			
+			<input type="hidden" value="http://www.xmmrtc.com/allscore/notify_url_jump_p.php" name="notify_url">
+			<input type="hidden" value="http://www.xmmrtc.com/allscore/return_url_jump.php" name="return_url">
+			<notempty name='user.deposit_card'><input type="hidden" name="card" value="{$user.deposit_card}"></notempty>
+			<p><span>姓　　　名</span><input type="text" id="deposit_name" value="{$user.name}" <notempty name='user.name'>disabled="true"</notempty>><i class="blue zhuyi"> 出金"姓　名"绑定</i></p>
+			<p class="select_bank"><i class="pc">　　</i><span>充值　银行</span><select name="defaultBank" id="deposit_bankname">
+					<option value="请选择">请选择</option>
+					<option value="ICBC">中国工商银行</option>
+					<option value="CCB">中国建设银行</option>
+					<option value="ABC">中国农业银行</option>
+					<option value="BOC">中国银行</option>
+					<option value="CEB">中国光大银行</option>
+					<option value="CIB">兴业银行</option>
+					<option value="CITIC">中信银行</option>
+					<option value="CMBC">中国民生银行</option>
+					<option value="SPDB">浦发银行</option>
+					<option value="PSBC">中国邮政储蓄银行</option>
+					<option value="CMB">招商银行</option>
+					<option value="GDB">广发银行</option>
+					
+				</select>
+			</p>
+			<p class="cardcode"><span>银行　卡号</span><input type="text" name="card" id="deposit_card" value="{$user.deposit_card}" <notempty name='user.deposit_card'>disabled=="ture" style="cursor:default;"</notempty>><i class="blue zhuyi"> 出金"银行卡"绑定</i></p>
+			<p><i class="pc">　　</i><span>手机后四位</span><input type="text" name="phone" id="deposit_phone" value=""></p>
+			<p><span>提款　银行</span><notempty name='user.bankname'><input type="text" name="" id="bink_bankname" value="{$user.bankname}" disabled=="ture" style="cursor:default;">
+				<else /><select name="" id="bink_bankname">
+					<option value="请选择">请选择</option>
+					<option value="中国工商银行">中国工商银行</option>
+					<option value="中国建设银行">中国建设银行</option>
+					<option value="中国农业银行">中国农业银行</option>
+					<option value="交通银行">交通银行</option>
+					<option value="中国银行">中国银行</option>
+					<option value="平安银行">平安银行</option>
+					<option value="中国光大银行">中国光大银行</option>
+					<option value="兴业银行">兴业银行</option>
+					<option value="中信银行">中信银行</option>
+					<option value="中国民生银行">中国民生银行</option>
+					<option value="浦发银行">浦发银行</option>
+					<option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+					<option value="招商银行">招商银行</option>
+					<option value="广发银行">广发银行</option>
+					<option value="北京银行">北京银行</option>
+					<option value="宁波银行">宁波银行</option>
+					<option value="华夏银行">华夏银行</option>
+					
+				</select></notempty>
+				<i class="blue zhuyi"> 出金"开户行"绑定</i></p>
+			<p class="over_p"><i class="pc">　　</i><span>充值　金额</span><input type="text" name="goodPrice" class="amount_input" id="deposit_amonut" autocomplete="off"><b class="danwei">元（人民币）</b></p>
+		
+			<div class="btn_box">
+				<label><input type="checkbox" id="deposit_check">我已阅读风险提示，并知晓相应风险。</label>
+				<button type="button" class="jump_btn deposti_btn" id="deposit_btn" >充值</button>
+			</div>
+		</form>
+
+		<form name="llpayment" action="http://www.xmmrtc.com/webllpay/llpayapi.php" method="POST" id="webllpay_form" class="jump_block hide">
+			<input type="hidden" value="付款" name="name_goods" id="webllpay_subject">
+			<input type="hidden" value="http://xmmrtc.com/webllpay/notify_url_jump.php" name="notify_url">
+			<input type="hidden" value="http://xmmrtc.com/webllpay/return_url_jump.php" name="return_url">
+			<input type="hidden" value="XRJ{$out_orderid}" name="no_order" id="webllpay_order">
+			<input type="hidden" name=" user_id" value="{:input('account')}" id="webllpay_account">
+			<input type="hidden" name="pay_type" value="1">
+			<input type="hidden"  name="busi_partner" value="109001">
+			<p><span>姓　　　名</span><input type="text" id="webllpay_name" value="{$user.name}" <notempty name='user.name'>disabled="true"</notempty>><i class="blue zhuyi"> 出金"姓　名"绑定</i></p>
+			<p class="select_bank"><i class="pc">　　</i><span>充值　银行</span><select name="bank_code" style="" >
+					<option value="请选择">请选择</option>
+					<option value="01020000">中国工商银行</option>
+					<option value="01050000">中国建设银行</option>
+					<option value="03010000">交通银行</option>
+					<option value="01030000">中国农业银行</option>
+					<option value="01040000">中国银行</option>
+					<option value="03090000">兴业银行</option>
+					<option value="03020000">中信银行</option>
+					<option value="03100000">浦发银行</option>
+					<option value="01000000">中国邮政储蓄银行</option>
+					<option value="03080000">招商银行</option>
+					<option value="03060000">广发银行</option>
+				</select>
+			</p>
+			<p class="cardcode"><span>银行　卡号</span><input type="text" name="" id="webllpay_card" value="{$user.deposit_card}" <notempty name='user.deposit_card'>disabled=="ture" style="cursor:default;"</notempty>><i class="blue zhuyi"> 出金"银行卡"绑定</i></p>
+			<p><i class="pc">　　</i><span>手机后四位</span><input type="text" name="" id="webllpay_phone"></p>
+			<p><span>提款　银行</span><notempty name='user.bankname'><input type="text" name="" id="bink_bankname" value="{$user.bankname}" disabled=="ture" style="cursor:default;">
+				<else /><select name="" id="bink_bankname">
+					<option value="请选择">请选择</option>
+					<option value="中国工商银行">中国工商银行</option>
+					<option  value="中国建设银行">中国建设银行</option>
+					<option value="中国农业银行">中国农业银行</option>
+					<option value="交通银行">交通银行</option>
+					<option value="中国银行">中国银行</option>
+					<option value="平安银行">平安银行</option>
+					<option value="中国光大银行">中国光大银行</option>
+					<option value="兴业银行">兴业银行</option>
+					<option value="中信银行">中信银行</option>
+					<option value="中国民生银行">中国民生银行</option>
+					<option value="浦发银行">浦发银行</option>
+					<option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+					<option value="招商银行">招商银行</option>
+					<option value="广发银行">广发银行</option>
+					<option value="北京银行">北京银行</option>
+					<option value="宁波银行">宁波银行</option>
+					<option value="华夏银行">华夏银行</option>
+				</select></notempty>
+				<i class="blue zhuyi"> 出金"开户行"绑定</i></p>
+			<p class="over_p"><i class="pc">　　</i><span>充值　金额</span><input type="text" name="money_order" class="amount_input" id="webllpay_amount" autocomplete="off"><b class="danwei">元（人民币）</b></p>
+			<div class="btn_box">
+				<label><input type="checkbox" id="webllpay_check">我已阅读风险提示，并知晓相应风险。</label>
+				<button type="button" class="jump_btn deposti_btn" id="webllpay_btn" >充值</button>
+			</div>
+		</form>
+		
+		
+		<form action="/{$Request.module}/{$Request.controller}/zhifubao" method="post" id="zfb_deposit" class="jump_block">
+			<input type="hidden" value="{:input('account')}" name="account">
+			<input type="hidden" value="XRJ{$out_orderid}" name="out_orderid">
+			<p style=""><span><i class="pc">　</i>姓　　名</span><notempty name='user.name'><input type="text" name="name" id="zfb_name" value="{$user.name}" disabled="true"><else /><input type="text" name="name" id="zfb_name" value=""></notempty><i class="blue zhuyi"> 出金"姓　名"绑定</i></p>
+			<p style=""><span>支付宝账号</span><input type="text" name="nickname" id="zfb_nickname" value=""><i class="blue zhuyi"></i></p>
+			<p class="cardcode"><span><i class="pc">　</i>银行卡号</span><notempty name='user.deposit_card'><input type="text" name="card" id="zfb_card" value="{$user.deposit_card}" disabled=="ture" style="cursor:default;"><else /><input type="text" name="card" id="zfb_card" value="" style="cursor:default;"></notempty><i class="blue zhuyi"> 出金"银行卡"绑定</i></p>
+			<p style=""><span>手机后四位</span><input type="text" name="phone" id="zfb_phone" value=""></p>
+			<p><span><i class="pc">　</i>提款银行</span><notempty name='user.bankname'><input type="text" name="bankname" id="zfb_bink_bankname" value="{$user.bankname}" disabled=="ture" style="cursor:default;">
+				<else /><select name="bankname" id="zfb_bink_bankname">
+					<option value="请选择">请选择</option>
+					<option value="中国工商银行">中国工商银行</option>
+					<option value="中国建设银行">中国建设银行</option>
+					<option value="中国农业银行">中国农业银行</option>
+					<option value="交通银行">交通银行</option>
+					<option value="中国银行">中国银行</option>
+					<option value="平安银行">平安银行</option>
+					<option value="中国光大银行">中国光大银行</option>
+					<option value="兴业银行">兴业银行</option>
+					<option value="中信银行">中信银行</option>
+					<option value="中国民生银行">中国民生银行</option>
+					<option value="浦发银行">浦发银行</option>
+					<option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+					<option value="招商银行">招商银行</option>
+					<option value="广发银行">广发银行</option>
+					<!-- <option value="北京银行">北京银行</option> -->
+					<!-- <option value="宁波银行">宁波银行</option> -->
+					<!-- <option value="华夏银行">华夏银行</option> -->
+					
+				</select></notempty>
+				<i class="blue zhuyi"> 出金"开户行"绑定</i></p>
+			<p style=""><span>充值金额</span><input type="text" name="amount" class="amount_input" id="zfb_amount" autocomplete="off"><b class="danwei">元<i class="rmb" style="font-style:normal;">（人民币）</i></b></p>
+			<!-- <p style="margin:0;height:20px;text-align:center;" class="zbf_first"></p> -->
+			<div style="clear:both;"></div>
+			<div class="box_bottom" style="margin-top:5px;">
+				<label><input type="checkbox" id="zfb_deposit_check">我已阅读风险提示，并知晓相应风险。</label>
+				<button type="button" class="jump_btn" id="zfb_deposit_next" >充值</button>
+			</div>
+		</form>
+		
+		<form action="http://www.xmmrtc.com/llapi/llpayqrcode_jump.php" method="post" id="weixin_deposit" class="jump_block">
+			<input type="hidden" value="{:input('account')}" name="account">
+			<input type="hidden" value="XRJ{$out_orderid}" name="no_order" id="weixin_no_order">
+			<input type="hidden" value="http://www.xmmrtc.com/llpay/notify_url_newjump.php" name="notify_url">
+			<input type="hidden" value="0" name="pay_type">
+			<p style=""><span><i class="pc">　</i>姓　　名</span><notempty name='user.name'><input type="text" name="name" id="weixin_name" value="{$user.name}" disabled="true"><else /><input type="text" name="name" id="weixin_name" value=""></notempty><i class="blue zhuyi"> 出金"姓　名"绑定</i></p>
+			<p style=""><span>手机后四位</span><input type="text" name="phone" id="weixin_phone" value=""></p>
+			<p class="cardcode"><span><i class="pc">　</i>银行卡号</span><notempty name='user.deposit_card'><input type="text" name="card" id="weixin_card" value="{$user.deposit_card}" disabled=="ture" style="cursor:default;"><else /><input type="text" name="card" id="weixin_card" value="" style="cursor:default;"></notempty><i class="blue zhuyi"> 出金"银行卡"绑定</i></p>
+			<p style=""><span>充值金额</span><input type="text" name="money_order" class="amount_input" id="weixin_amount" autocomplete="off"><b class="danwei">元<i class="rmb" style="font-style:normal;">（人民币）</i></b></p>
+			<p><span><i class="pc">　</i>提款银行</span><notempty name='user.bankname'><input type="text" name="bankname" id="weixin_bink_bankname" value="{$user.bankname}" disabled=="ture" style="cursor:default;">
+				<else /><select name="bankname" id="weixin_bink_bankname">
+					<option value="请选择">请选择</option>
+					<option value="中国工商银行">中国工商银行</option>
+					<option value="中国建设银行">中国建设银行</option>
+					<option value="中国农业银行">中国农业银行</option>
+					<option value="交通银行">交通银行</option>
+					<option value="中国银行">中国银行</option>
+					<option value="平安银行">平安银行</option>
+					<option value="中国光大银行">中国光大银行</option>
+					<option value="兴业银行">兴业银行</option>
+					<option value="中信银行">中信银行</option>
+					<option value="中国民生银行">中国民生银行</option>
+					<option value="浦发银行">浦发银行</option>
+					<option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+					<option value="招商银行">招商银行</option>
+					<option value="广发银行">广发银行</option>
+					<option value="北京银行">北京银行</option>
+					<option value="宁波银行">宁波银行</option>
+					<option value="华夏银行">华夏银行</option>
+				</select></notempty>
+				<i class="blue zhuyi"> 出金"开户行"绑定</i></p>
+			<div style="clear:both;"></div>
+			<div class="box_bottom" style="margin-top:5px;">
+				<label><input type="checkbox" id="weixin_deposit_check">我已阅读风险提示，并知晓相应风险。</label>
+				<button type="button" class="jump_btn" id="weixin_deposit_next" >充值</button>
+			</div>
+		</form>
+		
+		<form action="/{$Request.module}/{$Request.controller}/jumpWithdraw/account/{:input('account')}" method="post" id="withdraw_form" class="jump_block">
+			<input type="hidden" value="取款" name="subject" id="withdraw_subject">
+			<input type="hidden" value="XCJ{$out_orderid}" name="out_orderid" id="withdraw_out_orderid">
+			<input type="hidden" value="{:input('account')}"  name="account">
+			<input type="hidden" value="{$user.name}" name="name">
+			<input type="hidden" value="{$user.deposit_card}" name="card">
+			<notempty name='user.bankname'><input type="hidden" name="bankname" value="{$user.bankname}"></notempty>
+			<p><span>姓　　　名</span><input type="text" name="" id="withdraw_name" value="{$user.name}" disabled="ture"><i class="blue zhuyi"> 请核对，如有误请联系客服</i></p>
+			<p class="">
+				<i class="pc">　　</i><span>开户　省份</span><select id="province" class="bank_code_box select_province" runat="server" name="cardprovince" ></select>
+			</p>
+			<p class="cardcode"><span>银行　卡号</span><input type="text" name="card" id="withdraw_card" value="{$user.deposit_card}" disabled="ture"><i class="blue zhuyi"> 请核对，如有误请联系客服</i></p>
+			<p class="">
+				<i class="pc">　　</i><span class="select_city_span">开户　城市</span><select id="city" runat="server" class="bank_code_box select_city" name="cardcity"></select>
+			</p>
+			<p class="bankname"><span>提款　银行</span><notempty name='user.bankname'><input type="text" id="withdraw_bankname" value="{$user.bankname}" disabled=="ture" style="cursor:default;">
+				<else /><select name="bankname" id="withdraw_bankname">
+					<option value="请选择">请选择</option>
+					<option value="中国工商银行">中国工商银行</option>
+					<option value="中国建设银行">中国建设银行</option>
+					<option value="中国农业银行">中国农业银行</option>
+					<option value="交通银行">交通银行</option>
+					<option value="中国银行">中国银行</option>
+					<option value="平安银行">平安银行</option>
+					<option value="中国光大银行">中国光大银行</option>
+					<option value="兴业银行">兴业银行</option>
+					<option value="中信银行">中信银行</option>
+					<option value="中国民生银行">中国民生银行</option>
+					<option value="浦发银行">浦发银行</option>
+					<option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+					<option value="招商银行">招商银行</option>
+					<option value="广发银行">广发银行</option>
+					<!-- <option value="BJBANK">北京银行</option> -->
+					<!-- <option value="NBBANK">宁波银行</option> -->
+					<!-- <option value="HXBANK">华夏银行</option> -->
+				</select></notempty>
+				<i class="blue zhuyi"> 请核对，如有误请联系客服</i>
+			</p>
+			<p class="bankbranchname"><i class="pc">　　</i><span>分行　名称</span><input type="text" name="bankbranchname" id="bankbranchname"><b>必填</b></p>
+			<p class="amount_p"><span>提取　金额</span><input type="text" name="withdraw" class="amount_input" id="withdraw_amonut" autocomplete="off"><b class="danwei">元</b><label for="all" class="checkall jump_check"><input type="checkbox" name="all" class="all" id="all">余额全部提取</label></p>
+			<p><i class="pc">　　</i><span>手机后四位</span><input type="text" name="phone" id="withdraw_phone" value=""></p>	
+			<div class="btn_box">
+				<notempty name="user.deposit_card"><label><input type="checkbox" id="withdraw_check">我已阅读风险提示，并知晓相应风险。</label></notempty>
+				<button type="button" class="jump_btn" id="withdraw_btn" <empty name='user.deposit_card'>disabled=="ture" style="background:#ccc;cursor:default;"</empty>>提款</button>
+				<empty name="user.deposit_card"><b style="font-weight:normal;font-size:12px;color:#30b4ff;width:162px;">未有入金记录，无法出金</b></empty>
+			</div>
+		</form>
+		
+		<form name="direct" action="" method="post" id="capital_form" class="jump_block captial_form">
+			<input type="hidden" value="{$user.id}" name="body" id="capital_body">
+			<input type="hidden" value="{:input('account')}" id="account">
+			<input type="hidden" value="aqihuo" id="capitalType">
+			<div class="qihuo_type">
+				<span>品种选择</span>
+				<div class="contract" id="contract">
+					<label><input name="contract" type="radio" value="大恒指" checked="selected">大恒指、原油、天然气、黄金、精铜、小标、小纳、小道、外汇</label>
+					<label><input name="contract" type="radio" value="小恒指">小恒指、小H股、人民币、富时</label>
+					<label><input name="contract" type="radio" value="大德指">大德指、白银</label>
+					<label><input name="contract" type="radio" value="小德指">小德指</label>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div class="qihuo_hand">
+				<span>手数选择</span>
+				<ul id="hands">
+					<li class="active">1手</li>
+					<li>2手</li>
+					<li>3手</li>
+					<li>4手</li>
+					<li>5手</li>
+					<li>6手</li>
+					<li>7手</li>
+					<li>8手</li>
+					<li>10手</li>
+					<li>15手</li>
+					<li>20手</li>
+				</ul>
+			</div>
+			<div class="qihuo_jump_btn" style="">
+				<button type="button" class="now" id="add_hand">申请增加</button>
+				<button type="button" class="now" id="dec_hand">申请减少</button>
+			</div>
+		</form>
+
+			<form name="direct" action="" method="post" id="prior_form" class="jump_block captial_form">
+				<input type="hidden"  name="expenses" id="expenses" value="2000">
+				<div style="padding:0 10px;">交易帐号的自有资金为０，申请调整限仓手数则不执行，强平线=持仓手数*下表对应的每手持仓强平金额，请自行控制好持仓手数</div>
+				<div class="qihuo_num" >
+					<div style="position: absolute;left: 10px;">
+						<span >优先选择</span></div>
+					<div  class="num" id="num">
+						<label ><input name="num" type="radio" value="2000" checked><span>2000美元</span></label>
+						<label><input name="num" type="radio" value="4000"><span>4000美元</span></label>
+						<label><input name="num" type="radio" value="5000"><span>5000美元</span></label>
+						<label><input name="num" type="radio" value="8000"><span>8000美元</span></label>
+						<label><input name="num" type="radio" value="10000"><span>10000美元</span></label>
+						<label><input name="num" type="radio" value="20000"><span>20000美元</span></label>
+						<label><input name="num" type="radio" value="30000"><span>30000美元</span></label>
+						<label  style="white-space: nowrap"><input name="num" type="radio"  id="money"><span >5000美元*</span><div style="position: absolute;display: inline-block"><input type="text" style="width: 30px" id="other_num" ><b style="font-weight: normal">=</b><b style="font-weight: normal" name="num" id="other_cash"  >0美元</b></div></label>
+					</div>
+
+				</div>
+
+				<!--<div class="qihuo_info">-->
+				<!--<ul>-->
+				<!--<li style="color:#333;">优先资金：<span id="confirm_cash" style="color:#f55;font-size:16px;">2000</span> 美元</li>-->
+				<!--<li style="color:#333;">姓　　名：<input type="text" value="" name="name" id="prior_name"></li>-->
+				<!--<li style="color:#333;">手机后四位：<input type="text" value="" name="phone" id="prior_phone"></li>-->
+				<!--</ul>-->
+				<!--</div>-->
+				<div class="qihuo_btn" >
+					<button type="button" class="now" id="add_prior">申请增加</button>
+					<button type="button" class="now" id="dec_prior">申请减少</button>
+				</div>
+			</form>
+		
+		</div>
+		<div class="xuzhi">
+			<strong>风险提示</strong>
+			<p>1、开户后如未修改过交易密码提醒您要进行修改。</p>
+			<p class="red">2、在交易前请自行落实好所交易品种手续费，开始交易即代表您接受并默认账户所设置的手续费。</p>
+			<p>3、提醒所有投资者要牢记期市交易有风险，交易需谨慎而为，做足功课，量力而行，理性参与。学会真假盘辨别方法，远离假盘。</p>
+			<p class="remind deposit"><b class="blue" style="font-weight:normal;">出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。</b>入金由第三方收取手续费为付款金额的0.3%(如付款1万，手续费30),单笔最高10万元，最低500元，到帐后处理时间15分钟左右，请耐心等待！入金的时间为每个交易日上午08：30至次日05：30分，未及时到帐号请联系客服！请先开通网银，申请各家银行UKEY或U盾或K令，各家银行额度限制请向客服索要详表。农业银行不支持K码/K令，请使用K宝。</p>
+			<p class="remind zfb_deposit"><b class="blue" style="font-weight:normal;">出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。支付宝在用手机完成支付后，请切记一定要回到交易软件上的相应的支付页面，点击确认已支付，这样系统才会收到你的支付信息。</b>入金手续费为付款金额的0.3%（如：付款1万元，手续费30元），单笔最高为10万元，最低为500元，到帐后处理时间为15分钟左右，请耐心等待！如30分钟以上资金未到帐号，请及时与联系我司客服联系！入金时间：每个交易日08:30至次日凌晨05：00。首次使用请用手机下载支付宝</p>
+			<p class="remind weixin_deposit"><b class="blue" style="font-weight:normal;">出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。支付宝在用手机完成支付后，请切记一定要回到交易软件上的相应的支付页面，点击确认已支付，这样系统才会收到你的支付信息。</b>入金手续费为付款金额的0.3%（如：付款1万元，手续费30元），单笔最高为10万元，最低为500元，到帐后处理时间为15分钟左右，请耐心等待！如30分钟以上资金未到帐号，请及时与联系我司客服联系！入金时间：每个交易日08:30至次日凌晨05：00。首次使用请用手机下载微信</p>
+			<p class="remind withdraw">出金银行卡：以入金时填写的姓名和出金卡号为唯一依据，只出至入金时填写的姓名和银行卡。出金手续费：是每笔2元人民币，出金最低金额为500元，全部出金的不受此限制，请客户出金后耐心等待！周一至周五每个工作日的8:30-18:30期间。</p>
+			<p class="remind capital">交易帐号的自有资金为０，申请调整限仓手数则不执行，强平线=持仓手数*下表对应的每手持仓强平金额，请自行控制好持仓手数</p>
+		</div>
+	</div>
+</div>
+<div class="jump_right jump_content">
+	<div class="jump_box">
+		<strong>风险提示</strong>
+		<p>&nbsp;</p>
+		<p>1、开户后如未修改过交易密码提醒您要进行修改。</p>
+		<p class="red">2、在交易前请自行落实好所交易品种手续费，开始交易即代表您接受并默认账户所设置的手续费。</p>
+		<p>3、提醒所有投资者要牢记期市交易有风险，交易需谨慎而为，做足功课，量力而行，理性参与。学会真假盘辨别方法，远离假盘。</p>
+	</div>
+</div>
+<div class="recharge_yn popup_box">
+	<h3>充值</h3>
+	<div class="question"><img src="/Public/img/warning.png" alt=""><p>请在新打开的页面进行支付，支付完成前请不要关闭该窗口。</p></div>
+	<div class="answer">
+		<a href="javascript:;" class="success">已经成功充值</a>
+		<a href="javascript:;" class="error" id="reselect">重新选择银行</a>	
+	</div>
+</div>
+<div class="recharge_not popup_box">
+	<h3>充值错误</h3>
+	<div class="question"><img src="/Public/img/warning.png" alt=""><p>没有检测到该充值记录，请确认是否成功充值，或联系客服。</p></div>
+	<div class="answer">
+		<a href="/{$Request.module}/{$Request.controller}/jump/account/{:input('account')}" class="error">关闭</a>
+	</div>
+</div>
+<div id="confirm_error">
+<div class="confirm_box" id="">
+	<h3>入金申请提交错误</h3>
+	<div class="question"><img src="/Public/img/warning.png" alt=""><p>入金申请提交错误，请重新提交或联系客服</p></div>
+	<div class="answer">
+		<a href="/{$Request.module}/{$Request.controller}/jump/account/{:input('account')}" class="error">关闭</a>
+	</div>
+</div>
+</div>
+<div id="confirm_success">
+<div class="confirm_box">
+	<h3>入金申请提交成功</h3>
+	<div class="question"><img src="/Public/img/success.png" alt=""><p>工作日期间，入金到账时间为30分钟左右,请耐心等待！</p></div>
+	<div class="answer">
+		<a href="/{$Request.module}/{$Request.controller}/jump/account/{:input('account')}" class="error">关闭</a>
+	</div>
+</div>
+</div>
+<div id="withdraw_yes">
+<div class="confirm_box">
+	<h3>出金请求提交成功</h3>
+	<div class="question"><img src="/Public/img/success.png" alt=""><p>工作日期间，出金到账时间在两小时之内,请耐心等待！</p></div>
+	<div class="answer">
+		<a href="/{$Request.module}/{$Request.controller}/jump/account/{:input('account')}" class="error">关闭</a>
+	</div>
+</div>
+</div>
+<div id="prior_yes">
+<div class="confirm_box">
+	<h3>更改优先资金提交成功</h3>
+	<div class="question"><img src="/Public/img/success.png" alt=""><p>工作日期间，处理时间为30分钟左右,请耐心等待！</p></div>
+	<div class="answer">
+		<a href="/{$Request.module}/{$Request.controller}/jump/account/{:input('account')}" class="error">关闭</a>
+	</div>
+</div>
+</div>
+<div id="hands_yes">
+<div class="confirm_box">
+	<h3>调整限仓手数提交成功</h3>
+	<div class="question"><img src="__ROOT__/Public/img/success.png" alt=""><p>工作日期间，处理时间为30分钟左右,请耐心等待！</p></div>
+	<div class="answer">
+		<a href="/{$Request.module}/{$Request.controller}/jump/account/{:input('account')}" class="error">关闭</a>
+	</div>
+</div>
+</div>
+<div class="" id="input_num">
+<div class="confirm_box">
+	<div class="input_top"><img src="/Public/img/close.png" alt="" class="input_num_close"></div>
+	<p>请输入优先资金<span></span></p>
+	<p>5000美元×<input type="text" id="lots_num"> = <span id="confirm_capital" style="color:#f55;font-size:16px;">0</span> 美元</p>
+	<p><button id="input_num_btn">确定</button><button class="input_num_close">取消</button></p>
+</div>
+</div>
+<div id="overlay"></div>
+<img src="/Public/img/loading.jpg" alt="" id="loading_img">
+<script>
+//自动刷新
+if($.cookie("refresh")!="no"){
+	setTimeout(function(){
+		window.location.reload();
+		$.cookie("refresh","no");
+	},500);
+};
+$('#province').change(function(){
+	selectprovince(this);
+})
+
+var list1 = new Array;
+var list2 = new Array;
+list1[list1.length] = "请选择";
+list1[list1.length] = "北京市";
+list1[list1.length] = "天津市";
+list1[list1.length] = "河北省";
+list1[list1.length] = "山西省";
+list1[list1.length] = "内蒙古";
+list1[list1.length] = "辽宁省";
+list1[list1.length] = "吉林省";
+list1[list1.length] = "黑龙江省";
+list1[list1.length] = "上海市";
+list1[list1.length] = "江苏省";
+list1[list1.length] = "浙江省";
+list1[list1.length] = "安徽省";
+list1[list1.length] = "福建省";
+list1[list1.length] = "江西省";
+list1[list1.length] = "山东省";
+list1[list1.length] = "河南省";
+list1[list1.length] = "湖北省";
+list1[list1.length] = "湖南省";
+list1[list1.length] = "广东省";
+list1[list1.length] = "广西自治区";
+list1[list1.length] = "海南省";
+list1[list1.length] = "重庆市";
+list1[list1.length] = "四川省";
+list1[list1.length] = "贵州省";
+list1[list1.length] = "云南省";
+list1[list1.length] = "西藏自治区";
+list1[list1.length] = "陕西省";
+list1[list1.length] = "甘肃省";
+list1[list1.length] = "青海省";
+list1[list1.length] = "宁夏回族自治区";
+list1[list1.length] = "新疆维吾尔自治区";
+list1[list1.length] = "香港特别行政区";
+list1[list1.length] = "澳门特别行政区";
+list1[list1.length] = "台湾省";
+list1[list1.length] = "其它";
+list2[list2.length] = new Array("请先选择省份");
+list2[list2.length] = new Array("北京", "东城区", "西城区", "崇文区", "宣武区", "朝阳区", "丰台区", "石景山区", " 海淀区（中关村）", "门头沟区", "房山区", "通州区", "顺义区", "昌平区", "大兴区", "怀柔区", "平谷区", "密云县", "延庆县", " 其他");
+list2[list2.length] = new Array("和平区", "河东区", "河西区", "南开区", "红桥区", "塘沽区", "汉沽区", "大港区",
+			"西青区", "津南区", "武清区", "蓟县", "宁河县", "静海县", "其他");
+list2[list2.length] = new Array("石家庄市", "张家口市", "承德市", "秦皇岛市", "唐山市", "廊坊市", "衡水市",
+			"沧州市", "邢台市", "邯郸市", "保定市", "其他");
+list2[list2.length] = new Array("太原市", "朔州市", "大同市", "长治市", "晋城市", "忻州市", "晋中市", "临汾市",
+			"吕梁市", "运城市", "其他");
+list2[list2.length] = new Array("呼和浩特市", "包头市", "赤峰市", "呼伦贝尔市", "鄂尔多斯市", "乌兰察布市",
+			"巴彦淖尔市", "兴安盟", "阿拉善盟", "锡林郭勒盟", "其他");
+list2[list2.length] = new Array("沈阳市", "朝阳市", "阜新市", "铁岭市", "抚顺市", "丹东市", "本溪市", "辽阳市",
+			"鞍山市", "大连市", "营口市", "盘锦市", "锦州市", "葫芦岛市", "其他");
+list2[list2.length] = new Array("长春市", "白城市", "吉林市", "四平市", "辽源市", "通化市", "白山市", "延边朝鲜族自治州", "其他");
+list2[list2.length] = new Array("哈尔滨市", "七台河市", "黑河市", "大庆市", "齐齐哈尔市", "伊春市", "佳木斯市",
+			"双鸭山市", "鸡西市", "大兴安岭地区(加格达奇)", "牡丹江", "鹤岗市", "绥化市　", "其他");
+list2[list2.length] = new Array("黄浦区", "卢湾区", "徐汇区", "长宁区", "静安区", "普陀区", "闸北区", "虹口区",
+			"杨浦区", "闵行区", "宝山区", "嘉定区", "浦东新区", "金山区", "松江区", "青浦区", "南汇区", "奉贤区", "崇明县", "其他");
+list2[list2.length] = new Array("南京市", "徐州市", "连云港市", "宿迁市", "淮安市", "盐城市", "扬州市", "泰州市",
+			"南通市", "镇江市", "常州市", "无锡市", "苏州市", "其他");
+list2[list2.length] = new Array("杭州市", "湖州市", "嘉兴市", "舟山市", "宁波市", "绍兴市", "衢州市", "金华市",
+			"台州市", "温州市", "丽水市", "其他");
+list2[list2.length] = new Array("合肥市", "宿州市", "淮北市", "亳州市", "阜阳市", "蚌埠市", "淮南市", "滁州市",
+			"马鞍山市", "芜湖市", "铜陵市", "安庆市", "黄山市", "六安市", "巢湖市", "池州市", "宣城市", "其他");
+list2[list2.length] = new Array("福州市", "南平市", "莆田市", "三明市", "泉州市", "厦门市", "漳州市", "龙岩市", "宁德市", "其他");
+list2[list2.length] = new Array("南昌市", "九江市", "景德镇市", "鹰潭市", "新余市", "萍乡市", "赣州市", "上饶市",
+			"抚州市", "宜春市", "吉安市", "其他");
+list2[list2.length] = new Array("济南市", "聊城市", "德州市", "东营市", "淄博市", "潍坊市", "烟台市", "威海市",
+			"青岛市", "日照市", "临沂市", "枣庄市", "济宁市", "泰安市", "莱芜市", "滨州市", "菏泽市", "其他");
+list2[list2.length] = new Array("郑州市", "三门峡市", "洛阳市", "焦作市", "新乡市", "鹤壁市", "安阳市", "濮阳市",
+			"开封市", "商丘市", "许昌市", "漯河市", "平顶山市", "南阳市", "信阳市", "周口市", "驻马店市", "其他");
+list2[list2.length] = new Array("武汉市", "十堰市", "襄樊市", "荆门市", "孝感市", "黄冈市", "鄂州市", "黄石市",
+			"咸宁市", "荆州市", "宜昌市", "随州市", "恩施土家族苗族自治州", "仙桃市", "天门市", "潜江市", "神农架林区", "其他");
+list2[list2.length] = new Array("长沙市", "张家界市", "常德市", "益阳市", "岳阳市", "株洲市", "湘潭市", "衡阳市",
+			"郴州市", "永州市", "邵阳市", "怀化市", "娄底市", "湘西土家族苗族自治州", "其他");
+list2[list2.length] = new Array("广州市", "清远市市", "韶关市", "河源市", "梅州市", "潮州市", "汕头市", "揭阳市",
+			"汕尾市", " 惠州市", "东莞市", "深圳市", "珠海市", "中山市", "江门市", "佛山市", "肇庆市", "云浮市",
+			"阳江市", "茂名市", "湛江市", " 其他");
+list2[list2.length] = new Array("南宁市", "桂林市", "柳州市", "梧州市", "贵港市", "玉林市", "钦州市", "北海市",
+			"防城港市", "崇左市", "百色市", "河池市", "来宾市", "贺州市", "其他");
+list2[list2.length] = new Array("海口市", "三亚市", "其他");
+list2[list2.length] = new Array("渝中区", "大渡口区", "江北区", "沙坪坝区", "九龙坡区", "南岸区", "北碚区",
+			"万盛区", "双桥区", "渝北区", "巴南区", "万州区", "涪陵区", "黔江区", "长寿区", "合川市", "永川市",
+			"江津市", "南川市", "綦江县", "潼南县", "铜梁县", "大足县", "璧山县", "垫江县", "武隆县", "丰都县",
+			"城口县", "开县", "巫溪县", "巫山县", "奉节县", "云阳县", "忠县", "石柱土家族自治县", "彭水苗族土家族自治县",
+			"酉阳土家族苗族自治县", "秀山土家族苗族自治县", "其他");
+list2[list2.length] = new Array("成都市", "广元市", "绵阳市", "德阳市", "南充市", "广安市", "遂宁市",
+			"内江市", "乐山市", "自贡市", "泸州市", "宜宾市", "攀枝花市", "巴中市", "资阳市", "眉山市", "雅安",
+			"阿坝藏族羌族自治州", "甘孜藏族自治州", "凉山彝族自治州县", "其他");
+list2[list2.length] = new Array("贵阳市", "六盘水市", "遵义市", "安顺市", "毕节地区", "铜仁地区",
+			"黔东南苗族侗族自治州", "黔南布依族苗族自治州", "黔西南布依族苗族自治州", "其他");
+list2[list2.length] = new Array("昆明市", "曲靖市", "玉溪市", "保山市", "昭通市", "丽江市", "普洱市",
+			"临沧市", "宁德市", "德宏傣族景颇族自治州", "怒江傈僳族自治州", "楚雄彝族自治州", "红河哈尼族彝族自治州",
+			"文山壮族苗族自治州", "大理白族自治州", "迪庆藏族自治州", "西双版纳傣族自治州", "其他");
+list2[list2.length] = new Array("拉萨市", "那曲地区", "昌都地区", "林芝地区", "山南地区", "日喀则地区", "阿里地区", "其他");
+list2[list2.length] = new Array("西安市", "延安市", "铜川市", "渭南市", "咸阳市", "宝鸡市", "汉中市", "安康市", "商洛市", "其他");
+list2[list2.length] = new Array("兰州市 ", "嘉峪关市", "金昌市", "白银市", "天水市", "武威市", "酒泉市",
+			"张掖市", "庆阳市", "平凉市", "定西市", "陇南市", "临夏回族自治州", "甘南藏族自治州", "其他");
+list2[list2.length] = new Array("西宁市", "海东地区", "海北藏族自治州", "黄南藏族自治州", "玉树藏族自治州",
+			"海南藏族自治州", "果洛藏族自治州", "海西蒙古族藏族自治州", "其他");
+list2[list2.length] = new Array("银川市", "石嘴山市", "吴忠市", "固原市", "中卫市", "其他");
+list2[list2.length] = new Array("乌鲁木齐市", "克拉玛依市", "喀什地区", "阿克苏地区", "和田地区", "吐鲁番地区",
+			"哈密地区", "塔城地区", "阿勒泰地区", "克孜勒苏柯尔克孜自治州", "博尔塔拉蒙古自治州",
+			"昌吉回族自治州伊犁哈萨克自治州", "巴音郭楞蒙古自治州", "石河子市", "阿拉尔市", "五家渠市", "图木舒克市", "其他");
+list2[list2.length] = new Array("香港", "其他");
+list2[list2.length] = new Array("澳门", "其他");
+list2[list2.length] = new Array("台湾", "其他");
+
+var ddlProvince = document.getElementById("province");
+var ddlCity = document.getElementById("city");
+for(var i =0;i<list1.length; i++)
+{
+	var option = document.createElement("option");
+	option.appendChild(document.createTextNode(list1[i]));
+	option.value = list1[i];
+	ddlProvince.appendChild(option);
+	//city initialize
+	var firstprovince = list2[0];
+	for (var j = 0; j < firstprovince.length; j++) {
+		var optioncity = document.createElement("option");
+		optioncity.appendChild(document.createTextNode(firstprovince[j]));
+		optioncity.value = firstprovince[j];
+		ddlCity.appendChild(optioncity);
+	}
+}
+function indexof(obj,value)
+{
+	var k=0;
+	for(;k<obj.length;k++)
+	{
+		if(obj[k] == value)
+		return k;
+	}
+	return k;
+}
+function selectprovince(obj) {
+	ddlCity.options.length = 0;//clear
+	var index = indexof(list1,obj.value);
+	var list2element = list2[index];
+	for(var i =0;i<list2element.length; i++)
+	{
+		var option = document.createElement("option");
+		option.appendChild(document.createTextNode(list2element[i]));
+		option.value = list2element[i];
+		ddlCity.appendChild(option);
+	}
+}
+selectprovince(ddlProvince);
+</script>
+<script>
+	$(function() {
+    $(".method_a").eq(0).click();
+    var screen_width=$(window).width();
+    if(screen_width < 768){
+    <foreach name='new_xin' item='v'> $('#{$v.sign}').attr('data','hide').hide();</foreach>
+        $(".method_a[data='show']").eq(0).click();
+    }
+
+})
+</script>
+</body>
+</html>

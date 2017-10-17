@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<title>出入金系统</title>
+<meta http-equiv="Cache-Control" content="no-transform" /> 
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<script src="/Public/js/jquery.min.js" type="text/javascript"></script>
+<script src="/Public/js/jquery.cookie.js" type="text/javascript"></script>
+<script>var conUrl="/{$Request.module}/{$Request.controller}";var rootUrl="__ROOT__";var overlay=false;</script>
+<link href="/Public/jump/css/jump.css" rel="stylesheet" type="text/css" />
+<script src="http://cdn.bootcss.com/jsencrypt/2.3.0/jsencrypt.min.js"></script>
+<script src="/Public/jump/js/jump.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="jump_left jump_content">
+	<div class="jump_box ewm_box">
+		<input type="hidden" value="{$info.account}" name="" id="account">
+		<input type="hidden" value="{$info.out_orderid}" name="" id="out_orderid">
+		<input type="hidden" value="{$info.name|default=''}" name="" id="ewm_name">
+		<input type="hidden" value="{$info.phone}" name="" id="ewm_phone">
+		<input type="hidden" value="{$info.nickname}" name="" id="ewm_nickname">
+		<input type="hidden" value="{$info.amount}" name="" id="ewm_amount">
+		<input type="hidden" value="{$info.bankname|default=''}" name="" id="ewm_bankname">
+		<input type="hidden" value="{$info.card|default=''}" name="" id="ewm_card">
+		<div class="content_box">
+			<h2 class="ewm_h2">&nbsp;</h2>
+			<ul class="ewm_ul">
+				<li class="pc">01.打开手机支付宝，点击左上角“扫一扫”。</li>
+				<li class="pc">02.在扫描页面，对着电脑上的二维码，进行扫描。</li>
+				<li class="pc">03.支付弹窗，输入金额 <b class="confirm_amount" style="color:#f60;">{$info.amount}</b> 元，点击“转账”用支付密码完成支付。</li>
+				<li class="pc">04.支付宝首页，点击下方“我的”，接着点击“账单”。</li>
+				<li class="pc">05.账单页面，点击“该笔交易”，找到“订单号”记下后六位。</li>
+				<li class="pc">06.交易软件上将“订单后六位”填于下方空格，点击“确认已支付”。</li>
+				<li class="mt">01.用手机拍照拍下该页面，保存在相册上。</li>
+				<li class="mt">02.打开手机支付宝，点击左上角“扫一扫”。</li>
+				<li class="mt">03.在扫描页面，点击右上角“相册”，找到该相片选定扫描。</li>
+				<li class="mt">04.在支付弹窗，输入金额 <b class="confirm_amount" style="color:#f60;">{$info.amount}</b> 元，点击“转账”用支付密码完成支付。</li>
+				<li class="mt">05.在支付宝首页，点击下方“我的”，接着点击“账单”。</li>
+				<li class="mt">06.在账单页面，点击“该笔交易”，找到“订单号”记下后六位。</li>
+				<li class="mt">07.回交易软件上将“订单后六位”填于下方空格，点击“确认已支付”。</li>
+				<li class="red">   支付宝充值订单号后六位：<input type="text" class="order_num" id="order_num" style="position:absolute;"></li>
+			</ul>
+			<div class="ewm_img_box zfb_img_box">
+				<i class="red">充值完成请填写订单号</i>
+				<img src="{$zhifubao}" alt="" class="ewm_img">
+				<img src="/Public/img/zfb_help.jpg" alt="" class="ewm_help pc">
+			</div>
+			<div class="box_bottom" style="margin-top:5px;">
+				<button type="button" class="jump_btn" id="confirm_btn" >确认已支付</button>
+			</div>
+		</div>
+		<div class="xuzhi">
+			<strong>截图说明</strong>
+			<img src="/Public/img/zfb_help.jpg" alt="" class="shili_img">
+		</div>
+	</div>
+</div>
+<div class="jump_right jump_content">
+	<div class="jump_box">
+		<strong>风险提示</strong>
+		<p>&nbsp;</p>
+		<p>1、开户后如未修改过交易密码提醒您要进行修改。</p>
+		<p class="red">2、在交易前请自行落实好所交易品种手续费，开始交易即代表您接受并默认账户所设置的手续费。</p>
+		<p>3、提醒所有投资者要牢记期市交易有风险，交易需谨慎而为，做足功课，量力而行，理性参与。学会真假盘辨别方法，远离假盘。</p>
+	</div>
+</div>
+<div id="confirm_success">
+<div class="confirm_box">
+	<h3>入金申请提交成功</h3>
+	<div class="question"><img src="/Public/img/success.png" alt=""><p>工作日期间，入金到账时间为20分钟左右,请耐心等待！</p></div>
+	<div class="answer">
+		<a href="/{$Request.module}/{$Request.controller}/jump/account/{$info.account}" class="error">关闭</a>
+	</div>
+</div>
+</div>
+<div id="confirm_error">
+<div class="confirm_box" id="">
+	<h3>入金申请提交错误</h3>
+	<div class="question"><img src="/Public/img/warning.png" alt=""><p>入金申请提交错误，请重新提交或联系客服</p></div>
+	<div class="answer">
+		<a href="/{$Request.module}/{$Request.controller}/jump/account/{$info.account}" class="error">关闭</a>
+	</div>
+</div>
+</div>
+<div id="overlay"></div>
+<img src="/Public/img/loading.jpg" alt="" id="loading_img">
+</body>
+</html>

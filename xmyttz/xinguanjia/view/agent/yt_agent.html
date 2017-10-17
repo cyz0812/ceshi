@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav">推荐人列表</div>
+		<div class="right_content">
+			<table class="table_b" border="1" width="60%" style="border-collapse:collapse; text-align:center;">
+                <thead>
+					<tr style="font-weight: bold;">
+						<td width="30%">账号前3位</td>
+                        <td>代理手机</td>
+						<td align="center">操作</td>
+
+                    </tr>
+				</thead>
+				<tbody>
+                    <foreach name='agents' item='v'>
+						<tr height="40px" style="vertical-align:middle;">
+
+							<td  id="front" class="">{$v.account_front}</td>
+							<td   id="phone"  class="">{$v.phone}</td>
+							<td>
+								<span><a href="javascript:;" data="{$v.id}" class="agent_delete">删除</a></span>
+								<span><a href="/xinguanjia/agent/reply_agent/id/{$v.id}" data="{$v.id}" class="agent_change">修改</a></span>
+								</td>
+						</tr>
+                    </foreach>
+					<form action="/{$Request.module}/{$Request.controller}/yt_agent" method="post" id="invite_form">
+						<tr height="40px" style="vertical-align:middle;" id="add_invite_tr">
+							<td class=""><input type="text" name="account_front" id="" autocomplete="off" style="width:90%;height:30px;text-align:center;font-size:14px;border:1px solid #005980;color:#005980;"></td>
+							<td class=""><input type="text" name="phone" id="" autocomplete="off" style="width:90%;height:30px;text-align:center;font-size:14px;border:1px solid #005980;color:#005980;"></td>
+						</tr>
+					</form>
+                </tbody>
+            </table>
+			<div style="width:50%;text-align:center;margin:10px 0;">
+				<a href="javascript:;" class="add_btn" id="add_invite">增加代理短息</a>
+				<a href="javascript:;" class="add_btn" id="confirm_add_invite" style="display:none;">确认添加</a>
+				<a href="javascript:;" class="add_btn" id="cancel_add_invite" style="display:none;">取消</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

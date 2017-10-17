@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav"><a href="/{$Request.module}/{$Request.controller}/yt_open">【返回列表】</a></div>
+		<div class="right_content">
+			<input type="hidden" value="{$withdraw.id}" id="withdraw_id">
+			<input type="hidden" value="{$withdraw.userid}" id="userid">
+			<input type="hidden" value="{$withdraw.out_orderid}" id="out_orderid">
+			<input type="hidden" value="{$withdraw.contract}" id="contract">
+			<input type="hidden" value="{$withdraw.type_kind}" id="type_kind">
+			<input type="hidden" value="{$withdraw.invite}" id="invite">
+			<input type="hidden" value="{$withdraw.type}" id="type">
+			<p><span class="left_inp_name">姓名：</span><b id="withdraw_name">{$withdraw.name}</b></p>
+			<p><span class="left_inp_name">手机号：</span><b id="withdraw_phone">{$withdraw.phone}</b></p>
+			<p><span class="left_inp_name">金额：</span><b id="withdraw_amount">{$withdraw.amount}元</b></p>
+			<p><span class="left_inp_name" >错误信息：</span>
+				<select name="area" id="error_text"  style="width:300px;height:50px;">
+					<option value="开户失败" selected>开户失败</option>
+					<option value="资金不足">资金不足</option>
+				</select></p>
+			<button type="button" class="right_btn capital_btn" id="reply_open_error" >开户错误回复</button>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YT-设置头像</title>
+    <include file="../xmyttz/view/head.html"/>
+	<link href="/Public/css/index.css" rel="stylesheet" type="text/css" />
+	<script>var user_active='.userInfo';var nav_active="#nav_user";</script>
+	<link rel="stylesheet" href="/Public/css/cropper.css"/>
+	<script src="/Public/js/cropper.js"></script>
+    <link href="/Public/css/user.css" rel="stylesheet" type="text/css" />
+    <script src="/Public/js/user.js" type="text/javascript"></script>
+
+	<style>
+		.newbanb {
+			min-width: 1263px;
+			padding: 113px 0;
+		}
+		.footer {
+			min-width: 1263px;
+			background: #222;
+			clear: both;
+			text-align: center;
+		}
+		.footer .top {
+			width: 100%;
+			height: 0px;
+			margin: 0 auto;
+		}
+
+	</style>
+</head>
+
+<body>
+<include file="../xmyttz/view/newheader.html"/>
+<!--<div id="header">-->
+	<!--<a href="javascript:history.back(-1)" class="back"><img src="/Public/img/mt_back.png" alt="" width=25 height=25></a>-->
+	<!--<img src="/Public/img/list.png" alt="" class="list">-->
+	<!--头像修改-->
+<!--</div>-->
+<div class="user_content">
+<div class="user_box">
+	<include file="../xmyttz/view/user_left.html"/>
+    <div class="user_right">
+		<h4><span>昵称修改</span><a href="/{$Request.module}/{$Request.controller}/userInfo">返回设置</a></h4>
+		<div id="setface">
+			<div class="face_bg">
+				<div class="face_box">
+					<div class="img_container">
+						<empty name="user.face"><img src="" alt="" class="face_img"><else /><img src="{$user.face}" alt="" class="face_img"></empty>
+						<!-- <img src="" alt="" title="" id="image" class="cropper face_img"> -->
+					</div>
+				</div>
+				<p>请设置您的头像</p>
+					<p><span class="file_btn">上传<input type="file" name="face" class="file_input"></span><input type="button" class="face_cut" value="提交"></p>
+				<center><img src="" alt="" id="img"></center>
+				<!-- 裁切div -->
+				<canvas id="myCan" style="display:none;"></canvas>
+				<div class="cut_box">
+					<div class="cut_top">裁剪后的图片<i class="cut_box_close"></i></div>
+					<div class="cut_can">
+						<img src="" class="cut_img">
+					</div>
+					<div class="cut_bottom"><button class="cut_box_close" type="button">关闭</button><button type="button" class="cut_sub">确认</button></div>
+					<img id="returnImg" alt="">
+				</div>
+			</div>	
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+</div>
+</div>
+<include file="../xmyttz/view/footer.html"/>
+</body>
+</html>

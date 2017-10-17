@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav"><a href="{:url('invitelist/yt_invitelist')}">【返回列表】</a></div>
+		<div class="right_content">
+		<form action="/{$Request.module}/{$Request.controller}/update_inviter/update/{$inviter.id}" method="post" enctype="multipart/form-data">
+			<p><span class="left_inp_name">代理代码：</span><empty name="inviter.invite_code"><input type="text" name="invite_code" value="" autocomplete="off" class="text num"><else />{$inviter.invite_code}</empty></p>
+			<notempty name="inviter.invite_code"><p><span class="left_inp_name">代理网址：</span>http://{$Think.server.http_host}/Home/Index/regInvite/inviteCode/{$inviter.invite_code}</p></notempty>
+			<p><span class="left_inp_name">代理姓名：</span><input type="text" name="invite_name" value="{$inviter.invite_name}" autocomplete="off" class="text num"></p>
+			<p><span class="left_inp_name">账号前3位：</span><input type="text" name="account_front" value="{$inviter.account_front}" autocomplete="off" class="text num"></p>
+			<p><span class="left_inp_name">代理手机：</span><input type="text" name="phone" value="{$inviter.phone}" autocomplete="off" class="text num"></p>
+			<p><span class="left_inp_name">代理密码：</span><input type="text" name="password" value="{$inviter.password}" autocomplete="off" class="text num"></p>
+			<p><span class="left_inp_name">保证金：</span><input type="text" name="bail" value="{$inviter.bail}" autocomplete="off" class="text num"></p>
+			<p><span class="left_inp_name">柜台级别：</span><input type="text" name="group" value="{$inviter.group}" autocomplete="off" class="text num"></p>
+			<p><span class="left_inp_name">所属分组：</span><input type="text" name="level" value="{$inviter.level}" autocomplete="off" class="text num"></p>
+			<p><span class="left_inp_name" style="position:relative;bottom:85px;">手续费：</span><textarea name="fee" style="width:328px;">{$inviter.fee}</textarea></p>
+			<button type="submit" class="admin_btn" style="margin: 20px 0 0 50px">确定</button><a href="{:url('invitelist/yt_invitelist')}" class="back_a" >返回</a>
+		</form>
+		</div>
+	</div>
+</body>
+</html>

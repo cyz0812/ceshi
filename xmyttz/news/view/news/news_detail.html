@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Yingtou-行业资讯</title>
+    <include file="../xmyttz/view/head.html"/>
+	<link href="/Public/css/index.css" rel="stylesheet" type="text/css" />
+	<script>var nav_active="#nav_news"</script>
+    <link href="/Public/css/news.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<include file="../xmyttz/view/header.html"/>
+
+<!-- 导航END -->
+<div class="pc">
+	<img src="/Public/img/banner_news.jpg" alt="" class="top_img">
+	<div class="news_detail">
+		<div class="show_addr">
+			<span class="now_mbx"></span><a href="/{$Request.module}/{$Request.controller}/news" class="hit">资讯</a><span class="sep"> > </span>文章正文<span id="show_name"></span>
+		</div>
+		<p class="time">{$time}&nbsp;&nbsp;&nbsp;&nbsp;<a href="__CONTROLLER__/index">厦门盈透投资</a></p>
+		<div class="article_box">
+			<div class="article_list">
+				{$content}
+			</div>
+		</div>
+		<a href="javascript :;" onClick="javascript :history.back(-1);" class="back">返回</a>
+	</div>
+</div>
+<!-- 移动端 -->
+<div class="phone">
+
+<div id="mt_article">
+	{$content}
+</div>
+</div>
+<include file="../xmyttz/view/footer.html"/>
+</div>
+</body>

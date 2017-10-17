@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav">推荐人列表</div>
+		<div class="right_content">
+			<div id="choose_date">
+			<form action="/{$Request.module}/{$Request.controller}/yt_invitelist" method="get">
+				<p>
+					<select name="condition" id="select_condition">
+						<option value="-1" selected="selected">全部</option>
+						<option value="invite_code" >代理代码</option>
+						<option value="invite_name">代理姓名</option>
+						<option value="account_font">账号前三位</option>
+						<option value="fee">手续费</option>
+						<option value="phone">代理手机</option>
+						<option value="password">代理密码</option>
+					</select>
+					<input class="select_date" name="value" type="text" placeholder="" {:input('param.value')}" style="background:#fff;">　
+					<button type="submit" class="inquiry">查询</button>
+					<button type="button" id="reload">刷新</button>
+					<button type="button" class="add_btn" id="add_invite">新增</button>
+				<div style="width:50%;position: absolute;left:649px;top:70px">
+				{$page}
+			</div>
+				</p>
+			</form>
+			</div>
+			<table class="table_b" border="1" width="100%" style="border-collapse:collapse; text-align:center;">
+                <thead>
+					<tr style="font-weight: bold;">
+						<td>代理代码</td>
+                        <td>代理姓名</td>
+                        <td>账号前3位</td>
+						<td>保证金</td>
+						<td>柜台级别</td>
+						<td >所属分组</td>
+                        <td width="20%">手续费</td>
+                        <td>代理手机</td>
+                        <td>代理密码</td>
+                        <td align="center" colspan="2" style="min-width:140px;">操作</td>
+						<td>代理注册网址</td>
+                    </tr>
+				</thead>
+				<tbody>
+                    <foreach name='invite' item='v'>
+						<input type="hidden" id="invite_id" value="{:input('id')}">
+						<tr height="50px" style="vertical-align:middle;">
+							<td class="">{$v.invite_code}</td>
+							<td class="">{$v.invite_name}</td>
+							<td class="">{$v.account_front}</td>
+							<td class="">{$v.bail}</td>
+							<td class="">{$v.group}</td>
+							<td width="" class="">{$v.level}</td>
+							<td width="20%" class="">{$v.fee}</td>
+							<td class="">{$v.phone}</td>
+							<td class="">{$v.password}</td>
+							<td><a href="/{$Request.module}/{$Request.controller}/update_inviter/id/{$v.id}" class="btn_a href_a">修改</a></td>
+							<td ><a href="javascript:;" data="/yt_invitelist/delete/{$v.id}" class="btn_a delete_a invite_delete">删除</a></td>
+							<td class="">
+									<notempty name="v.invite_code"><p >http://xmyttz.com/regxmyttz?inviteCode={$v.invite_code}</p>
+										<p  ><span style="color:red;">去LOGO：</span>http://xmyttz.com/regagent?inviteCode={$v.invite_code}</p></notempty>
+							</td>
+
+						</tr>
+                    </foreach>
+				<tfoot>
+				</tbody>
+
+					<!--<form action="/website/Invitelist/add_data" method="post" id="invite_form">-->
+					<!--<tr height="50px" style="vertical-align:middle;" id="add_invite_tr">-->
+						<!--<td class=""><input type="text" name="invite_code" id="add_invite_code" autocomplete="off" style="width:80%;height:30px;text-align:center;font-size:14px;border:1px solid #005980;color:#005980;"></td>-->
+						<!--<td class=""><input type="text" name="invite_name" id="add_invite_name" autocomplete="off" style="width:80%;height:30px;text-align:center;font-size:14px;border:1px solid #005980;color:#005980;"></td>-->
+						<!--<td class=""><input type="text" name="account_front" id="" autocomplete="off" style="width:80%;height:30px;text-align:center;font-size:14px;border:1px solid #005980;color:#005980;"></td>-->
+						<!--<td class=""><input type="text" name="bail" id="" autocomplete="off" style="width:80%;height:30px;text-align:center;font-size:14px;border:1px solid #005980;color:#005980;"></td>-->
+						<!--<td class=""><input type="text" name="group" id="" autocomplete="off" style="width:80%;height:30px;text-align:center;font-size:14px;border:1px solid #005980;color:#005980;"></td>-->
+						<!--<td class=""><input type="text" name="level" id="" autocomplete="off" style="width:80%;height:30px;text-align:center;font-size:14px;border:1px solid #005980;color:#005980;"></td>-->
+						<!--<td class=""><input type="text" name="fee" id="" autocomplete="off" style="width:80%;height:30px;text-align:center;font-size:14px;border:1px solid #005980;color:#005980;"></td>-->
+						<!--<td class=""><input type="text" name="phone" id="" autocomplete="off" style="width:80%;height:30px;text-align:center;font-size:14px;border:1px solid #005980;color:#005980;"></td>-->
+						<!--<td class=""><input type="text" name="password" id="" autocomplete="off" style="width:80%;height:30px;text-align:center;font-size:14px;border:1px solid #005980;color:#005980;"></td>-->
+						<!--<td id="has_invite_td"><img src="" alt="" id="has_invite_img" width=20 height=20 style="position:relative;top:5px;display:none;"><span id="has_invite_span" class="red" style="display:none;"></span></td>-->
+					<!--</tr>-->
+					<!--</form>-->
+                </tfoot>
+            </table>
+
+
+		</div>
+	</div>
+
+	<script>
+
+           $('input[name=logo_one]:checkbox').change(function () {
+               if($("input[name=logo_one]:checkbox").is(':checked')){
+                   $(this).parent().parent().next().find('.none_logo').show();
+               }else{
+                   $(this).parent().attr('checked',false);
+                   $(this).parent().parent().next().find('.none_logo').hide();
+
+			   }
+           })
+
+
+	</script>
+	<script>var select_type={:input('param.condition',-1)};</script>
+
+</body>
+</html>

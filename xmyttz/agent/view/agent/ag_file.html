@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/agHeader.html"/>
+</head>
+<body>
+	<div id="manage_right">
+		<h2 class="right_top"><span>相关文件</span><a href="__CONTROLLER__/agentlogout" target="_parent"><img src="__ROOT__/Public/img/me_logout.png" alt="">安全退出</a></h2>
+		<div class="right_content">
+			<table class="table_b" border="1">
+                <thead>
+					<tr>
+                        <td width="90%">名称<span style="color:#999;font-size:12px;position:absolute;">（点击下载）</span></td>
+                        <td width="10%">状态</td>
+                    </tr>
+				</thead>
+				<tbody id="file_html">
+                    <foreach name='files' item='v'>
+	                    <tr class="tbody_b agent_file">
+	                        <td><a href="{$v.path}" download="" data="{$v.path}" name="{$v.id}" class="loaded">{$v.name}</a></td>
+							<td><span data="{$agent.id}" name="{$v.downloaded}" class="is_loaded"></span></td>
+	                    </tr> 
+                    </foreach>
+				</tbody>
+            </table>
+		</div>
+	</div>
+<script>$('.is_loaded').each(function(){var loaded_str=$(this).attr('name');var ag_id=$(this).attr('data');if(loaded_str.indexOf(ag_id)!='-1'){$(this).html('已下载');}})</script></body>
+</html>

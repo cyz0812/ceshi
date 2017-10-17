@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+<script>
+	var appUrl="__APP__";
+</script>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav"><a href="/{$Request.module}/{$Request.controller}/yt_rule">【返回列表】</a></div>
+		<div class="right_content">
+		<form action="/{$Request.module}/{$Request.controller}/update_rule/update/{$info.id}" method="post" enctype="multipart/form-data">
+			<p>名　称：　<input type="text" name="name" autocomplete="off" class="text name" value="{$info.name}"></p>
+			<p>新文件：　<input type="file" name="file" id="imageupload"><span><button type="button" id="clearFile">清空选择</button>（未选择文件则保持原图）</span></p>
+			<button type="submit" class="sub" >修改</button><a href="/{$Request.module}/{$Request.controller}/yt_rule" class="back_a" >返回</a>
+		</form>
+		</div>
+	</div>
+</body>
+</html>

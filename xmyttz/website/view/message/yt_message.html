@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<include file="../xmyttz/view/adminHead.html"/>
+	<script src="/Public/ueditor/ueditor.config.js" type="text/javascript"></script>
+	<script src="/Public/ueditor/ueditor.all.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="right">
+	<div class="right_nav">发送消息</div>
+	<div class="right_content" style="text-align: center;">
+		<form action="/{$Request.module}/{$Request.controller}/yt_message" method="post" style="position:relative;" id="message_form">
+			<p style="font-size:20px;margin: 0 0 20px 0">标题：<input type="text" name="title" id="message_title" style="padding:0 5px;width:420px;height:30px;margin:10px 0 0 0;font-size:18px;"></p>
+			<p style="margin:5px 0;"><label for="message_type1" style="margin:0 20px;"><input type="radio" name="type" value="1" id="message_type1" checked="checked">系统消息</label><label for="message_type2"><input type="radio" id="message_type2" name="type" value="2">用户消息</label></p>
+			<div style="text-align:left;">
+			<p id="user_list" style="display:inline-block;text-align:left;margin:0 0 0 60px;height:auto;line-height:35px;">接收人：
+				<label style="display:inline-block;text-align:center;width:80px;height:30px;line-height:30px;cursor:pointer;background:#1371a9;color:#fff;border-radius:4px;"><input type="checkbox" id="message_checkall"  style="display:none;">全部</label>
+					<foreach name="list" item="v">
+						<label title="{$v.phone}" style="display:inline-block;padding:0 10px;margin:0 5px 0 0;"><input type="checkbox" name="userid[]" value="{$v.id}" checked="checked" style="margin:0 5px 0 0;;">{$v.username}</label>
+					</foreach>
+			</p>
+			</div>
+			<textarea name="content" id="myEditor" style="width:95%;height:500px;margin:20px auto;"></textarea>
+			<script type="text/javascript">
+				UE.getEditor('myEditor')
+			</script>
+			<button type="button" id="message_btn" style="display:inline-block;padding:3px 20px;cursor:pointer;">发送</button>
+		</form>
+	</div>
+</div>
+</body>
+</html>

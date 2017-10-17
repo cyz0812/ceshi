@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+<div id="right">
+	<div class="right_nav"><a href="javascript:history.back(-1)">【返回列表】</a></div>
+	<div class="right_content">
+		<input type="hidden" value="{$message.id}" id="message_id">
+		<p><span class="left_inp_name">标题：</span><input type="text" value="{$message.title}" class="text" readOnly="true"></p>
+		<p><span class="left_inp_name">消息类型：</span><input type="text" value="<if condition="($message.type eq 1)">系统消息<elseif condition="$message.type eq 2"/>用户消息</if>" class="text"></p>
+		<p><span class="left_inp_name">接收人用户名：</span><input type="text" value="{$message.username}" class="text" readOnly="true"></p>
+		<notempty name="user.name"><p><span class="left_inp_name">接收人姓名：</span><input type="text" value="{$user.name}" class="text" readOnly="true"></p></notempty>
+		<p><span class="left_inp_name">接收人手机号：</span><input type="text" value="{$user.phone}" class="text" readOnly="true"></p>
+		<p><span class="left_inp_name">读取状态：</span><input type="text" value="<if condition="$message.state eq 0">未读<else />已读</if>" class="text"></p>
+		<p><span class="left_inp_name">发送时间：</span><input type="text" value="{$message.date}" class="text" readOnly="true"></p>
+		<p><span class="left_inp_name">内容：</span><div style="margin:-43px 0 0 180px;padding:10px;line-height:1;width:600px;min-height:200px;border:1px solid #005980;">{$message.content}</div></p>
+		<button type="button" class="right_btn capital_btn" id="" style="margin:30px 0 0 180px;" Onclick="history.back(-1)">返回</button>
+		<button type="button" class="right_btn capital_btn" id="message_detail_btn" style="margin:30px 0 0 30px;" >删除</button>
+	</div>
+</div>
+</body>
+</html>

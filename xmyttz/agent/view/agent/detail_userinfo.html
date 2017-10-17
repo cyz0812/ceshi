@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/agHeader.html"/>
+</head>
+<body>
+	<div id="manage_right">
+		<h2 class="right_top"><span>用户详情</span><a href="/{$Request.module}/{$Request.controller}/agentlogout" target="_parent"><img src="/Public/img/me_logout.png" alt="">安全退出</a></h2>
+		<div class="right_content">
+			<table class="table_c">
+				<thead>
+					<tr><td>类　　型</td><td>信　　息</td></tr>
+				</thead>
+				<tbody>
+					<tr><td>昵　　称</td><td>{$userinfo.username}</td></tr>
+					<tr><td>手机号码</td><td>{$userinfo.phone}   </td></tr>
+					<tr><td>姓　　名</td><td>{$userinfo.name}    </td></tr>
+					<tr><td>身份证号</td><td>{$userinfo.idcard}  </td></tr>
+					<tr><td>银行名称</td><td>{$userinfo.bankname}</td></tr>
+					<tr><td>银行卡号</td><td>{$userinfo.card}    </td></tr>
+					<notempty name="userinfo.a_account"><tr><td>国际期货账户</td><td>{$userinfo.a_account}</td></tr></notempty>
+					<notempty name="userinfo.d_account"><tr><td>国内期货账户</td><td>{$userinfo.d_account}</td></tr></notempty>
+					<notempty name="userinfo.s_account"><tr><td>国内股票账户</td><td>{$userinfo.s_account}</td></tr></notempty>
+					<tr><td>上次登录</td><td><empty name="userinfo.login_time">首次登陆<else />{$userinfo.login_time|date="Y-m-d H:i:s",###}</empty></td></tr>
+					<tr><td>注册时间</td><td>{$userinfo.reg_time|date="Y-m-d H:i:s",###}</td></tr>
+				</tbody>
+			</table>
+			<a href="/{$Request.module}/{$Request.controller}/right" class="back_a" >返回</a>
+		</div>
+	</div>
+</body>
+</html>

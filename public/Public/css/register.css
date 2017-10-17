@@ -1,0 +1,345 @@
+@CHARSET "UTF-8";
+.reg_bg{
+	height:500px;
+	background:url(../img/register_bg.jpg);
+	background-size:cover;
+	position:relative;
+	margin:0 auto 0 auto;
+	border-bottom:1px solid #ccc;
+}
+.reg_box{
+	box-shadow:0px 0px 5px #ccc;
+	position:absolute;
+	top:70px;
+	right:10%;
+	background:#fff;
+	z-index:9;
+}
+.reg_box ul {
+	margin:20px 28px;
+}
+.reg_box ul li{
+	height:40px;
+	line-height:40px;
+	color:#555;
+	font-size:16px;
+	margin-top:10px;
+}
+.reg_box ul li i{
+	display:inline-block;
+	width:38px;
+	height:38px;
+	border:1px solid #bbb;
+	float:left;
+	border-right:none;
+	background:#f8f8f8 url(../img/i_user.png) no-repeat;
+}
+.reg_box ul .yzm_box i{
+	background:#f8f8f8 url(../img/i_yzm.png) no-repeat;
+}
+.reg_box ul .pwd_box i{
+	background:#f8f8f8 url(../img/i_pwd.png) no-repeat;
+}
+.reg_box ul .pwd_box2 i{
+	background:#f8f8f8 url(../img/i_pwd.png) no-repeat;
+}
+.reg_box ul .invite_box i{
+	background:#f8f8f8 url(../img/i_invite.png) no-repeat;
+}
+.reg_box ul li input{
+	width:230px;
+	height:38px;
+	line-height:38px;
+	padding: 0 5px 0 10px;
+	color:#666;
+	font-size:14px;
+	border:1px solid #bbb;
+	float:left;
+	outline:none;
+}
+.reg_box ul li #pc_getCode{
+	display:inline-block;
+	width:89px;
+	height:40px;
+	border:none;
+	cursor:pointer;
+	color:#fff;
+	background:#0379b5;
+	float:left;
+}
+.reg_box ul li .gain:hover{
+	color:#0379b5;
+}
+.reg_box ul .user_h2{
+	font-size:22px;
+	color:#0379b5;
+}
+.reg_box ul .yzm{
+	width:140px;
+}
+.reg_box ul  .other_box{
+	height:20px;
+	line-height:20px;
+	font-size:14px;
+	color:#999;
+	padding:5px 0;
+}
+.reg_box ul  .other_box input{
+	width:auto;
+	height:auto;
+	line-height:auto;
+	padding: 0;
+	margin:0 5px 0 0;
+	color:#666;
+	font-size:16px;
+	border:none;
+	position:relative;
+	top:3px;
+}
+.reg_box ul .other_box a{
+	color:#0379b5;
+}
+.reg_box ul  .other_box a:hover{
+	color:#4cbbe9;
+}
+.reg_box ul .btn_box{
+	height:40px;
+	line-height:40px;
+}
+.reg_box ul .btn_box button{
+	width:287px;
+	height:35px;
+	background:#0379b5;
+	border:none;
+	cursor:pointer;
+	font-size:16px;
+	letter-spacing:5px;
+	color:#fff;
+	border-radius:4px;
+}
+.reg_box ul .btn_box button:hover{
+	opacity:0.8;
+}
+.origin{
+	color:#f60;
+}
+.register_success{
+	width:420px;
+	height:150px;
+	margin:100px auto;
+}
+.register_success .success_left{
+	width:100px;
+	float:left;
+}
+.register_success .success_left img{
+	display:block;
+	width:60px;
+	height:60px;
+	margin:auto;
+}
+.register_success .success_right{
+	width:320px;
+	float:right;
+}
+.register_success .success_right h2{
+	color:#555;
+	font-size:18px;
+	margin:5px 0;
+}
+.register_success .success_right  p{
+	font-size:16px;
+	color:#888;
+	line-height:1.8;
+}
+.register_success .success_right p a{
+	color:#30b4ff;
+	margin:0 10px;
+}
+.register_success .success_right p a:hover{
+	color:#0379b5;
+}
+.register_success .success_bottom{
+	clear:both;
+	text-align:center;
+	padding-top:20px;
+}
+.register_success .success_bottom p a{
+	display:inline-block;
+	width:150px;
+	height:40px;
+	line-height:40px;
+	border:1px solid #99d8ff;
+	color:#30b4ff;
+	margin:10px 20px;
+}
+.register_success .success_bottom p a:hover{
+	background:#30b4ff;
+	color:#fff;
+}
+.register_success .success_go{
+	text-align:center;
+	margin:80px 0 ;
+}
+.register_success .success_go a{
+	display:inline-block;
+	width:150px;
+	height:30px;
+	line-height:30px;
+	border-radius:4px;
+	background:#68bb00;
+	color:#fff;
+	margin:0 50px;
+}
+.register_success .success_go a:hover{
+	background:#58b600;
+}
+.capital_step {
+	display:block;
+	text-align:center;
+	margin:0 auto;
+	height:80px;
+	line-height:80px;
+}
+.capital_step span{
+	display:inline-block;
+	height:80px;
+	margin-right:5px;
+	color:#0379b5;
+}
+.capital_step span img{
+	width:80px;
+	height:80px;
+	float:left;
+	margin-right:10px;
+}
+@media (max-width:768px) {
+	#mt_register{
+		width:100%;
+		height:100%;
+		background:#f1f1f1;
+		position:fixed;
+		padding:10px 0;
+	}
+	#mt_register .user_phone{
+		padding:0 0 0 15px;
+		background:#fff;
+		border-top:1px solid #ccc;
+		border-bottom:1px solid #ccc;
+		margin:10px 0 20px 0;
+	}
+	#mt_register .user_phone>p{
+		display:block;
+		height:55px;
+		line-height:55px;
+		color:#888;
+		font-weight:bold;
+		border-bottom:1px solid #ccc;
+	}
+	#mt_register .user_phone>p:last-child{
+		border-bottom:none;
+	}
+	#mt_register .user_phone>p>span{
+		display:inline-block;
+		width:100px;
+		height:55px;
+		text-indent:10px;
+	}
+	#mt_register .user_phone>p>input{
+		height:50px;
+		width:70%;
+		border:none;
+		outline:none;
+		box-sizing:border-box;
+		font-size:14px;
+		-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+		/* -moz-tap-highlight-color:rgba(0, 0, 0, 0);  
+		-ms-tap-highlight-color:rgba(0, 0, 0, 0);  
+		-o-tap-highlight-color:rgba(0, 0, 0, 0);  
+		tap-highlight-color:rgba(0, 0, 0, 0);  */
+	}
+	#mt_register .user_phone .mt_yzm_box>input{
+		width:40%;
+	}
+	#mt_register .user_phone .mt_yzm_box>button{
+		display:inline-block;
+		float:right;
+		width:100px;
+		height:55px;
+		background:#01c0dd;
+		color:#fff;
+		border:none;
+		cursor:pointer;
+		font-size:14px;
+	}
+	#mt_register .xieyi{
+		text-align:center;
+	}
+	#mt_register .xieyi a{
+		color:#01c0dd
+	}
+	#mt_register .xieyi input{
+		position:relative;
+		top:1px;
+	}
+	#mt_register .reg_next{
+		display:block;
+		width:90%;
+		height:45px;
+		margin:20px auto 15px auto;
+		background:#01c0dd;
+		border:none;
+		border-radius:4px;
+		color:#fff;
+		font-size:18px;	
+	}
+	#register_success{
+		position:fixed;
+		top:0;
+		bottom:0;
+		right:0;
+		left:0;
+		margin:auto;
+		width:220px;
+		height:200px;
+		text-align:center;
+	}
+	#register_success .welcome_reg{
+		border:1px solid #99d8ff;
+		background:url(../img/tick.jpg) no-repeat left center;
+		width:220px;
+		height:45px;
+		line-height:45px;
+		text-indent:20px;
+		box-shadow:0 0 5px #99d8ff;
+		font-size:16px;
+		margin:0 0 20px 0;
+	}
+	#register_success p>a{
+		display:inline-block;
+		width:100px;
+		height:35px;
+		line-height:35px;
+		margin:8px auto;
+		color:#30b4ff;
+		font-size:15px;
+		border:1px solid #99d8ff;
+	}
+}
+@media (max-width:350px){
+	#mt_register .user_phone>p>input{
+		font-size:12px;
+	}
+	#mt_register .user_phone>p>span{
+		display:inline-block;
+		width:85px;
+		height:55px;
+		text-indent:5px;
+	}
+	#mt_register .user_phone .mt_yzm_box>input{
+		width:120px;
+	}
+	#mt_register .user_phone .mt_yzm_box>button{
+		width:90px;
+	}
+}

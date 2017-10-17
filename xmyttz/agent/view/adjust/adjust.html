@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YT-调整手数</title>
+    <include file="../xmyttz/view/aghead.html"/>
+    <script type="text/javascript">var belong = 'xmyttz';</script>
+	<script src="/Public/js/user.js" type="text/javascript"></script>
+</head>
+<body>
+<include file="../xmyttz/view/newheader.html" />
+<div class="user_box">
+<div class="user_right">
+<h4><span>调整手数</span></h4>
+	<div class="tishi">
+		<p>提示：交易帐号的自有资金为０，申请调整限仓手数则不执行，强平线=持仓手数*下表对应的每手持仓强平金额，请自行控制好持仓手数</p>
+	</div>
+	<div class="recharge">
+	<input type="hidden" value="{$out_orderid}" id="out_orderid">
+	<input type="hidden" value="aqihuo" id="agent_type">
+	<input type="hidden" value="{$user.a_account}" id="account">
+	<div class="recharge_type recharge_box">
+		<span>期货类型：</span>
+		<ul>
+			<li class="active"><a href="/{$Request.module}/{$Request.controller}/adjust">国际期货</a></li>
+		</ul>
+	</div>
+	<div class="recharge_type recharge_box">
+		<span>交易账号：</span>
+		<ul>
+			<li class="active">{$user.a_account}</li>
+		</ul>
+	</div>
+	<div class="recharge_box qihuo_type">
+		<span>品种选择：</span>
+		<div class="hand_contract" id="hand_contract">
+			<label><input name="contract" type="radio" checked="selected" value="小恒指、小H股、人民币、富时">小恒指、小H股、人民币、富时</label>
+			<label><input name="contract" type="radio" value="小德指">小德指</label>
+			<label><input name="contract" type="radio" value="大恒指、原油、天然气、黄金、精通、小标、小纳、小道、外汇">大恒指、原油、天然气、黄金、精通、小标、小纳、小道、外汇</label>
+			<label><input name="contract" type="radio" value="大德指、白银">大德指、白银</label>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+	<div class="recharge_box qihuo_hands">
+		<span>手数选择：</span>
+		<ul class="hands" id="hands">
+			<li class="active">1手</li>
+			<li>2手</li>
+			<li>3手</li>
+			<li>4手</li>
+			<li>5手</li>
+			<li>6手</li>
+			<li>7手</li>
+			<li>8手</li>
+			<li>9手</li>
+			<li>10手</li>
+		</ul>
+		<div style="clear:both;"></div>
+	</div>
+	<div class="recharge_btn_box recharge_box" style="text-align:center;height:100px;clear:both;">
+		
+		<button type="button" class="recharge_btn" id="add_hands">申请增加</button>
+		<button type="button" class="recharge_btn" id="dec_hands" style="margin-left:20px;">申请减少</button>
+		<button type="button" class="recharge_btn" onClick="location.href='/{$Request.module}/User/user'" style="margin-left:20px;">返回中心</button>
+	</div>	
+</div>
+<div style="clear:both;"></div>
+</div>
+<div class="phone">
+<!--<div id="header">-->
+	<!--<a href="javascript:history.back(-1)" class="back"><img src="/Public/img/mt_back.png" alt="" width=25 height=25></a>-->
+	<!--<img src="/Public/img/list.png" alt="" class="list">-->
+	<!--调整手数-->
+<!--</div>-->
+</div>
+<div class="tanchu_system" id="prior_yes">
+	<div class="tanchu_system_box">
+		<h3>申请调整手数提交成功</h3>
+		<div class="question"><img src="/Public/img/success.png" alt=""><div class="tanchu_content"><p>工作日期间，处理时间为20分钟左右,请耐心等待！</p></div></div>
+		<div class="answer">
+			<a href="Personal/User/user">确定</a>	
+		</div>
+	</div>
+</div>
+</div>
+<include file="../xmyttz/view/newfooter.html" />
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/Public/css/jedate.css" />
+	<include file="../xmyttz/view/adminHead.html"/>
+<script type="text/javascript" src="/Public/js/jquery.jedate.js"></script>
+
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav">消息记录</div>
+		<div class="right_content">
+			<div id="choose_date">
+				<form action="/{$Request.module}/{$Request.controller}/yt_messagelist" method="get" id="messagelist_form">
+					<span class="start_span">开始日期：</span><input class="select_date" name="start_date" id="inpstart" type="text" placeholder="" value="{$Request.param.start_date|default = $start_date}" readonly>
+					<span class="end_span">结束日期：</span><input class="select_date" name="end_date" id="inpend" type="text" placeholder="" value="{$Request.param.end_date|default = $end_date}" readonly>
+					<button type="submit" name="search" class="inquiry">查询</button>
+					<button type="button" id="reload">刷新</button>
+					<input data-val="true" data-val-number="The field Int32 must be a number." data-val-required="Int32 字段是必需的。" id="messagelist_type" name="type" type="hidden" value="{$Request.param.type|default = '-1'}" />
+					<input data-val="true" data-val-number="The field Int32 must be a number." data-val-required="Int32 字段是必需的。" id="messagelist_userid" name="userid" type="hidden" value="{$Request.param.userid|default = '-1'}" />
+					<div class="deal_time record_box" id="message_typelist">
+						<span style="display:inline;width:auto;height:auto;">消息类型：</span>
+						<a href="javascript:;" data="-1">全部</a>
+						<a href="javascript:;" data="1">系统消息</a>
+						<a href="javascript:;" data="2">用户消息</a>
+					</div>
+					<div class="deal_type record_box" id="message_useridlist" style="height:auto;">
+						<span style="width:auto;height:auto;">接收人选：</span>
+						<a href="javascript:;" data="-1">全部</a>
+						<foreach name="userlist" item="v">
+							<a href="javascript:;" data="{$v.id}" title="{$v.phone}" >{$v.username}</a>
+						</foreach>
+					</div>
+				</form>
+			</div>
+			<table class="table_a" border="1">
+                <thead>
+					<tr>
+						<td width="5%">选择</td>
+						<td width="8%" >消息类型</td>
+						<td width="12%" >接收人</td>
+						<td width="8%" >是否已读</td>
+						<td width="40%" >标题</td>
+						<td width="20%" >发送时间</td>
+						<td width="7%" >操作</td>
+                    </tr>
+				</thead>
+				<tbody>
+                    <foreach name='messagelist' item='v'>
+						<tr class="body">
+							<td><input type="checkbox" data="{$v.state}" name="id[]" value="{$v.id}" class="stop_default"></td>
+							<td><if condition="$v.type eq 1">系统消息<elseif condition="$v.type eq 2"/>用户消息</if></td>
+							<td>{$v.username}</td>
+							<td><if condition="$v.state eq 0">未读<else />已读</if></td>
+							<td>{$v.title}</td>
+							<td>{$v.date}</td>
+							<td><a href="/{$Request.module}/{$Request.controller}/message_detail/id/{$v.id}" class="href_a">详情</a></td>
+						</tr>
+					</foreach>
+                </tbody>
+            </table>
+			<p class="select_checkbox">选择： <a href="javascript:;" id="checkall">全选</a> - <a href="javascript:;" id="checknull">不选</a>　　<button  type="button" id="message_delete">批量删除</button></p>
+			<div class="page_box">{$page}</div>
+		</div>
+	</div>
+<script type="text/javascript">
+var start = {
+    format: 'YYYY-MM-DD hh:mm:ss',
+    minDate: '2016-01-01 23:59:59', //设定最小日期为当前日期
+    maxDate: $.nowDate(0), //最大日期
+    choosefun: function(elem,datas){
+        end.minDate = datas; //开始日选好后，重置结束日的最小日期
+    }
+};
+var end = {
+    format: 'YYYY-MM-DD hh:mm:ss',
+    minDate: '2016-01-01 23:59:59', //设定最小日期为当前日期
+    maxDate: $.nowDate(0), //最大日期
+    choosefun: function(elem,datas){
+        start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+    }
+};
+$("#inpstart").jeDate(start);
+$("#inpend").jeDate(end);
+</script>
+</body>
+</html>

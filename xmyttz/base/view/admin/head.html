@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="header">
+		<img src="{$Request.root}/Public/img/admin/header_left.png" class="logo"></img>
+		<ul>
+			<if condition="($admin.prompt eq 1)">
+			<li><audio id="deposit_music" src="{$Request.root}/Public/music/deposit.mp3"  loop="loop">你的浏览器不支持音频播放。</audio></li>
+			<li><audio id="withdraw_music" src="{$Request.root}/Public/music/withdraw.mp3"  loop="loop">你的浏览器不支持音频播放。</audio></li>
+			<li><audio id="prior_music" src="{$Request.root}/Public/music/prior.mp3"  loop="loop">你的浏览器不支持音频播放。</audio></li>
+			<li><audio id="open_music" src="{$Request.root}/Public/music/open.mp3"  loop="loop">你的浏览器不支持音频播放。</audio></li>
+			<li><a href="javescript:;" id="audio_btn">出金音：<b style="color:red;font-weight:normal;">开</b></a></li>
+			<li><a href="/Xinguanjia/Deposit/yt_deposit" target="right" id="to_deposit">入金<span id="deposit">{$head.deposit}</span><img src="{$Request.root}/Public/img/tishi.gif" alt="" id="rujin_bell"></a></li>
+			<li><a href="/Xinguanjia/Withdraw/yt_withdraw" target="right" id="to_withdraw">出金<span id="withdraw">{$head.withdraw}</span><img src="{$Request.root}/Public/img/tishi.gif" alt="" id="chujin_bell"></a></li>
+			<li><a href="/Website/Open/yt_open" target="right" id="to_open">开户<span id="open">{$head.open}</span><img src="{$Request.root}/Public/img/tishi.gif" alt="" id="open_bell"></a></li>
+			<li><a href="/Xinguanjia/Prior/yt_prior" target="right" id="to_prior">优先<span id="prior">{$head.prior}</span><img src="{$Request.root}/Public/img/tishi.gif" alt="" id="prior_bell"></a></li>
+			<li><a href="/Website/Submission/yt_submission" target="right" id="to_submission">代理开户<span id="submission">{$head.submission}</span><img src="{$Request.root}/Public/img/tishi.gif" alt="" id="submission_bell"></a></li>
+			</if>
+			<li><a href="/Adminlogin/Login/logout" target="_parent">安全退出</a></li>
+			
+		</ul>
+	</div>
+<script>
+	<!-- localStorage.bell_num=0; -->
+	<!-- localStorage.bell_ys='on'; -->
+</script>
+</body>
+</html>

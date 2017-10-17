@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Yingtou-国内期货</title>
+    <include file="../xmyttz/view/head.html"/>
+	<link href="/Public/css/index.css" rel="stylesheet" type="text/css" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+	<script>var user_active='.recharge';var nav_active="#nav_user";var belong = 'xmyttz';</script>
+    <link href="/Public/css/user.css" rel="stylesheet" type="text/css" />
+    <script src="/Public/js/user.js" type="text/javascript"></script>
+</head>
+<style>
+
+	#to_refresh{
+		position: absolute;
+		top:-3px;
+		right:-266px;
+	}
+
+
+
+	@media(max-width:768px){
+		#to_refresh{
+			position: absolute;
+			top:-3px;
+			right:0px;
+		}
+		.xuzhi {
+			height: 400px;
+			display: block !important;
+			width: 90%;
+			margin: 110px auto;
+			text-align: left;
+
+		}
+	}
+</style>
+<body>
+<include file="../xmyttz/view/header.html"/>
+<div class="">
+<div class="user_box">
+<div class="user_right">
+	<div class="show_addr">
+		<a href="/index/index/index" class="hit">首页</a><span class="sep"> &gt; </span>国内期货充值<span id="show_name"></span>
+	</div>
+	<!--<notempty name="user.d_account">-->
+		<!--<div class="tishi">-->
+			<!--<p>提示：1.入金可随时切换不同银行的多张银行卡，不受出金绑定银行卡的限制</p>-->
+			<!--<p>　　　2.充值时间为交易日上午08:30至次日05:30，充值由第三方机构收取充值金额的0.3%作为通道费，例充1万扣30,单笔最高10万元，最低500元，到帐后处理时间为15分钟左右，如开户充值则需30分钟左右，请耐心等待！</p>-->
+			<!--<p>　　　3.提款时间为交易日上午08:30至当日18:30。提款收取每笔2元，出金最低金额为500元，全部出金的不受此限制。</p>-->
+		<!--</div><else/><div class="tishi">-->
+		<!--<p>01.开户约30分钟内，将以手机短信方式发送至手机。</p>-->
+		<!--<p>02.请绑定提款银行卡，为唯一提款卡号以保障资金安全。</p>-->
+		<!--<p>03.支付宝首次使用，请用手机下载并安装。</p>-->
+		<!--<p>04.入金可换多张银行卡，不受绑定的提款银行卡限制。</p>-->
+		<!--<p>05.充值时间为交易日早08:30至次日早05：00。</p>-->
+		<!--<p>06.充值由第三方机构收取0.3%通道费，例1万元扣30元。</p>-->
+		<!--<p>07.单笔最高10万，最低500，到帐处理时间15分钟内。</p>-->
+		<!--<p>08.提醒收到账号密码后，请及时使用电脑登录修改密码。</p>-->
+		<!--<p>09.提醒勿相信代操盘稳盈利说词，勿将密码告之他人。</p>-->
+		<!--<p>10.提醒交易前确认交易手续费，交易表示接受账户设置。</p>-->
+		<!--<p>11.提醒所有投资者牢记期市风险，量力而行，理性参与。</p>-->
+		<!--<p>12.以上开户如未及时处理，及时与我司客服联系。</p>-->
+	<!--</div>-->
+	<!--</notempty>-->
+	<!--<div class="phone">-->
+		<!--<notempty name="user.a_account">-->
+			<!--<div class="tishi">-->
+				<!--<div >-->
+					<!--<p>提示：1.入金可随时切换不同银行的多张银行卡，不受出金绑定银行卡的限制</p>-->
+					<!--<p>　　　2.充值时间为交易日上午08:30至次日05:30，充值由第三方机构收取充值金额的0.3%作为通道费，例充1万扣30,单笔最高10万元，最低500元，到帐后处理时间为15分钟左右，如开户充值则需30分钟左右，请耐心等待！</p>-->
+					<!--<p>　　-->
+				<!--</div>-->
+				<!--　3.提款时间为交易日上午08:30至当日18:30。提款收取每笔2元，出金最低金额为500元，全部出金的不受此限制。</p>-->
+			<!--</div><else/><div class="tishi">-->
+			<!--<div >-->
+				<!--<p>01.开户约30分钟内，将以手机短信方式发送至手机。</p>-->
+				<!--<p>02.请绑定提款银行卡，为唯一提款卡号以保障资金安全。</p>-->
+				<!--<p>03.支付宝首次使用，请用手机下载并安装。</p>-->
+				<!--<p>04.入金可换多张银行卡，不受绑定的提款银行卡限制。</p>-->
+				<!--<p>05.充值时间为交易日早08:30至次日早05：00。</p>-->
+				<!--<p>06.充值由第三方机构收取0.3%通道费，例1万元扣30元。</p>-->
+				<!--<p>07.单笔最高10万，最低500，到帐处理时间15分钟内。</p>-->
+				<!--<p>08.提醒收到账号密码后，请及时使用电脑登录修改密码。</p>-->
+				<!--<p>09.提醒勿相信代操盘稳盈利说词，勿将密码告之他人。</p>-->
+				<!--<p>10.提醒交易前确认交易手续费，交易表示接受账户设置。</p>-->
+				<!--<p>11.提醒所有投资者牢记期市风险，量力而行，理性参与。</p>-->
+				<!--<p>12.以上开户如未及时处理，及时与我司客服联系。</p>-->
+			<!--</div>-->
+		<!--</div>-->
+
+		<!--</notempty>-->
+	<!--</div>-->
+	<div class="recharge">
+		<input type="hidden" value="{$user.card}" id="recharge_card">
+		<input type="hidden" value="{$user.id}" id="userid">
+		<input type="hidden" value="{$out_orderid}" id="out_orderid">
+		<input type="hidden" value="dqihuo" id="agent_type">
+		<input type="hidden" value="{$user.d_account}" id="account">
+		<input type="hidden" value="网银充值" id="subject">
+		<form action="http://xmmrtc.com/llapi/llpayqrcode_web.php" method="post" id="weixin_form">
+			<input type="hidden" value="{$out_orderid}" name="no_order">
+			<input type="hidden" value="http://xmmrtc.com/llpay/notify_url_xmyt.php" name="notify_url">
+			<input type="hidden" value="0" name="pay_type">
+			<input type="hidden" name=" user_id" value="{$user.id}">
+			<input type="hidden" name="money_order" id="money_order" class="amount">
+		</form>
+		<div class="jump_left jump_content">
+			<div class="jump_box">
+				<div class="tongdao" >
+
+					<div class="method_box">
+
+						<foreach name="payway" item="v">
+							<li data="show"  href="javascript:;" class="method_a" id="{$v.sign}">{$v.name}</li>
+						</foreach></div>
+					<div class="pc">
+						<li href="javascript:;"  class="method_a" data="show" id="to_refresh" >刷新页面</li>
+					</div>
+
+				</div>
+
+				<!--<div class="remind deposit ">-->
+				<!--<p><b class="blue" style="font-weight:normal;">出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。</b>入金由第三方收取手续费为付款金额的0.3%(如付款1万，手续费30),单笔最高10万元，最低500元，到帐后处理时间15分钟左右，请耐心等待！入金的时间为每个交易日上午08：30至次日05：30分，未及时到帐号请联系客服！请先开通网银，申请各家银行UKEY或U盾或K令，各家银行额度限制请向客服索要详表。农业银行不支持K码/K令，请使用K宝。</p>-->
+				<!--</div>-->
+				<!--<div class="remind webllpay  hide">-->
+				<!--<p><b class="blue" style="font-weight:normal;">出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。</b>入金由第三方收取手续费为付款金额的0.3%(如付款1万，手续费30),单笔最高10万元，最低500元，到帐后处理时间15分钟左右，请耐心等待！入金的时间为每个交易日上午08：30至次日05：30分，未及时到帐号请联系客服！请先开通网银，申请各家银行UKEY或U盾或K令，各家银行额度限制请向客服索要详表。</p>-->
+				<!--</div>-->
+				<!--<div class="remind zfb_deposit ">-->
+				<!--<p><b class="blue" style="font-weight:normal;">出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。</b>入金手续费为付款金额的0.3%（如：付款1万元，手续费30元），单笔最高为10万元，最低为500元，到帐后处理时间为15分钟左右，请耐心等待！如30分钟以上资金未到帐号，请及时与联系我司客服联系！入金时间：每个交易日08:30至次日凌晨05：00。首次使用请用手机下载支付宝</p>-->
+				<!--</div>-->
+				<!--<div class="remind weixin_deposit ">-->
+				<!--<p><b class="blue" style="font-weight:normal;">出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。</b>入金手续费为付款金额的0.3%（如：付款1万元，手续费30元），单笔最高为10万元，最低为500元，到帐后处理时间为15分钟左右，请耐心等待！如30分钟以上资金未到帐号，请及时与联系我司客服联系！入金时间：每个交易日08:30至次日凌晨05：00。首次使用请用手机下载微信</p>-->
+				<!--</div>-->
+			</div>
+		</div>
+		<div class="pc">
+			<div class="tishi remind deposit">
+				<div  class="pol">
+					<p class="str">风险提示：</p>
+					<p>01.开户收到账号密码后，请及时使用电脑登录修改密码。提醒勿相信代操盘稳盈利说词，勿将密码告之他人。</p>
+					<p>02.请绑定提款银行卡，此为唯一提款卡号不可更改。每次充值请再次复核提款银行卡是否无误，以进一步保障交易账号资金安全</p>
+					<p>03.提醒所有投资者要牢记期市交易有风险，交易需谨慎而为，做足功课，量力而行，理性参与，学会真假盘的辨别方法，远离假盘。</p>
+					<p>04.在交易前请先确认好交易品种手续费，开始交易即代表您接受并默认账户所设置的手续费。</p>
+				</div>
+				<div class="tishis ">
+					<p class="str_o">网银充值01须知：</p>
+					<p style="color:rgb(0,120,181)">01.农业银行不支持K码/K令，请使用K宝。</p>
+					<p>02.充值可更换使用不同的多张银行卡，不受绑定的提款银行卡限制。</p>
+					<p>03.充值由第三方收取付款金额的0.3%作为通道费，举例如充值1万扣取30，以此类推。</p>
+					<p>04.充值金额单笔最高10万元，最低500元，另外依您个人银行的限额每个人不同，请自行咨询银行。</p>
+					<p>05.处理时间为每个交易日上午08：30至次日05：30分，到帐后20分钟左右入到相应账号，请耐心等待！如未及时处理请与我客服联系</p>
+					<p>06.网银充值请先开通网银，申请各家银行UKEY或U盾或K令。</p>
+				</div>
+			</div>
+			<div class="tishi remind webllpay">
+				<div  class="pol">
+					<p class="str">风险提示：</p>
+					<p>01.开户收到账号密码后，请及时使用电脑登录修改密码。提醒勿相信代操盘稳盈利说词，勿将密码告之他人。</p>
+					<p>02.请绑定提款银行卡，此为唯一提款卡号不可更改。每次充值请再次复核提款银行卡是否无误，以进一步保障交易账号资金安全</p>
+					<p>03.提醒所有投资者要牢记期市交易有风险，交易需谨慎而为，做足功课，量力而行，理性参与，学会真假盘的辨别方法，远离假盘。</p>
+					<p>04.在交易前请先确认好交易品种手续费，开始交易即代表您接受并默认账户所设置的手续费。</p>
+				</div>
+				<div class="tishis ">
+					<p class="str_o">出入金须知：</p>
+					<p style="color:rgb(0,120,181)">01.出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。</p>
+					<p>02.入金由第三方收取手续费为付款金额的0.3%(如付款1万，手续费30),单笔最高10万元，最低500元，到帐后处理时间15分钟左右，请耐心等待！</p>
+					<p>03.入金的时间为每个交易日上午08：30至次日05：30分，未及时到帐号请联系客服！</p>
+					<p>04.请先开通网银，申请各家银行UKEY或U盾或K令，各家银行额度限制请向客服索要详表。</p>
+				</div>
+			</div>
+			<div class="tishi remind quick">
+				<div style="width: 40%;height: 244px">
+					<p style="color:red">风险提示：</p>
+					<p>01.开户约30分钟内，将以手机短信方式发送至手机。</p>
+					<p>02.请绑定提款银行卡，为唯一提款卡号以保障资金安全。</p>
+					<p>03.支付宝首次使用，请用手机下载并安装。</p>
+					<p>04.入金可换多张银行卡，不受绑定的提款银行卡限制。</p>
+					<p>05.充值时间为交易日早08:30至次日早05：00。</p>
+					<p>06.充值由第三方机构收取0.3%通道费，例1万元扣30元。</p>
+					<p>07.单笔最高10万，最低500，到帐处理时间15分钟内。</p>
+					<p>08.提醒收到账号密码后，请及时使用电脑登录修改密码。</p>
+					<p>09.提醒勿相信代操盘稳盈利说词，勿将密码告之他人。</p>
+					<p>10.提醒交易前确认交易手续费，交易表示接受账户设置。</p>
+					<p>11.提醒所有投资者牢记期市风险，量力而行，理性参与。</p>
+					<p>12.以上开户如未及时处理，及时与我司客服联系。</p>
+				</div>
+				<div class="tishis ">
+					<p style="color:red">出入金须知：</p>
+					<p style="color:rgb(0,120,181)">01.出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。</p>
+					<p>02.入金由第三方收取手续费为付款金额的0.3%(如付款1万，手续费30),单笔最高10万元，最低500元，到帐后处理时间15分钟左右，请耐心等待！</p>
+					<p>03.入金的时间为每个交易日上午08：30至次日05：30分，未及时到帐号请联系客服！</p>
+					<p>04.请先开通网银，申请各家银行UKEY或U盾或K令，各家银行额度限制请向客服索要详表。</p>
+				</div>
+			</div>
+			<div class="tishi remind zfb_deposit">
+				<div  class="pol">
+					<p class="str">风险提示：</p>
+					<p>01.开户收到账号密码后，请及时使用电脑登录修改密码。提醒勿相信代操盘稳盈利说词，勿将密码告之他人。</p>
+					<p>02.请绑定提款银行卡，此为唯一提款卡号不可更改。每次充值请再次复核提款银行卡是否无误，以进一步保障交易账号资金安全</p>
+					<p>03.提醒所有投资者要牢记期市交易有风险，交易需谨慎而为，做足功课，量力而行，理性参与，学会真假盘的辨别方法，远离假盘。</p>
+					<p>04.在交易前请先确认好交易品种手续费，开始交易即代表您接受并默认账户所设置的手续费。</p>
+				</div>
+				<div class="tishis ">
+					<p class="str_o">出入金须知：</p>
+					<p style="color:rgb(0,120,181)">01.出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。</p>
+					<p>02.入金由第三方收取手续费为付款金额的0.3%(如付款1万，手续费30),单笔最高10万元，最低500元，到帐后处理时间15分钟左右，请耐心等待！</p>
+					<p>03.如30分钟以上资金未到帐号，请及时与联系我司客服联系！</p>
+					<p>04.入金时间：每个交易日08:30至次日凌晨05：00。</p>
+					<p>05.首次使用请用手机下载支付宝</p>
+				</div>
+			</div>
+			<div class="tishi remind remind  weixin_deposit">
+				<div  class="pol">
+					<p class="str">风险提示：</p>
+					<p>01.开户收到账号密码后，请及时使用电脑登录修改密码。提醒勿相信代操盘稳盈利说词，勿将密码告之他人。</p>
+					<p>02.请绑定提款银行卡，此为唯一提款卡号不可更改。每次充值请再次复核提款银行卡是否无误，以进一步保障交易账号资金安全</p>
+					<p>03.提醒所有投资者要牢记期市交易有风险，交易需谨慎而为，做足功课，量力而行，理性参与，学会真假盘的辨别方法，远离假盘。</p>
+					<p>04.在交易前请先确认好交易品种手续费，开始交易即代表您接受并默认账户所设置的手续费。</p>
+				</div>
+				<div class="tishis ">
+					<p class="str_o">出入金须知：</p>
+					<p style="color:rgb(0,120,181)">01.出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。</p>
+					<p>02.入金由第三方收取手续费为付款金额的0.3%(如付款1万，手续费30),单笔最高10万元，最低500元，到帐后处理时间15分钟左右，请耐心等待！</p>
+					<p>03.入金时间：每个交易日08:30至次日凌晨05：00。</p>
+					<p>04.首次使用请用手机下载微信</p>
+				</div>
+			</div>
+		</div>
+		<div class="recharge_num recharge_box">
+			<span>账号姓名：</span>
+			<ul>
+				<input type="text" style="background-color: rgba(0,0,0,0.2)" value="{$user.name}" readonly   >
+			</ul>
+		</div>
+		<div class=" recharge_num recharge_box">
+			<span>出金卡号：</span>
+			<ul>
+				<input type="text" style="background-color: rgba(0,0,0,0.2);width: 150px" value="{$user.card}" readonly   >
+			</ul>
+		</div>
+		<div class=" recharge_num recharge_box">
+			<span>提款银行：</span>
+			<ul>
+				<input type="text" style="background-color: rgba(0,0,0,0.2);" value="{$user.bankname}" readonly   >
+			</ul>
+		</div>
+		<div class="recharge_type recharge_box">
+			<span>充值类型：</span>
+			<ul>
+				<li class=""><a href="/{$Request.module}/{$Request.controller}/aqihuoPay">国际期货</a></li>
+				<li class="active"><a href="/{$Request.module}/{$Request.controller}/dqihuoPay">国内期货</a></li>
+			</ul>
+		</div>
+		<notempty name="user.d_account"><div class="recharge_type recharge_box">
+			<span>充值账号：</span>
+			<ul>
+				<li class="active">{$user.d_account}</li>
+			</ul>
+		</div></notempty>
+		<div class="recharge_box recharge_zfb hide zhifubao">
+			<span>支付宝号：</span>
+			<ul>
+				<input type="text" name="zfb_num" id="zfb_num" placeholder="请输入支付宝账号">
+			</ul>
+		</div>
+		<div class="recharge_num recharge_box">
+			<span>充值金额：</span>
+			<input style="display: none;" type="text" />
+			<input type="text" id="goodPrice" placeholder="请输入金额" autocomplete="off"><i class="beizhu pc">元（备注：最低入金50元可激活开户）</i>
+		</div>
+		<div class="select_bank recharge_box hide allscore webllpay">
+			<span>充值银行：</span>
+			<form name="direct" action="http://www.xmmrtc.com/allscore/allscore_pay.php" method="get" id="allscore_form" >
+				<input type="hidden" value="网银充值" name="subject">
+				<input type="hidden" value="{$user.id}" name="body">
+				<input type="hidden" value="{$out_orderid}" name="out_orderid">
+				<input type="hidden" value="http://www.xmmrtc.com/allscore/notify_url_new.php" name="notify_url">
+				<input type="hidden" value="http://www.xmmrtc.com/allscore/return_url_new.php" name="return_url">
+				<input type="hidden" name="goodPrice" class="amount">
+				<ul class="wsyh allscore hide">
+					<li class="active"><label for="ICBC"><img src="/Public/img/banklogo/bank_gs.png" alt="">工商银行</label><input type="radio" checked="checked" name="defaultBank" id="ICBC" value="ICBC"></li>
+					<li><label for="CCB"><img src="/Public/img/banklogo/bank_js.png" alt="">建设银行</label><input type="radio" name="defaultBank" id="CCB" value="CCB"></li>
+					<li><label for="ABC"><img src="/Public/img/banklogo/bank_ny.png" alt="">农业银行</label><input type="radio" name="defaultBank" id="ABC" value="ABC"></li>
+					<li><label for="BOC"><img src="/Public/img/banklogo/bank_zg.png" alt="">中国银行</label><input type="radio" name="defaultBank" id="BOC" value="BOC"></li>
+					<li><label for="CIB"><img src="/Public/img/banklogo/bank_xy.png" alt="">兴业银行</label><input type="radio" name="defaultBank" id="CIB" value="CIB"></li>
+					<li><label for="PSBC"><img src="/Public/img/banklogo/bank_yzcx.png" alt="">邮储银行</label><input type="radio" name="defaultBank" id="PSBC" value="PSBC"></li>
+					<li><label for="GDB"><img src="/Public/img/banklogo/bank_gf.png" alt="">广发银行</label><input type="radio" name="defaultBank" id="GDB" value="GDB"></li>
+					<li><label for="CITIC"><img src="/Public/img/banklogo/bank_zx.png" alt="">中信银行</label><input type="radio" name="defaultBank" id="CITIC" value="CITIC"></li>
+					<li><label for="CMB"><img src="/Public/img/banklogo/bank_zs.png" alt="">招商银行</label><input type="radio" name="defaultBank" id="CMB" value="CMB"></li>
+					<li><label for="CMBC"><img src="/Public/img/banklogo/bank_ms.png" alt="">民生银行</label><input type="radio" name="defaultBank" id="CMBC" value="CMBC"></li>
+					<li><label for="CEB"><img src="/Public/img/banklogo/bank_gd.png" alt="">光大银行</label><input type="radio" name="defaultBank" id="CEB" value="CEB"></li>
+					<li><label for="SHBANK"><img src="/Public/img/banklogo/bank_sh.png" alt="">上海银行</label><input type="radio" name="defaultBank" id="SHBANK" value="SHBANK"></li>
+					<li><label for="BJBANK"><img src="/Public/img/banklogo/bank_bj.png" alt="">北京银行</label><input type="radio" name="defaultBank" id="BJBANK" value="BJBANK"></li>
+				</ul>
+			</form>
+			<form name="llpayment" action="http://www.xmmrtc.com/webllpay/llpayapi.php" method="POST" id="webllpay_form">
+				<input type="hidden" value="付款" name="name_goods" id="webllpay_subject">
+				<input type="hidden" value="http://xmmrtc.com/webllpay/notify_url_web.php" name="notify_url">
+				<input type="hidden" value="http://xmmrtc.com/webllpay/return_url_web.php" name="return_url">
+				<input type="hidden" value="{$out_orderid}" name="no_order">
+				<input type="hidden" name=" user_id" value="{$user.id}">
+				<input type="hidden" name="pay_type" value="1">
+				<input type="hidden" name="busi_partner" value="109001">
+				<input type="hidden" name="money_order" id="money_order" class="amount">
+				<ul class="wsyh webllpay hide">
+					<li class="active"><label><img src="/Public/img/banklogo/bank_gs.png" alt="">工商银行<input type="radio" checked="checked" name="bank_code" value="01020000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_js.png" alt="">建设银行<input type="radio" name="bank_code" value="01050000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_jt.png" alt="">交通银行<input type="radio" name="bank_code" value="03010000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_ny.png" alt="">农业银行<input type="radio" name="bank_code" value="01030000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_zg.png" alt="">中国银行<input type="radio" name="bank_code" value="01040000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_xy.png" alt="">兴业银行<input type="radio" name="bank_code" value="03090000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_yzcx.png" alt="">邮储银行<input type="radio" name="bank_code" value="01000000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_gf.png" alt="">广发银行<input type="radio" name="bank_code" value="03060000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_zx.png" alt="">中信银行<input type="radio" name="bank_code" value="03020000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_zs.png" alt="">招商银行<input type="radio" name="bank_code" value="03080000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_pf.png" alt="">浦发银行<input type="radio" name="bank_code" value="03100000"></label></li>
+				</ul>
+			</form>
+
+			<form name="llpayment" action="http://top.cyzbt.xyz/mrtc/webllpay/llpayapi.php" method="POST" id="webllpays" >
+				<input type="hidden" value="付款" name="name_goods" id="webllpay_subject">
+				<input type="hidden" value="http://xmmrtc.com/webllpay/notify_url_web.php" name="notify_url">
+				<input type="hidden" value="http://xmmrtc.com/webllpay/return_url_web.php" name="return_url">
+				<input type="hidden" value="{$out_orderid}" name="no_order">
+				<input type="hidden" name=" user_id" value="{$user.id}">
+				<input type="hidden" name="pay_type" value="2">
+				<input type="hidden" name="busi_partner" value="109001">
+				<input type="hidden" name="money_order" id="money_order" class="amount">
+				<ul class="wsyh quick  hide" >
+					<li class="active"><label><img src="/Public/img/banklogo/bank_gs.png" alt="">工商银行<input type="radio" checked="checked" name="bank_code" value="01020000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_js.png" alt="">建设银行<input type="radio" name="bank_code" value="01050000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_jt.png" alt="">交通银行<input type="radio" name="bank_code" value="03010000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_ny.png" alt="">农业银行<input type="radio" name="bank_code" value="01030000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_zg.png" alt="">中国银行<input type="radio" name="bank_code" value="01040000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_xy.png" alt="">兴业银行<input type="radio" name="bank_code" value="03090000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_yzcx.png" alt="">邮储银行<input type="radio" name="bank_code" value="01000000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_gf.png" alt="">广发银行<input type="radio" name="bank_code" value="03060000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_zx.png" alt="">中信银行<input type="radio" name="bank_code" value="03020000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_zs.png" alt="">招商银行<input type="radio" name="bank_code" value="03080000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_pf.png" alt="">浦发银行<input type="radio" name="bank_code" value="03100000"></label></li>
+				</ul>
+			</form>
+			<div style="clear:both;"></div>
+		</div>
+		<div class="recharge_box qihuo_hands">
+			<span>倍数选择：</span>
+			<ul class="hands" id="hands">
+				<li class="active">1倍</li>
+				<li>2倍</li>
+				<li>3倍</li>
+				<li>4倍</li>
+				<li>5倍</li>
+				<li>6倍</li>
+				<li>7倍</li>
+				<li>8倍</li>
+				<li>10倍</li>
+			</ul>
+			<div style="clear:both;"></div>
+		</div>
+		<div class="recharge_btn_box recharge_box" style="text-align:center;height:100px;clear:both;">
+			<empty name="user.d_account"><p style="margin-top:5px;">
+				
+				<input type="checkbox" id="jbp_contract_cbx" class="checkbox_contract"/>
+				<label for="jbp_contract_cbx" style="color:#666;position:relative;bottom:1.7px;">我已阅读并同意</label>
+				<a href="javascript:;" id="xieyi_dqihuo" class="showxieyi" style="color:#04a7db;">《开户协议》</a>
+			</p></empty>
+			<p style="margin-top:5px;">
+
+				<input type="checkbox" id="jbp_contract_cbx_s" class="checkbox_contract"/>
+				<label for="jbp_contract_cbx_s" style="color:red;position:relative;bottom:1.7px;">为确保您的资金安全，每次充值前请再次确认提款银行资料是否正确。</label>
+
+			</p>
+			<p style="margin-top: -2px;margin-left: -13px;">
+
+				<input type="checkbox" id="jbp_contract_cbx_ss" class="checkbox_contract"/>
+				<label for="jbp_contract_cbx_ss" style="color:red;position:relative;bottom:1.7px;">投资有风险，交易需谨慎，交易前请再次确认已阅读上面风险提示。</label>
+
+			</p>
+			<button type="button" class="recharge_btn hide allscore" id="gotoPay"><notempty name="user.d_account">立即充值<else/>充值并开户</notempty></button>
+			<button type="button" class="recharge_btn hide webllpay" id="webllpay_btn"><notempty name="user.d_account">立即充值<else/>充值并开户</notempty></button>
+			<button type="button" class="recharge_btn hide quick" id="quick_btn"><notempty name="user.d_account">立即充值<else/>充值并开户</notempty></button>
+			<button type="button" class="recharge_btn hide zhifubao" id="zfb_next"><notempty name="user.d_account">立即充值<else/>充值并开户</notempty></button>
+			<button type="button" class="recharge_btn hide weixin" id="weixin_btn"><notempty name="user.d_account">立即充值<else/>充值并开户</notempty></button>
+			<button type="button" class="recharge_btn" onClick="location.href='/{$Request.module}/User/user'" style="margin-left:40px;">返回中心</button>
+		</div>
+	</div>
+	<div class="phone">
+
+
+	<div class="xuzhi">
+
+		<strong>风险提示</strong>
+		<p>1、开户后如未修改过交易密码提醒您要进行修改。</p>
+		<p class="red">2、在交易前请自行落实好所交易品种手续费，开始交易即代表您接受并默认账户所设置的手续费。</p>
+		<p>3、提醒所有投资者要牢记期市交易有风险，交易需谨慎而为，做足功课，量力而行，理性参与。学会真假盘辨别方法，远离假盘。</p>
+		<p class="remind deposit"><b class="blue" style="font-weight:normal;">出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。</b>入金由第三方收取手续费为付款金额的0.3%(如付款1万，手续费30),单笔最高10万元，最低500元，到帐后处理时间15分钟左右，请耐心等待！入金的时间为每个交易日上午08：30至次日05：30分，未及时到帐号请联系客服！请先开通网银，申请各家银行UKEY或U盾或K令，各家银行额度限制请向客服索要详表。农业银行不支持K码/K令，请使用K宝。</p>
+		<p class="remind zfb_deposit"><b class="blue" style="font-weight:normal;">出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。支付宝在用手机完成支付后，请切记一定要回到交易软件上的相应的支付页面，点击确认已支付，这样系统才会收到你的支付信息。</b>入金手续费为付款金额的0.3%（如：付款1万元，手续费30元），单笔最高为10万元，最低为500元，到帐后处理时间为15分钟左右，请耐心等待！如30分钟以上资金未到帐号，请及时与联系我司客服联系！入金时间：每个交易日08:30至次日凌晨05：00。首次使用请用手机下载支付宝</p>
+		<p class="remind weixin_deposit"><b class="blue" style="font-weight:normal;">出金银行卡在第一次入金时绑定，入金可以自行切换不同银行，按充值在跳转的页面填写另外银行卡即可。支付宝在用手机完成支付后，请切记一定要回到交易软件上的相应的支付页面，点击确认已支付，这样系统才会收到你的支付信息。</b>入金手续费为付款金额的0.3%（如：付款1万元，手续费30元），单笔最高为10万元，最低为500元，到帐后处理时间为15分钟左右，请耐心等待！如30分钟以上资金未到帐号，请及时与联系我司客服联系！入金时间：每个交易日08:30至次日凌晨05：00。首次使用请用手机下载微信</p>
+		<p class="remind withdraw">出金银行卡：以入金时填写的姓名和出金卡号为唯一依据，只出至入金时填写的姓名和银行卡。出金手续费：是每笔2元人民币，出金最低金额为500元，全部出金的不受此限制，请客户出金后耐心等待！周一至周五每个工作日的8:30-18:30期间。</p>
+		<p class="remind capital">交易帐号的自有资金为０，申请调整限仓手数则不执行，强平线=持仓手数*下表对应的每手持仓强平金额，请自行控制好持仓手数</p>
+	</div></div>
+</div>
+<div style="clear:both;"></div>
+</div>
+</div>
+
+<div class="recharge_yn tanchu_system">
+	<div class="tanchu_system_box">
+		<h3>提交成功</h3>
+		<div class="question"><img src="/Public/img/success.png" alt=""><div class="tanchu_content"><p>工作日期间，处理时间为30分钟左右,请耐心等待！</p></div></div>
+		<div class="answer">
+			<a href="/{$Request.module}/Userinfo/dealRecord">确定</a>	
+		</div>
+	</div>
+</div>
+<div id="confirm_zfb" class="confirm_ewm">
+	<h3>转账确认</h3>
+	<div class="confirm_list">
+		<div class="list_right">
+			<img src="{$zhifubao}" alt=""/>
+			<p></p>
+		</div>
+		<div class="list_left">
+		<div>
+			<p class="pc">01.打开手机支付宝，点击左上角“扫一扫”。</p>
+			<p class="pc">02.在扫描页面，对着电脑上的二维码，进行扫描。</p>
+			<p class="pc">03.支付弹窗，输入金额 <b class="confirm_amount" style="color:#f60;"></b> 元，点击“转账”用支付密码完成支付。</p>
+			<p class="pc">04.支付宝首页，点击下方“我的”，接着点击“账单”。</p>
+			<p class="pc">05.账单页面，点击“该笔交易”，找到“订单号”记下后六位。</p>
+			<p class="pc">06.回网站上将“订单后六位”填于下方空格，点击“确认已支付”。</p>
+			<p class="red">   支付宝充值订单号后六位：<input type="text" class="order_num" id="order_num" style="position:absolute;"></p>
+		</div>
+		</div>
+		
+	</div>
+	<div class="answer">
+		<a href="javascript:;" class="success" id="zfb_toPay">确认已经支付</a>
+		<a href="javascript:;" id="confirm_not">重新填写</a>	
+	</div>
+</div>
+<include file="../xmyttz/view/footer.html"/>
+<script>$(function() {
+    $(".payway").eq(0).find('a').click();
+    var screen_width=$(window).width();
+    if(screen_width < 768){
+    <foreach name='payway_phone' item='v'> $('#{$v.sign}').attr('data','hide').hide();</foreach>
+        $(".payway[data='show']").eq(0).click();
+    }
+
+})
+</script>
+
+<script>
+    $(function() {
+        $(".method_a").eq(0).click();
+        var screen_width=$(window).width();
+        if(screen_width < 768){
+        <foreach name='payway_phone' item='v'> $('#{$v.sign}').attr('data','hide').hide();</foreach>
+            $(".method_a[data='show']").eq(0).click();
+        }
+
+    })
+</script>
+</body>
+</html>

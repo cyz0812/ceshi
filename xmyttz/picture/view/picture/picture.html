@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Yingtou-风采</title>
+    <include file="../xmyttz/view/head.html"/>
+	<script>var about_active='.about';var nav_active="#nav_about";</script>
+    <link href="/Public/css/xmyttz.css" rel="stylesheet" type="text/css" />
+    <script src="/Public/js/xmyttz.js" type="text/javascript"></script>
+</head>
+
+<body>
+<include file="../xmyttz/view/header.html"/>
+<!-- 导航END -->
+<div class="pc">
+<img src="/Public/img/banner_about.jpg" alt="" class="top_bg">
+<div class="picture_list">
+	<foreach name="pictures" item="v">
+		<div class="picture_box" data="{$v.path}" name="{$v.name}">
+			<img src="{$v.path}" alt="">
+			<p>{$v.name}</p>
+		</div>
+	</foreach>
+	<div class="page_box">{$page}</div>
+</div>
+
+</div>
+<include file="../xmyttz/view/footer.html"/>
+</div>
+<div id="show_picture">
+	<div id="show_picture_close" class="close">&times;</div>
+	<div class="picture_change picture_prev" id="picture_prev" data="">&lt;</div>
+	<div class="picture_change picture_next" id="picture_next" data="">&gt;</div>
+	<div class="img_box">
+		<img src="" alt="">
+		<p></p>
+	</div>
+</div>
+</body>
+
+</html>

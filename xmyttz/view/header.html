@@ -1,0 +1,120 @@
+<!--[if IE 7]>
+    <div class="ie_bar">
+        您现在使用的浏览器版本过低，可能会导致部分图片和信息的缺失，建议您安装360极速浏览器或升级到IE8以上版本<a href="http://down.360safe.com/cse/360cse_8.1.0.428.exe" target="_blank">下载并安装360极速浏览器</a>
+    </div>
+<![endif]-->
+<span style="display:none;"><script src="https://s4.cnzz.com/z_stat.php?id=1261565474&web_id=1261565474" language="JavaScript"></script></span>
+<img src="/Public/img/logo.png" alt="厦门盈透投资咨询有限公司" style="display:none;width:121px;height:75px;">
+
+<div class="pc">
+<div class="top_bar">
+	<div class="top_bar_box">
+		<!--<div class="top_left">-->
+			<!--<div class="tel_focus">客服热线：<span class="red">{$Think.config.HOTLINE}</span></div>-->
+		<!--</div>-->
+		<div class="top_right">
+			<ul class="nav_more">
+				<li class="tel_focus">客服热线：<span class="red">{$Think.config.HOTLINE}</span></li>
+				<li><a href="/Personal/User/user">个人中心</a></li>
+
+			</ul>
+			<ul class="nav_user">
+				<notempty name="Think.session.phone">
+					<li><a href="/Personal/User/user">您好，<span style="color:#f55;" id="username" class="username">{$Think.session.username}</span></a></li>
+					<!-- <li id="message_li" <empty name="Think.session.message">style="display:none;"</empty>><a href="/{$Request.module}/{$Request.controller}/message">消息<span class="header_message" id="header_message">&nbsp;</span></a></li> -->
+					<li><a href="/Login/Login/logout" >退出</a></li>
+				<else />
+					<li><a href="/Login/Login/login" class="nav_login">登录</a></li>
+					<li><a href="/Login/Register/register" class="nav_register">注册</a></li>
+				</notempty>
+			</ul>
+		</div>
+	</div>
+</div>
+<!--top导航NED-->
+<div class="white">
+<div class="nav_box">
+	<h1 class="logo">
+		厦门盈透投资<a href="/"></a>
+	</h1>
+	<div class="header_nav" id="header_nav">
+	<ul>
+		<li><a href="/" id="index_html">首页</a></li>
+		<li>
+			<a href="/product/product/product" id="product_html">国际期货</a>
+			<!--<dl class="drop">-->
+				<!--<dd><a href="/product/aqihuo/aqihuo/type/hsi">恒生指数</a></dd>-->
+				<!--<dd><a href="/product/aqihuo/aqihuo/type/mhi">小恒指数</a></dd>-->
+				<!--<dd><a href="/product/aqihuo/aqihuo/type/cl">原油期货</a></dd>-->
+				<!--<dd><a href="/product/aqihuo/aqihuo/type/gc">美国黄金</a></dd>-->
+			<!--</dl>-->
+		</li>
+		<li><a href="/product/dqihuo/dqihuo" id="dqihuo_html">国内期货</a></li>
+
+		<!--<li><a href="/picture/picture/picture" id="picture_html">盈透风采</a></li>-->
+		<li><a href="/download/download/download" id="download_html">软件下载</a></li>
+		<li><a href="/news/news/news" id="news_html">行业资讯</a></li>
+		<li><a href="/help/help/help" id="help_html">帮助中心</a></li>
+		<li><a href="/about/about/about" id="about_html">关于我们</a></li>	<!--<li><a href="/product/shares/shares" id="shares_html">股票配资</a></li>-->
+		<!--<li>-->
+			<!--<a href="/department/department/department" id="department_html">公司部门</a>-->
+			<!--<dl class="drop">-->
+				<!--<dd><a href="/department/department/department#jiaoyi">交易部门</a></dd>-->
+				<!--<dd><a href="/department/department/department#xingzheng">行政部门</a></dd>-->
+				<!--<dd><a href="/department/department/department#pinxuan">品宣部门</a></dd>-->
+				<!--<dd><a href="/department/department/department#caiwu">财务部门</a></dd>-->
+				<!--<dd><a href="/department/department/department#peixun">培训部门</a></dd>-->
+			<!--</dl>-->
+		<!--</li>-->
+
+
+		<!-- <li><a href="http://live.xmyttz.cn" id="live_html">理财直播</a></li> -->
+		<!-- <li><a href="/{$Request.module}/{$Request.controller}/yingtou" id="nav_yingtou">赢投宝</a></li> -->
+		<!-- <li><a href="/{$Request.module}/{$Request.controller}/school" id="nav_school">盈透学院</a></li> -->
+		<!-- <li class="nav_new"><a id="nav_online">#直播#</a></li>  -->
+		<!-- <li><a href="/{$Request.module}/{$Request.controller}/activity" id="nav_activity">活动专区</a></li> -->
+	</ul>
+</div>
+
+</div>
+	<marquee style="font-size: 16px;color:red;font-weight: 700" behavior="alternate" scrollamount=3 scrolldelay=100  height=20 width=100%  >为提升更好的服务与体验，网站升级维护中，如遇部分功能故障，请联系右下方网站客服或客户经理。带来不便，敬请谅解。</marquee>
+</div>
+
+<style>#{$Request.action}_html{background:#0379b5;color:#fff;}</style>
+</div>
+
+<!-- 移动端 -->
+<div id="list" style="display:none;">
+	<ul>
+		<li class="li1"><a href="/">首页</a></li>
+		<li class="li2"><a href="/goods/goods/goods">期货参数</a></li>
+		<li class="li3"><a href="/advantage/advantage/advantage">公司特色</a></li>
+		<li class="li4"><a href="/personal/user/user">个人中心</a></li>
+		<li class="li1"><a href="/login/login/logout">退出</a></li>
+	</ul>
+</div>
+<div class="mt_content">
+<div id="header_bottom">
+	 <ul>
+		 <li><a href="/index/index/index" class="to_index"><img src="/Public/img/to_index.png" alt="">首页</a></li>
+		 <li><a href="/goods/goods/goods" class="to_goods"><img src="/Public/img/to_trade.png" alt="">产品介绍</a></li>
+		 <!--<li><a href="/agent/download/download" class="to_download"><img src="/Public/img/to_find.png" alt="">软件下载</a></li>-->
+		 <li><a href="/news/news/news" class="to_news"><img src="/Public/img/to_find.png" alt="">行业资讯</a></li>
+		 <!--<li><a href="/agent/help/help" class="to_help"><img src="/Public/img/to_find.png" alt="">帮助中心</a></li>-->
+		 <li><a href="/personal/user/user" class="to_me"><img src="/Public/img/to_me.png" alt="">我</a></li>
+	 </ul>
+</div>
+<style>.to_{$Think.server.HTTP_POST}{background:#268bf2;color:#fff !important;}</style>
+</div>
+<!-- 移动端  END-->
+<!-- 遮罩 -->
+<img src="/Public/img/loading.jpg" alt="" id="loading_img">
+<div id="overlay"></div>
+<div id="error_system">
+	<div class="error_system_box">
+		<img src="/Public/img/error.png" alt=""><div class="error_system_content"><p id="error_system_text"></p></div>
+	</div>
+</div>
+<script>
+
+</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>YT-产品介绍</title>
+    <include file="../xmyttz/view/aghead.html"/>
+    <include file="../xmyttz/view/head.html"/>
+    <link href="/Public/css/product.css" rel="stylesheet" type="text/css" />
+    <style>
+        .newbanb {
+            min-width: 1263px;
+            padding: 113px 0;
+        }
+        .footer .top {
+            width: 100%;
+            height: 0px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<include file="../xmyttz/view/newheader.html"/>
+<img src="/Public/img/banner_goods.jpg" alt="" class="top_bg">
+<div class="box">
+ <div class="box_list">
+     <input type="hidden" value="{:input('type')}" name="">
+     <foreach name="goods" item="v">
+
+     <div class="list">
+         <a  href="/agent/pay/aqihuo/type/{$v.type}" style="display:block;">
+         <img src="{$v.img}" width="200" height="130"style="text-align: center" alt="">
+        <div class="list_title">
+            <h4>{$v.type_name}</h4>
+            <p >时间：{$v['date']|date="Y-m-d",###}</p>
+        </div>
+     </a></div>
+     </foreach>
+     <div style="clear:both"></div>
+ </div>
+</div>
+
+<include file="../xmyttz/view/newfooter.html"/>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<include file="../xmyttz/view/adminHead.html"/>
+	<script src="/Public/ueditor/ueditor.config.js" type="text/javascript"></script>
+	<script src="/Public/ueditor/ueditor.all.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="right">
+	<div class="right_nav"><a href="/{$Request.module}/{$Request.controller}/yt_help">【返回列表】</a></div>
+	<div class="right_content" style="text-align: center">
+
+		<input type="hidden" value="{:input('par_num',1)}" id="par_num">
+		<form action="/{$Request.module}/{$Request.controller}/add_help" method="post" enctype="multipart/form-data" style="position:relative;">
+			<p style="font-size:20px;margin: 0 0 10px 0">标题：<input type="text" name="title" style="padding:0 5px;width:420px;height:30px;margin:10px 0 0 0;font-size:18px;"></p>
+			<p style="font-size:16px;margin: 0 0 20px 0;">
+				父目录：<select name="par_num" id="select_box" style="width:100px;font-size:16px;margin:0 20px 0 0;color:#333;">
+					<option value="1">新手教程</option>
+					<option value="2">产品介绍</option>
+					<option value="3">常见问题</option>
+				</select>
+			</p>
+			<textarea name="content" id="myEditor" style="width:95%;height:500px;margin:20px auto;"></textarea>
+			<script type="text/javascript">
+				UE.getEditor('myEditor')
+			</script>
+			<p style="margin:0 0 30px 0;"><button class="sub" type="submit" id="help_add_sub">增加</button><a href="/{$Request.module}/{$Request.controller}/yt_help" class="back_a" >返回</a></p>
+		</form>
+	</div>
+<script>
+var par_num=document.getElementById("par_num").value;
+document.getElementById("select_box")[par_num-1].selected=true;
+</script>
+<script src="/Public/ueditor/ueditor.parse.js"></script>
+</div>
+</body>
+</html>

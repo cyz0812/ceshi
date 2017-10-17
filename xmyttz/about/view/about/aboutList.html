@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Yingtou-关于我们</title>
+    <include file="../xmyttz/view/head.html"/>
+	<script>var about_active='.about';var nav_active="#nav_about";</script>
+    <link href="/Public/css/xmyttz.css" rel="stylesheet" type="text/css" />
+    
+</head>
+
+<body>
+<include file="../xmyttz/view/header.html"/>
+<!-- 导航END -->
+<div class="phone">
+	<div id="header">
+		<a href="javascript:history.back(-1)" class="back"><img src="/Public/img/mt_back.png" alt="" width=25 height=25></a>
+		<img src="/Public/img/list.png" alt="" class="list">
+		关于我们
+	</div>
+	<img src="/Public/img/logo.png" alt="" width=200 height=80 style="display:block;margin:auto;padding:15px 0;">
+	<div class="about_list_box">
+		<ul>
+			<foreach name="about_list" item="v" >
+				<if condition="$v.title eq '创始人介绍'"><li style="display:none"></li>
+				<else /><li><a href="/{$Request.module}/{$Request.controller}/about/id/{$v.id}" id="about_list{$v.id}">{$v.title}<span>>&nbsp;&nbsp;</span></a></li></if>
+			</foreach>
+		</ul>
+	</div>
+</div>
+<include file="../xmyttz/view/footer.html"/>
+</div>
+</body>
+</html>

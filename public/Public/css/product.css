@@ -1,0 +1,40 @@
+.box{
+    width: 1146px;
+    margin: 0 auto;
+}
+.box .box_list{
+    width: 1190px;
+    margin: 10px 10px;
+    padding:20px 0;
+
+}
+.box .box_list .list{
+    float:left;
+     width: 315px;
+    height: 150px;
+    padding: 20px 18px;
+    margin: 0 10px 0 10px;
+    border-bottom:dashed 1px #D0D0D0;
+    position: relative;
+}
+.list .list_title{
+    width: 100px;
+    position: absolute;
+    left:230px;
+   top:20px;
+}
+.list_title h4{
+    font-size: 16px;
+}
+.list_title p{
+    width: 105px;
+   color:black;
+    font-size: 12px;
+}
+
+.list_title .list_product  {
+    width:100px;
+    height:80px;
+    word-wrap:break-word;
+    white-space:normal;
+}

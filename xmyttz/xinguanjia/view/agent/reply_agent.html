@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav"><a href="javascript:history.back();">【返回列表】</a></div>
+		<div class="right_content">
+			<input type="hidden" value="{$agent.id}" name="agent_id" id="agent_id" >
+			<p><span class="left_inp_name">账号前三位:</span><input type="text" id="account_front" value="{$agent.account_front}" class="text" ></p>
+			<p><span class="left_inp_name">代理手机:</span><input type="text" id="invite_phone" value="{$agent.phone}" class="text" ></p>
+			<a  class="right_btn capital_btn" id="agent_confirm" >修改完成</a>
+			<a href="/xinguanjia/agent/yt_agent" class="right_btn capital_btn" >返回</a>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav">客户开户</div>
+		<div class="right_content">
+			<h3>国际开户</h3>
+			<table class="table_a" border="1">
+                <thead>
+					<tr>
+					    <td width="" align="center">操作</td>
+                    	<td width="">订单号</td>
+                        <td width="">充值通道</td>
+						<td width="">金额（元）</td>
+						<td width="">优先金</td>
+                        <td width="">姓名</td>
+                        <td width="">来源</td>
+						<td width="">代理代码</td>
+                        <td width="">申请时间</td>
+                    </tr>
+				</thead>
+				<tbody>
+                    <foreach name='open_a' item='v'>
+	                    <tr class="tbody_a">
+						    <td><a href="/{$Request.module}/{$Request.controller}/detail_open/id/{$v.id}" class="href_a">详情</a></td>
+	                    	<td class="" style="">{$v.out_orderid}</td>
+	                        <td class="">{$v.type}</td>
+	                        <td class="">{$v.amount}元</td>
+	                        <td class="">{$v.allocation}<if condition="($v.type_kind eq 'dqihuo') or ($v.type_kind eq 'shares')">元<else/>美元</if></td>
+	                        <td class="">{$v.name}</td>
+	                        <td class=""><if condition="$v.belong eq 'agent'">代理网站<elseif condition="$v.belong eq 'xmyttz'" />官网<else/>信管家</if></td>
+							<td class="">{$v.invite}</td>
+	                        <td class="">{$v.sendtime}</td>
+	                    </tr> 
+                    </foreach>
+                </tbody>
+            </table>
+			<h3>国内开户</h3>
+			<table class="table_a" border="1">
+                <thead>
+					<tr>
+					    <td width="" align="center">操作</td>
+                    	<td width="">订单号</td>
+                        <td width="">类型</td>
+						<td width="">金额（元）</td>
+						<td width="">优先金</td>
+                        <td width="">姓名</td>
+                        <td width="">来源</td>
+						<td width="">代理代码</td>
+                        <td width="">申请时间</td>
+                    </tr>
+				</thead>
+				<tbody>
+                    <foreach name='open_d' item='v'>
+	                    <tr class="tbody_a">
+						    <td><a href="/{$Request.module}/{$Request.controller}/detail_open/id/{$v.id}" class="href_a">详情</a></td>
+	                    	<td class="" style="">{$v.out_orderid}</td>
+	                        <td class="">{$v.type}</td>
+	                        <td class="">{$v.amount}元</td>
+	                        <td class="">{$v.allocation}<if condition="($v.type_kind eq 'dqihuo') or ($v.type_kind eq 'shares')">元<else/>美元</if></td>
+	                        <td class="">{$v.name}</td>
+	                        <td class=""><if condition="$v.belong eq 'agent'">代理网站<elseif condition="$v.belong eq 'xmyttz'" />官网<else/>信管家</if></td>
+							<td class="">{$v.invite}</td>
+	                        <td class="">{$v.sendtime}</td>
+	                    </tr>
+                    </foreach>
+                </tbody>
+            </table>
+			<h3>股票开户</h3>
+			<table class="table_a" border="1">
+                <thead>
+					<tr>
+					    <td width="" align="center">操作</td>
+                    	<td width="">订单号</td>
+                        <td width="">类型</td>
+						<td width="">金额（元）</td>
+						<td width="">优先金</td>
+                        <td width="">姓名</td>
+                        <td width="">来源</td>
+						<td width="">代理代码</td>
+                        <td width="">申请时间</td>
+                    </tr>
+				</thead>
+				<tbody>
+                    <foreach name='open_s' item='v'>
+	                    <tr class="tbody_a">
+						    <td><a href="/{$Request.action}/detail_open/id/{$v.id}" class="href_a">详情</a></td>
+	                    	<td class="" style="">{$v.out_orderid}</td>
+	                        <td class="">{$v.type}</td>
+	                        <td class="">{$v.amount}元</td>
+	                        <td class="">{$v.allocation}<if condition="($v.type_kind eq 'dqihuo') or ($v.type_kind eq 'shares')">元<else/>美元</if></td>
+	                        <td class="">{$v.name}</td>
+	                        <td class=""><if condition="$v.belong eq 'agent'">代理网站<else/>信管家</if></td>
+	                        <td class="">{$v.invite}</td>
+	                        <td class="">{$v.sendtime}</td>
+	                    </tr>
+                    </foreach>
+                </tbody>
+            </table>
+		</div>
+	</div>
+</body>
+</html>

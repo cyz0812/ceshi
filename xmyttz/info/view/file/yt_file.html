@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav">文件上传管理</div>
+		<div class="right_content">
+			<table class="table_a" border="1">
+                <thead>
+					<tr>
+                        <td width="20%">名称</td>
+                        <td width="50%">所在目录</td>
+                        <td width="20%">最后修改时间</td>
+                        <td width="10%" align="center" colspan="2">操作</td>
+                    </tr>
+				</thead>
+				<tbody>
+                    <foreach name='files' item='v'>
+	                    <tr class="tbody_a">
+	                        <td><a href="/{$Request.module}/{$Request.controller}/update_file/id/{$v.id}">{$v.name}</a></td>
+							<td>{$v.path}</td>
+	                        <td class="help_date">{$v.date}</td>
+	                        <td><a href="/{$Request.module}/{$Request.controller}/update_file/id/{$v.id}" class="updel_a href_a update_file">修改</a></td>
+	                        <td><a data="{$v.id}" class="updel_a delete_a delete_file">删除</a></td>
+	                    </tr> 
+                    </foreach>
+				</tbody>
+				<tfoot>
+                    <tr>
+                        <td colspan="30">
+							<a href="/{$Request.module}/{$Request.controller}/add_file" class="add_btn">增加</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav">盈透风采</div>
+		<div class="right_content">
+			<table class="table_a" border="1">
+                <thead>
+					<tr>
+                        <td width="8%">首页显示</td>
+                        <td width="5%">序号</td>
+                        <td width="20%">名称</td>
+                        <td width="30%">图片</td>
+                        <td width="20%">创建时间</td>
+                        <td width="20%" align="center" colspan="2">操作</td>
+                    </tr>
+				</thead>
+				<tbody>
+                    <foreach name='pictures' item='v'>
+	                    <tr class="banner_picture" height="110px" style="vertical-align:middle;">
+	                        <td><input type="checkbox" data="{$v.id}" class="index_show" disabled="true" style="zoom:170%" <notempty name="v.index_show">checked="checked"</notempty>></td>
+	                        <td>{$v.serial}</td>
+	                        <td>{$v.name}</td>
+	                        <td><img src="{$v.path}" height="100" width="200" style="vertical-align:middle;"></td>
+	                        <td>{$v.date}</td>
+	                        <td><a href="/{$Request.module}/{$Request.controller}/update_picture/id/{$v.id}" class="updel_a href_a update_picture">修改</a></td>
+	                        <td><a data="{$v.id}" class="updel_a delete_a delete_picture">删除</a></td>
+	                    </tr> 
+                    </foreach>
+				</tbody>
+				<tfoot>
+                    <tr>
+                        <td colspan="30">
+							<a href="/{$Request.module}/{$Request.controller}/add_picture" class="add_btn">增加图片</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+		</div>
+	</div>
+</body>
+</html>

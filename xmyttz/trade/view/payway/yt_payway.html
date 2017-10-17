@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav">通道切换</div>
+		<div class="right_content">
+			<table class="table_a" border="1">
+                <thead>
+					<tr style="font-weight: bold;">
+                        <td width="" style="line-height:20px;"><p>充值</p><span style="color:#666;">(电脑端)</span></td>
+                        <td width="" style="line-height:20px;"><p>充值</p><span style="color:#666;">(手机端)</span></td>
+                        <td width="" style="line-height:20px;"><p>提款</p><span style="color:#666;">(电脑+手机)</span></td>
+                        <td width="" style="line-height:20px;"><p>开户</p><span style="color:#666;">(电脑+手机)</span></td>
+						<td width="" style="line-height:20px;"><p>绑号</p><span style="color:#666;">(电脑+手机)</span></td>
+						<td width="" style="line-height:20px;"><p>国际限仓</p><span style="color:#666;">(电脑+手机)</span></td>
+						<td width="" style="line-height:20px;"><p>国内限仓</p><span style="color:#666;">(电脑+手机)</span></td>
+                        <td width="">序号</td>
+						<td width="">名称</td>
+						<td width="">备注</td>
+                        <td width="">最后修改时间</td>
+                        <td width="" align="center">操作</td>
+                    </tr>
+				</thead>
+				<tbody>
+                    <foreach name='list' item='v'>
+	                    <tr class="tbody_a">
+	                        <td><button href="javascript:;" value="{$v.display_xmyt}"       data="{$v.id}" name="display_xmyt"       class="switch_display stop_default"><if condition="$v.display_xmyt       eq 1">是<elseif condition="$v.display_xmyt       eq 0"/>　</if></button></td>
+	                        <td><button href="javascript:;" value="{$v.display_phone}"   data="{$v.id}" name="display_phone"   class="switch_display stop_default"><if condition="$v.display_phone   eq 1">是<elseif condition="$v.display_phone   eq 0"/>　</if></button></td>
+	                        <td><button href="javascript:;" value="{$v.display}"  data="{$v.id}" name="display"  class="switch_display stop_default"><if condition="$v.display  eq 1">是<elseif condition="$v.display  eq 0"/>　</if></button></td>
+	                        <td><button href="javascript:;" value="{$v.display_agent}" data="{$v.id}" name="display_agent" class="switch_display stop_default"><if condition="$v.display_agent eq 1">是<elseif condition="$v.display_agent eq 0"/>　</if></button></td>
+							<td><button href="javascript:;" value="{$v.display_old}" data="{$v.id}" name="display_old" class="switch_display stop_default"><if condition="$v.display_old eq 1">是<elseif condition="$v.display_old eq 0"/>　</if></button></td>
+							<td><button href="javascript:;" value="{$v.display_xin}" data="{$v.id}" name="display_xin" class="switch_display stop_default"><if condition="$v.display_xin eq 1">是<elseif condition="$v.display_xin eq 0"/>　</if></button></td>
+							<td><button href="javascript:;" value="{$v.display_xinold}" data="{$v.id}" name="display_xinold" class="switch_display stop_default"><if condition="$v.display_xinold eq 1">是<elseif condition="$v.display_xinold eq 0"/>　</if></button></td>
+							<td>{$v.order_num}</td>
+	                        <td>{$v.name}</td>
+	                        <td>{$v.remark}</td>
+	                        <td>{$v.date}</td>
+	                        <td><a href="/{$Request.module}/{$Request.controller}/update_payway/id/{$v.id}" class="updel_a href_a update_aqihuo">修改</a></td>
+	                    </tr> 
+                    </foreach>
+				</tbody>
+            </table>
+		</div>
+	</div>
+</body>
+</html>

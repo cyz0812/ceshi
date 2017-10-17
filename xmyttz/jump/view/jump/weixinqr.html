@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<title>出入金系统</title>
+<meta http-equiv="Cache-Control" content="no-transform" /> 
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<script src="/Public/js/jquery.min.js" type="text/javascript"></script>
+<script src="/Public/js/jquery.cookie.js" type="text/javascript"></script>
+<script>var conUrl="/{$Request.module}/{$Request.controller}";var rootUrl="__ROOT__";var overlay=false;</script>
+<link href="/Public/jump/css/jump.css" rel="stylesheet" type="text/css" />
+<script src="http://cdn.bootcss.com/jsencrypt/2.3.0/jsencrypt.min.js"></script>
+<script src="/Public/jump/js/jump.js" type="text/javascript"></script>
+<script src="/Public/js/qrcode.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="jump_left jump_content">
+	<div class="jump_box ewm_box">
+		<input type="hidden" value="{$info.no_order}" name="" id="no_order">
+		<div class="content_box">
+			<h2 class="ewm_h2">&nbsp;</h2>
+			<ul class="ewm_ul">
+				<li class="pc">01.打开手机微信，点击右上角“+”，选择“扫一扫”。</li>
+				<li class="pc">02.使用微信“扫一扫”对着电脑上二维码，进行扫描。</li>
+				<li class="pc">03.扫描成功后，点击“转账”用支付密码完成支付。</li>
+				<li class="pc">04.支付完成后，在弹窗中点击“关闭”即可。</li>
+				<li class="pc red">备注：每次生成的二维码不同，逾期支付请返回重新申请</li>
+				<li class="mt">01.用手机拍照拍下该页面，保存在相册上。</li>
+				<li class="mt">02.打开手机微信，点击右上角“+”，选择“扫一扫”。</li>
+				<li class="mt">03.使用微信“扫一扫”点右上角“相册”，选定该相片扫描。</li>
+				<li class="mt">04.扫描成功后，点击“转账”用支付密码完成支付。</li>
+				<li class="mt">05.支付完成后，在弹窗中点击“关闭”即可。</li>
+				<li class="mt red">备注：每次生成的二维码不同，逾期支付请返回重新申请。</li>
+			</ul>
+			<div class="ewm_img_box weixin_img_box">
+				<i class="red">扫描下方转帐</i>
+				<div id="qrcode" class="ewm_img"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="jump_right jump_content">
+	<div class="jump_box">
+		<strong>风险提示</strong>
+		<p>&nbsp;</p>
+		<p>1、开户后如未修改过交易密码提醒您要进行修改。</p>
+		<p class="red">2、在交易前请自行落实好所交易品种手续费，开始交易即代表您接受并默认账户所设置的手续费。</p>
+		<p>3、提醒所有投资者要牢记期市交易有风险，交易需谨慎而为，做足功课，量力而行，理性参与。学会真假盘辨别方法，远离假盘。</p>
+	</div>
+</div>
+<div id="confirm_success">
+<div class="confirm_box">
+	<h3>支付成功</h3>
+	<div class="question"><img src="/Public/img/success.png" alt=""><p>工作日期间，入金到账时间为20分钟左右,请耐心等待！</p></div>
+	<div class="answer">
+		<a href="/{$Request.module}/{$Request.controller}/jump/account/{$info.account}" class="error">关闭</a>
+	</div>
+</div>
+</div>
+<div id="confirm_error">
+<div class="confirm_box" id="">
+	<h3>支付超时</h3>
+	<div class="question"><img src="/Public/img/warning.png" alt=""><p>支付超时，请重新提交订单</p></div>
+	<div class="answer">
+		<a href="/{$Request.module}/{$Request.controller}/jump/account/{$info.account}" class="error">关闭</a>
+	</div>
+</div>
+</div>
+<div id="overlay"></div>
+<img src="/Public/img/loading.jpg" alt="" id="loading_img">
+<script>
+<!-- new QRCode(document.getElementById('qrcode'), "");  -->
+var qrcode = new QRCode('qrcode', {
+  text: "{$info.dimension_url}",
+  width: 140,
+  height: 140,
+  colorDark : '#000000',
+  colorLight : '#ffffff',
+  correctLevel : QRCode.CorrectLevel.H
+});
+</script>
+<script>
+$(function(){
+	setTimeout(function(){
+		alert('二维码已超时，请重新提交');
+		window.location = conUrl+'/jump/account/{$info.account}';
+	},300000);
+	var no_order = $('#no_order').val();
+	var interval = setInterval(function(){
+		$.ajax({
+			type:'POST',
+			url:conUrl+'/had_pay',
+			data:{'no_order':no_order},
+			success:function(data){
+				if(data.flag==1){
+					showOverlay();
+					$('#confirm_success').show();
+					setTimeout(function(){
+						window.location = conUrl+'/jump/account/{$info.account}';
+					},5000);
+					clearInterval(interval);
+				}
+			}
+		})
+	},3000);
+	/* 显示遮罩层 */
+	function showOverlay() {
+		$("#overlay").height(pageHeight());
+		$("#overlay").width(pageWidth());
+
+		// fadeTo第一个参数为速度，第二个为透明度
+		// 多重方式控制透明度，保证兼容性，但也带来修改麻烦的问题
+		$("#overlay").fadeTo(200, 0.8);
+	}
+
+	/* 隐藏覆盖层 */
+	function hideOverlay() {
+		$("#overlay").fadeOut(200);
+	}
+	/* 当前页面高度 */
+	function pageHeight() {
+		return document.body.scrollHeight;
+	}
+	/* 当前页面宽度 */
+	function pageWidth() {
+		return document.body.scrollWidth;
+	}
+})
+</script>
+</body>
+</html>

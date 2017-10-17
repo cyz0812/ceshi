@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+<script>
+	var appUrl="__APP__";
+</script>
+</head>
+<body>
+	<div id="">
+		<div class="right_nav"><a href="/{$Request.module}/{$Request.controller}/yt_file">【返回列表】</a></div>
+		<div class="right_content">
+		<form action="/{$Request.module}/{$Request.controller}/add_file" method="post" enctype="multipart/form-data">
+			<p>名　称：　<input type="text" name="name" autocomplete="off" class="text name"></p>
+			<p>文　件：　<input type="file" name="file"></p>
+			<p class="sendee">接收人：　<button type="button" id="select_all" class="select_all">全选/不选</button>
+				<label style="color:#f55;"><input type="checkbox" name="customer" value="y">客户</label>
+				<foreach name="list" item="v">
+					<label title="{$v.invite_code}"><input type="checkbox" name="invite_id[]" value="{$v.id}">{$v.invite_name}</label>
+				</foreach>
+			</p>
+			<button type="submit" class="sub">添加</button><a href="/{$Request.module}/{$Request.controller}/yt_file" class="back_a" >返回</a>
+		</form>
+		</div>
+	</div>
+</body>
+</html>

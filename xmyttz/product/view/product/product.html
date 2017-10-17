@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Yingtou-国际期货</title>
+    <include file="../xmyttz/view/head.html"/>
+    <link href="/Public/css/product.css" rel="stylesheet" type="text/css" />
+    <link href="/Public/css/index.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<include file="../xmyttz/view/header.html"/>
+<img src="/Public/img/banner_goods.jpg" alt="" class="top_bg">
+<div class="box">
+ <div class="box_list">
+     <input type="hidden" value="{:input('type')}" name="">
+     <foreach name="goods" item="v">
+
+     <div class="list">
+         <a  href="/product/aqihuo/aqihuo/type/{$v.type}" style="display:block;">
+         <img src="{$v.img}" width="200" height="130"style="text-align: center" alt="">
+        <div class="list_title">
+            <h4>{$v.type_name}</h4>
+            <p >时间：{$v['date']|date="Y-m-d",###}</p>
+        </div>
+     </a></div>
+     </foreach>
+     <div style="clear:both"></div>
+ </div>
+</div>
+
+<include file="../xmyttz/view/footer.html"/>
+</body>
+</html>

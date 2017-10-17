@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav">网站用户</div>
+		<div class="right_content">
+			<div id="choose_date">
+				<form action="/{$Request.module}/{$Request.controller}/yt_xgjuser" method="get">
+					<select name="condition" id="select_condition">
+						<option value="account">期货账号</option>
+						<option value="name">姓名</option>
+						<option value="card">银行卡号</option>
+						<option value="nickname">支付宝账号</option>
+						<option value="phone">手机号</option>
+					</select>
+					<input class="select_date" name="value" type="text" placeholder="" value="{:input('param.value')}" style="background:#fff;">　
+					<button type="submit">查询</button>
+					<button type="button" id="reload">刷新</button>
+					<button type="button" onclick="location.href='/{$Request.module}/{$Request.controller}/add_xgjuser'" id="add_xgjuser">新增</button>
+					<!-- <button type="button" id="export_xgjuser">导出</button> -->
+				</form>
+			</div>
+			<table class="table_a" border="1">
+                <thead>
+					<tr>
+						<td width="">期货账户</td>
+                        <td style="min-width:75px;">姓名</td>
+						<td width="">绑定银行卡</td>
+						<td width="">手机号</td>
+                        <td width="">代理代码</td>
+                        <td width="">注册时间</td>
+                    	<td style="min-width:75px;" colspan="2">操作</td>
+					</tr>
+				</thead>
+				<tbody>
+                    <foreach name='userlist' item='v'>
+	                   <tr class="tbody_a">
+							<td class="">{$v.account}</td>
+							<td class="">{$v.name}</td> 
+							<td class="">{$v.deposit_card}</td>
+	                        <td class="">{$v.phone}</td>
+	                        <td class="">{$v.invite}</td>
+	                        <td class="">{$v.regtime}</td>
+							<td><a href="/{$Request.module}/{$Request.controller}/detail_xgjuser/id/{$v.id}" class="updel_a href_a">详情</a></td>
+							<td><a data="/{$Request.action}/delete/{$v.id}" value="{$v.regtime}" class="updel_a delete_a to_delete">删除</a></td>
+	                    </tr>
+                    </foreach>
+                </tbody>
+            </table>
+			<div class="page_box">{$page}</div>
+		</div>
+	</div>
+<div class="pop_system" id="export_pop">
+	<form action="{:url('Xgjuser/export')}" method="post">
+	<h3 class="pop_title">导出验证<span class="pop_close">&times;</span></h3>
+	<div class="pop_content">
+		<p class="code_p"><input type="text" name="code" id="xgjuser_code" placeholder="请输入短信验证码" autocomplete="off"><button type="button" id="xgjuser_getcode"><p>获取验证码</p></button></p>
+	</div>
+	<div class="pop_btn">
+		<button type="submit" id="export_sub">确认导出</button><button type="button" class="pop_close">取消</button>
+	</div>
+	</form>
+</div>
+<!-- 遮罩 -->
+<img src="__ROOT__/Public/img/loading.jpg" alt="" id="loading_img">
+<div id="overlay"></div>
+<div id="error_system">
+	<div class="error_system_box">
+		<img src="__ROOT__/Public/img/error.png" alt=""><div class="error_system_content"><p id="error_system_text"></p></div>
+	</div>
+</div>
+</body>
+</html>

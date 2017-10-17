@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Yingtou-国际期货</title>
+    <include file="../xmyttz/view/head.html"/>
+	<script>var nav_active="#nav_goods";</script>
+	<link href="/Public/css/goods.css" rel="stylesheet" type="text/css" />
+	<style>
+		#header_bottom .to_aqihuomt {
+			background-color: #268bf2;
+			color: #fff;
+		}
+	</style>
+</head>
+
+<body>
+<include file="../xmyttz/view/header.html"/>
+<div class="pc">
+<img src="/Public/img/banner_goods.jpg" alt="" class="goods_bg">
+<div class="goods">
+	<div class="left" style="">
+		<h2 style="">产品介绍</h2>
+		<ul>
+			<foreach name="help_c2" item="v">
+				<li><a href="/product/aqihuo/aqihuo/type/{$v.type}">{$v.type_name}</a></li>
+			</foreach>
+		</ul>
+	</div>
+	<div class="right">
+		<h3>{$title}</h3>
+		{$content}
+	</div>
+	<div style="clear:both;"></div>
+</div>
+</div>
+<div class="phone">
+	<!--<div id="header">-->
+		<!--<a href="javascript:history.back(-1)" class="back"><img src="__ROOT__/Public/img/mt_back.png" alt="" width=25 height=25></a>-->
+		<!--<img src="/Public/img/list.png" alt="" class="list">-->
+		<!--产品介绍-->
+	<!--</div>-->
+	<empty name="_POST.id">
+		<!--<img src="/Public/img/logo.png" alt="" width=200 height=80 style="display:block;margin:auto;padding:15px 0;">-->
+		<div class="goods_list">
+			<ul>
+				<foreach name="help_c2" item="v">
+					<li><a href="/product/aqihuo/aqihuo/type/{$v.type}">{$v.type_name}<span>>&nbsp;&nbsp;</span></a></li>
+				</foreach>
+			</ul>
+		</div>
+	<else />
+		<div class="goods_contain">
+			<h3>{$title}</h3>
+
+		</div>
+	</empty>
+</div>
+<include file="../xmyttz/view/footer.html"/>
+</body>
+</html>

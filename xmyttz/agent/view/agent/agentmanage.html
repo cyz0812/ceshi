@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/agHeader.html"/>
+</head>
+	<frameset border=0 framespacing=0 rows="*" frameborder=0>
+		<frameset cols="220, *">
+			<frame name="left" src="/{$Request.module}/{$Request.controller}/left" frameborder=0 noresize />
+			<frame name="right" src="/{$Request.module}/{$Request.controller}/right" frameborder=0 noresize scrolling=yes />
+		</frameset>
+    </frameset>
+	<noframes>
+    </noframes>
+</html>

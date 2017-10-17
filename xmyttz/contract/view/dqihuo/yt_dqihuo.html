@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav">国内期货管理</div>
+		<div class="right_content">
+			<table class="table_a" border="1">
+                <thead>
+					<tr style="font-weight: bold;">
+                        <td width="">显示</td>
+						<td width="">品种</td>
+						<td width="">最后修改时间</td>
+                        <td width="" align="center" colspan="2">操作</td>
+                    </tr>
+				</thead>
+				<tbody>
+                    <foreach name='goods' item='v'>
+	                    <tr class="tbody_a">
+							<td><button href="javascript:;" data="{$v.state}" name="{$v.id}" class="dqihuo_show_hide"><if condition="$v.state eq 1">是<elseif condition="$v.state eq 0"/>否</if></button></td>
+	                        <td>{$v.type_name}</td>
+	                        <td><span style="font-size:16px;">{$v.date|date="Y-m-d H:i:s",###}</span></td>
+	                        <td><a href="/{$Request.module}/{$Request.controller}/update_dqihuo/id/{$v.id}" class="updel_a href_a update_dqihuo">修改</a></td>
+	                        <td><a name="{$v.id}" class="updel_a delete_a delete_dqihuo">删除</a></td>
+	                    </tr> 
+                    </foreach>
+				</tbody>
+				<tfoot>
+                    <tr>
+                        <td colspan="30">
+							<a href="/{$Request.module}/{$Request.controller}/add_dqihuo" class="add_btn">增加产品</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+		</div>
+	</div>
+</body>
+</html>

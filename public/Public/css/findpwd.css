@@ -1,0 +1,171 @@
+@CHARSET "UTF-8";
+.find_box{
+	width:1350px;
+	height:450px;
+	margin:auto;
+}
+.findpwd_box{
+	width:880px;
+	margin:60px auto 100px auto;
+	border:1px solid #ccc;
+	padding:30px 40px;
+}
+.findpwd_box h2{
+	color:#0379b5;
+	font-size:26px;
+	padding: 10px 5px 0 5px;
+}
+.findpwd_box h2 a{
+	float:right;
+	font-size:14px;
+	font-weight:normal;
+	color:#4cbbe9;
+}
+.findpwd_box h2 a:hover{
+	color:#f66;
+}
+.findpwd_box .find_method{
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	border-bottom:3px solid #0379b5;
+}
+.findpwd_box .find_method a{
+	display:inline-block;
+	width:150px;
+	text-align:center;
+	font-size:16px;
+	color:#999;
+	background:#fafafa;
+}
+.findpwd_box .find_method a:hover{
+	color:#fff;
+	background:#338dca;
+	border-bottom:none;
+}
+.findpwd_box .find_method .active{
+	color:#fff;
+	background:#338dca;
+	border-bottom:none;
+}
+.findpwd_box ul{
+	margin:40px auto 0 auto;
+	text-align:center;
+}
+.findpwd_box ul li{
+	margin: 10px 0;
+}
+.findpwd_box ul li input{
+	width:350px;
+	height:40px;
+	line-height:40px;
+	padding: 0 15px;
+	font-size:16px;
+	color:#333;
+	box-sizing:border-box;
+	border:1px solid #a9a9a9;
+}
+.findpwd_box ul .yzm_box{
+	width:350px;
+	margin:10px auto;
+}
+.findpwd_box ul .yzm_box .yzm{
+	width:240px;
+}
+.findpwd_box ul .yzm_box button{
+	width:110px;
+	height:40px;
+	background:#0379b5;
+	color:#fff;
+	cursor:pointer;
+	border:none;
+	float:right;
+}
+.btn_box .rebuild{
+	margin:10px 0 0 0;
+	width:350px;
+	height:40px;
+	line-height:40px;
+	padding: 0 15px;
+	font-size:16px;
+	border:none;
+	background:#0379b5;
+	color:#fff;
+	border-radius:4px;
+	cursor:pointer;
+}
+@media (max-width:768px) {
+	body{
+		background:#f1f1f1;
+	}
+	#mt_findpwd{
+		padding:10px 0;
+	}
+	#mt_findpwd .user_phone{
+		padding:0 0 0 20px;
+		background:#fff;
+		border-top:1px solid #ccc;
+		border-bottom:1px solid #ccc;
+		margin:10px 0 0 0;
+	}
+	#mt_findpwd .user_phone>p{
+		display:block;
+		height:55px;
+		line-height:55px;
+		color:#888;
+		font-weight:bold;
+		border-top:1px solid #ccc;
+	}
+	#mt_findpwd .user_phone .phone_p{
+		border-top:none;
+	}
+	#mt_findpwd .user_phone>p span{
+		display:inline-block;
+		width:70px;
+		height:55px;
+	}
+	#mt_findpwd .user_phone>p input{
+		height:54px;
+		width:70%;
+		border:none;
+		outline:none;
+		box-sizing:border-box;
+		font-size:14px;
+	}
+	#mt_findpwd .user_phone .yzm_box{
+		padding:0;
+		margin:0;
+	}
+	#mt_findpwd .user_phone .yzm_box input{
+		width:40%;
+	}
+	#mt_findpwd .user_phone .yzm_box button{
+		width:110px;
+		height:55px;
+		background:#01c0dd;
+		border:none;
+		color:#fff;
+		font-size:14px;
+		float:right;
+		line-height:1.5;
+	}
+	#mt_findpwd  .find_btn{
+		display:block;
+		width:90%;
+		height:45px;
+		margin:20px auto;
+		background:#01c0dd;
+		border:none;
+		border-radius:4px;
+		color:#fff;
+		font-size:18px;	
+	}
+	#mt_findpwd .method_change{
+		width:90%;
+		margin:auto;
+		text-align:right;
+	}
+	#mt_findpwd .method_change a{
+		color:#01c0dd;
+	}
+}

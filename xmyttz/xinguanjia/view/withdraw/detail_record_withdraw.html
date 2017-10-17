@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav"><a href="javascript:history.back(-1)">【返回列表】</a></div>
+		<div class="right_content">
+		<input type="hidden" value="{$withdraw.id}" id="withdraw_id">
+			<p><span class="left_inp_name">状态：</span><strong><if condition="$withdraw.state eq 0">处理中<elseif condition="$withdraw.state eq 1" />成功<else />失败</if></strong></p>
+			<p><span class="left_inp_name">订单号：</span><input type="text" value="{$withdraw.out_orderid}" class="text" id="out_orderid" readOnly="true"></p>
+			<notempty name="withdraw.type_kind"><p><span class="left_inp_name">市场：</span><input type="text" value="<if condition="$withdraw.type_kind eq 'aqihuo'">国际期货<elseif condition="$withdraw.type_kind eq 'dqihuo'" />国内期货<elseif condition="$withdraw.type_kind eq 'shares'" />国内股票</if>" class="text" readOnly="true"></p></notempty>
+			<notempty name="withdraw.contract"><p><span class="left_inp_name">种类：</span><input type="text" value="{$withdraw.contract}" class="text" readOnly="true"></p></notempty>
+			<notempty name="withdraw.nickname"><p><span class="left_inp_name">支付宝账号：</span><input type="text" value="{$withdraw.nickname}" class="text" readOnly="true"></p></notempty>
+			<p class="real_money"><span class="left_inp_name">出金金额（元）：</span><input type="text" value="<if condition="$withdraw.amount eq 0">全部<else />{$withdraw.amount}元</if>" class="text" id="withdraw_amount" readOnly="true"></p>
+			<p><span class="left_inp_name">手续费（元）：</span><input type="text" value="2元" class="text" readOnly="true"></p>
+			<p class="real_money"><span class="left_inp_name">转账金额（元）：</span><input type="text" value="{$real_amount}元" class="text" readOnly="true"></p>
+			<p><span class="left_inp_name">姓名：</span><input type="text" value="{$withdraw.name}" class="text" readOnly="true" id="withdraw_name"></p>
+			<p><span class="left_inp_name">账户账号：</span><input type="text" value="{$withdraw.account}" class="text" id="withdraw_account" readOnly="true"></p>
+			<notempty name="withdraw.account_password"><p><span class="left_inp_name">账户密码：</span><input type="text" value="{$withdraw.account_password}" class="text" readOnly="true"></p></notempty>
+			<notempty name="withdraw.account_password"><p><span class="left_inp_name">类型：</span><input type="text" value="{$type_kind}" class="text" readOnly="true"></p></notempty>
+			<notempty name="withdraw.nickname"><p><span class="left_inp_name">支付宝账号：</span><input type="text" value="{$withdraw.nickname}" class="text" readOnly="true"></p>
+			<else /><p><span class="left_inp_name">银行名称：</span><input type="text" value="{$user.bankname}" class="text" readOnly="true"></p>
+			<p><span class="left_inp_name">开户省：</span><input type="text" value="{$user.cardprovince}" class="text input_city" readOnly="true"><span class="left_inp_name city_inp_name">开户市：</span><input type="text" value="{$user.cardcity}" class="text input_city" readOnly="true"></p>
+			<notempty name="user.bankbranchname"><p><span class="left_inp_name">支行名称：</span><input type="text" value="{$user.bankbranchname}" class="text" readOnly="true"></p></notempty>
+			<p><span class="left_inp_name">银行卡号：</span><input type="text" value="{$withdraw.card}" class="text" readOnly="true" id="withdraw_transaction_fees"></p>
+			</notempty>
+			<p><span class="left_inp_name">手机号：</span><input type="text" value="{$withdraw.phone}" id="withdraw_phone" class="text" readOnly="true"></p>
+			<p><span class="left_inp_name">来源：</span><input type="text" value="<if condition="$withdraw.belong eq 'agent'">代理网站<elseif condition="$withdraw.belong eq 'xmyttz'" />官网<else/>信管家</if>" class="text" readOnly="true"></p>
+			<p><span class="left_inp_name">代理人：</span><input type="text" value="<notempty name='user.invite_name'>{$user.invite}</notempty>" class="text" readOnly="true" style="color:red"></p>
+			<p><span class="left_inp_name">代理手机：</span><input type="text" value="<notempty name='user_b'>{$user_b}</notempty>" class="text" readOnly="true" style="color:red"></p>
+			<p><span class="left_inp_name">申请时间：</span><input type="text" value="{$withdraw.sendtime}" class="text" readOnly="true"></p>
+			<p><span class="left_inp_name">处理时间：</span><input type="text" value="{$withdraw.replytime}" class="text" readOnly="true"></p>
+		</div>
+	</div>
+</body>
+</html>

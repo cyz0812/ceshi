@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav"><a href="/{$Request.module}/{$Request.controller}/yt_withdraw">【返回列表】</a></div>
+		<div class="right_content">
+			<input type="hidden" value="{$withdraw.id}" id="withdraw_id">
+			<input type="hidden" value="{$withdraw.userid}" id="userid">
+			<input type="hidden" value="{$withdraw.out_orderid}" id="out_orderid">
+			<p><span class="left_inp_name">手机号：</span><b id="withdraw_phone">{$withdraw.phone}</b></p>
+			<p><span class="left_inp_name">出金金额：</span><b id="withdraw_amount"><if condition="$withdraw.amount eq 0">全部<else />{$withdraw.amount}元</if></b></p>
+			<p><span class="left_inp_name">客户账号：</span><b id="withdraw_account">{$withdraw.account}</b></p>
+			<p><span class="left_inp_name">代理代码：</span><b id="withdraw_invite_code">{$user.invite}</b></p>
+			<p><span class="left_inp_name">代理人手机：</span><b id="withdraw_invite_phone">{$user.invite_phone}</b></p>
+			<p><span class="left_inp_name" >错误信息：</span>
+				<select name="area" id="error_text" style="width:300px;height:50px;">
+					<option selected  value="账号余额不足，请重新申请。">账号余额不足，请重新申请。</option>
+					<option value="提款失败">提款失败</option>
+					</select>
+			</p>
+			<button type="button" class="right_btn capital_btn" id="reply_withdraw_error" >出金错误回复</button>
+		</div>
+	</div>
+</body>
+</html>

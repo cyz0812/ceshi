@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YT-软件下载</title>
+    <include file="../xmyttz/view/head.html"/>
+	<include file="../xmyttz/view/aghead.html"/>
+	<script>var nav_active="#nav_download";</script>
+    <link href="/Public/css/xmyttz.css" rel="stylesheet" type="text/css" />
+	<script src="/Public/js/xmyttz.js" type="text/javascript"></script>
+	<style>
+		#header_bottom .to_download {
+			background-color: #268bf2;
+			color: #fff;
+		}
+	</style>
+</head>
+<style>
+	.newbanb {
+		min-width: 1263px;
+		padding: 113px 0;
+	}
+	.footer .top {
+		width: 100%;
+		height: 0px;
+		margin: 0 auto;
+	}
+</style>
+<style>
+	.dow_img p img{
+		width: 95%;
+	}
+</style>
+<body style="">
+<include file="../xmyttz/view/newheader.html"/>
+<!-- 导航END -->
+<div >
+	<div class="pc">
+		<img src="/Public/img/banner_goods.jpg" alt="" class="top_bg" />
+	</div>
+
+<div class="download_box">
+	<input type="hidden" value="{:input('id',$goods)}"  id="dow_id_id">
+	<ul class="download_top">
+		<foreach name='download_all' item='v'>
+			<li>
+				<a  href="/{$Request.module}/{$Request.controller}/download/id/{$v.id}">
+				<div style="position: relative;">
+						<div id="dow_{$v.id}"  class="dow_id" >
+							{$v.name}</div>
+					</div>
+				</a>
+			</li>
+
+
+		</foreach>
+	</ul>
+		<div class="dow_img">{$good.content|html_entity_decode=###}</div>
+	<div style="clear:both"></div>
+</div>
+</div>
+<!-- 移动端 -->
+<div class="phone">
+<!--<div id="header">-->
+	<!--<a href="javascript:history.back(-1)" class="back"><img src="__ROOT__/Public/img/mt_back.png" alt="" width=25 height=25></a>-->
+	<!--<img src="/Public/img/list.png" alt="" class="list">-->
+	<!--软件下载-->
+<!--</div>-->
+<div class="mt_content">
+	<div id="download">
+		<ul class="app_erweima">
+
+
+
+		</ul>
+	</div>
+</div>
+</div>
+<!-- 移动端 END -->
+<div id="peizi_success_box">
+	<p>支付信息已提交，请稍等</p>
+	<p>可以先下载交易软件以备使用</p>
+	<button type="button" id="peizi_success_close">知道了</button>
+</div>
+<include file="../xmyttz/view/newfooter.html"/>
+</div>
+<style>
+#dow_{:input('id',$goods)}{
+    padding: 5px;
+	background:#0379b5;
+	color:#fff;
+}
+</style>
+</body>
+</html>

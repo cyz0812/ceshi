@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+	<style>
+		.cls_select_span{
+			position:absolute;
+			border:1ptsolid#c1c1c1;
+			overflow:hidden;
+			width:188px;
+			height:19px;
+			clip:rect(-1px190px190px170px);
+		}
+
+		.cls_input_span{
+			position:absolute;
+			border-top:1ptsolid#c1c1c1;
+			border-left:1ptsolid#c1c1c1;
+			border-bottom:1ptsolid#c1c1c1;
+			width:170px;
+			height:19px;
+		}
+
+		.cls_option_defined{
+			color:#c2c2c2;
+		}
+
+		.cls_select{
+			width:190px;
+			height:20px;
+			margin:-2px;
+		}
+
+		.cls_input{
+			width:170px;
+			height:15px;
+			border:0pt;
+		}
+	</style>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav"><a href="/{$Request.module}/{$Request.controller}/yt_deposit">【返回列表】</a></div>
+		<div class="right_content">
+			<input type="hidden" value="{$withdraw.id}" id="withdraw_id">
+			<input type="hidden" value="{$withdraw.userid}" id="userid">
+			<input type="hidden" value="{$withdraw.out_orderid}" id="out_orderid">
+			<p><span class="left_inp_name">手机号：</span><b id="withdraw_phone">{$user.phone}</b></p>
+			<p><span class="left_inp_name">充值金额：</span><b id="withdraw_amount"><if condition="$withdraw.amount eq 0">全部<else />{$withdraw.amount}元</if></b></p>
+			<p><span class="left_inp_name">账户账号：</span><b id="withdraw_account">{$withdraw.account}</b></p>
+			<p><span class="left_inp_name">代理手机号：</span><b id="withdraw_invite_phone">{$user.invite_phone}</b></p>
+			<p><span class="left_inp_name " >错误信息：</span>
+				<select name="area" id="error_text" onchange='toblock()'   style="width:300px;height:50px;" >
+					<option value=""  id="aa">---自定义--- </option>
+		
+					<option   value="收到款项与申请金额不符，请重新申请">收到款项与申请金额不符，请重新申请</option>
+					<option value="没有收到款项">没有收到款项</option>
+					<option value="无法查到支付宝相应订单号">无法查到支付宝相应订单号</option>
+				</select>
+				<input type='text' style='display:none;' id='opttext' name='opttext'>
+
+
+			</p>
+			<button type="button" class="right_btn capital_btn" id="reply_deposit_error_a" >入金错误回复</button>
+		</div>
+	</div>
+
+
+        <script>
+        function toblock()
+        {
+            $('#opttext').show();
+
+        	$('#aa').html($('#opttext').val());
+        }
+	</script>
+
+</body>
+</html>

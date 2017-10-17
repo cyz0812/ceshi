@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+<script>
+	var appUrl="__APP__";
+</script>
+</head>
+<body>
+	<div id="add_bg">
+		<div class="right_nav"><a href="/{$Request.module}/{$Request.controller}/yt_bg">【返回列表】</a></div>
+		<div class="right_content">
+		<form action="/{$Request.module}/{$Request.controller}/add_bg" method="post" enctype="multipart/form-data">
+			<p>序　号：　<input type="text" name="num" autocomplete="off" class="text num"><span>　(循环顺序从小到大，留空则默认排在末尾)</span></p>
+			<p>名　称：　<input type="text" name="name" autocomplete="off" class="text name"></p>
+			<p>图　片：　<input type="file" name="img" id="imageupload" accept="image/gif,image/jpeg,image/jpg,image/png"></p>
+			<p>　　　　　<img src="" alt="" id="imageview" width=350 height=100></p>
+			<button type="submit" class="sub" >添加</button><a href="/{$Request.module}/{$Request.controller}/yt_bg" class="back_a" >返回</a>
+		</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav">客户入金</div>
+		<div class="right_content">
+			<h3>国际入金</h3>
+			<table class="table_a" border="1">
+                <thead>
+					<tr>
+						<td >订单号</td>
+						<td>来源</td>
+						<td>市场</td>
+                        <td >充值方式</td>
+						<td >金额（元）</td>
+                        <td >期货账户</td>
+                        <td >姓名</td>
+						<td>代理代码</td>
+                        <td>申请时间</td>
+                    	<td  align="center">操作</td>
+					</tr>
+				</thead>
+				<tbody>
+                    <foreach name='deposit_x' item='v'>
+						<tr class="tbody_a">
+							<td class="">{$v.out_orderid}</td>
+							<td><if condition="$v.belong eq 'agent'">代理网站<elseif condition="$v.belong eq 'xmyttz'" />官网<else/>信管家</if></td>
+							<td class=""><if condition="$v.type_kind eq 'aqihuo'">国际期货<elseif condition="$v.type_kind eq 'dqihuo'" />国内期货<else /></if></td>
+	                        <td class="">{$v.type}</td>
+	                        <td class="">{$v.amount}元</td>
+							<td class="">{$v.account}</td>
+	                        <td class="">{$v.name}</td>
+							<td class="red">{$v.invite}</td>
+	                        <td class="">{$v.sendtime}</td>
+	                    	<td><a href="/{$Request.module}/{$Request.controller}/detail_deposit/id/{$v.id}" class="href_a">详情</a></td>
+						</tr>
+                    </foreach>
+                </tbody>
+            </table>
+		</div>
+		<div class="right_content">
+			<h3>国内入金</h3>
+			<table class="table_a" border="1">
+                <thead>
+					<tr>
+						<td >订单号</td>
+						<td>来源</td>
+                        <td >市场</td>
+						<td >充值方式</td>
+						<td >金额（元）</td>
+                        <td >期货账户</td>
+                        <td >姓名</td>
+						<td >代理代码</td>
+                        <td >申请时间</td>
+                        <td  align="center">操作</td>
+					</tr>
+				</thead>
+				<tbody>
+                    <foreach name='deposit_w' item='v'>
+						<tr class="tbody_a">
+							<td class="">{$v.out_orderid}</td>
+							<td><if condition="$v.belong eq 'agent'">代理网站<elseif condition="$v.belong eq 'xmyttz'" />官网<else/>信管家</if></td>
+							<td class=""><if condition="$v.type_kind eq 'aqihuo'">国际期货<elseif condition="$v.type_kind eq 'dqihuo'" />国内期货<else /></if></td>
+	                        <td class="">{$v.type}</td>
+	                        <td class="">{$v.amount}元</td>
+							<td class="">{$v.account}</td>
+	                        <td class="">{$v.name}</td>
+							<td class="red">{$v.invite}</td>
+	                        <td class="">{$v.sendtime}</td>
+	                        <td><a href="/{$Request.module}/{$Request.controller}/detail_deposit/id/{$v.id}" class="href_a">详情</a></td>
+						</tr>
+                    </foreach>
+                </tbody>
+            </table>
+		</div>
+		<div class="right_content">
+			<h3>股票入金</h3>
+			<table class="table_a" border="1">
+				<thead>
+				<tr>
+					<td >订单号</td>
+					<td>来源</td>
+					<td >市场</td>
+					<td >充值方式</td>
+					<td >金额（元）</td>
+					<td >期货账户</td>
+					<td >姓名</td>
+					<td >代理代码</td>
+					<td >申请时间</td>
+					<td  align="center">操作</td>
+				</tr>
+				</thead>
+				<tbody>
+				<foreach name='deposit_z' item='v'>
+					<tr class="tbody_a">
+						<td class="">{$v.out_orderid}</td>
+						<td><if condition="$v.belong eq 'agent'">代理网站<elseif condition="$v.belong eq 'xmyttz'" />官网<else/>信管家</if></td>
+						<td class=""><if condition="$v.type_kind eq 'aqihuo'">国际期货<elseif condition="$v.type_kind eq 'dqihuo'" />国内期货<else /></if></td>
+						<td class="">{$v.type}</td>
+						<td class="">{$v.amount}元</td>
+						<td class="">{$v.account}</td>
+						<td class="">{$v.name}</td>
+						<td class="red">{$v.invite}</td>
+						<td class="">{$v.sendtime}</td>
+						<td><a href="/{$Request.module}/{$Request.controller}/detail_deposit/id/{$v.id}" class="href_a">详情</a></td>
+					</tr>
+				</foreach>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

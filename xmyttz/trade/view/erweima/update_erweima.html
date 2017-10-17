@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav"><a href="/{$Request.module}/{$Request.controller}/yt_erweima">【返回列表】</a></div>
+		<div class="right_content">
+		<form action="/{$Request.module}/{$Request.controller}/update_erweima/update/{$info.id}" method="post" enctype="multipart/form-data">
+			<input type="hidden" value="{$info.date}" name="date">
+			<p>类　　型：　<select name="type" data="{$info.type}" class="select default_select"><option value="zhifubao">支付宝</option><option value="weixin">微信</option></select></p>
+			<p>名　　称：　<input type="text" name="name" value="{$info.name}" autocomplete="off" class="text num"></p>
+			<p>原二维码：　<img src="{$info.img}" height="150" width="150" style="vertical-align:middle;" id="update_img"></p>
+			<p>新二维码：　<input type="file" name="img" id="imageupload" class="file" accept="image/gif,image/jpeg,image/jpg,image/png"><span><button type="button" id="clearFile">清空选择</button>（未选择文件则保持原图）</span></p>
+			<p>　　　　　　<img src="" alt="" id="imageview" width=150 height=150></p>
+			<button type="submit" class="admin_btn" style="margin: 20px 0 0 50px">保存</button><a href="/{$Request.module}/{$Request.controller}/yt_erweima" class="back_a" >返回</a>
+		</form>
+		</div>
+	</div>
+</body>
+</html>

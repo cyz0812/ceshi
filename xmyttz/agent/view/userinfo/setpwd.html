@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YT-设置登录密码</title>
+    <include file="../xmyttz/view/head.html"/>
+	<link href="/Public/css/index.css" rel="stylesheet" type="text/css" />
+	<script>var user_active='.userInfo';var nav_active="#nav_user";</script>
+    <link href="/Public/css/user.css" rel="stylesheet" type="text/css" />
+    <script src="/Public/js/user.js" type="text/javascript"></script>
+	<style>
+		.newbanb {
+			min-width: 1263px;
+			padding: 113px 0;
+		}
+		.footer {
+			min-width: 1263px;
+			background: #222;
+			clear: both;
+			text-align: center;
+		}
+		.footer .top {
+			width: 100%;
+			height: 0px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body>
+<include file="../xmyttz/view/newheader.html"/>
+<!--<div id="header">-->
+	<!--<a href="javascript:history.back(-1)" class="back"><img src="__ROOT__/Public/img/mt_back.png" alt="" width=25 height=25></a>-->
+	<!--<img src="/Public/img/list.png" alt="" class="list">-->
+	<!--登录密码修改-->
+<!--</div>-->
+<div class="user_content">
+<div class="user_box">
+	<include file="../xmyttz/view/user_left.html"/>
+	<div class="user_right">
+		<h4><span>登录密码修改</span><a href="/{$Request.module}/{$Request.controller}/userInfo">返回设置</a></h4>
+		<div id="setpwd">
+			<div id="error_info" class="error_info"><img src="/Public/img/error.png" alt=""><span id="error_span" class="error_span"></span></div>
+			<div class="setpwd_box">
+				<p><span>旧密码</span><input type="password" name="" class="old_pwd" placeholder="请输入原密码"></p>
+			</div>
+			<div class="setpwd_box">
+				<p><span>新密码</span><input type="password" name="" class="new_pwd" placeholder="请输入新密码"></p>
+				<p><span>重复密码</span><input type="password" name="" class="re_pwd" placeholder="请再次输入新密码"></p>
+			</div>
+			<button class="setpwd_btn">确认修改</button>
+		</div>
+	</div>
+</div>
+</div>
+<div class="tanchu_system small" id="setpwd_success">
+	<div class="tanchu_system_box">
+		<h3>登录密码修改成功</h3>
+		<div class="question"><img src="/Public/img/success.png" alt=""><div class="tanchu_content"><p>登录密码修改成功,请重新登录！</p></div></div>
+		<div class="answer">
+			<a href="/agent/userinfo/re_login" class="error">确定</a>
+		</div>
+	</div>
+</div>
+<div class="tanchu_system small" id="setpwd_error">
+	<div class="tanchu_system_box">
+		<h3>登录密码修改失败</h3>
+		<div class="question"><img src="/Public/img/error.png" alt=""><div class="tanchu_content"><p>请重新修改或联系客服！</p></div>
+		<div class="answer">
+			<a href="/{$Request.module}/{$Request.controller}/setpwd" class="error">确定</a>
+		</div>
+	</div>
+</div>
+</div>
+<include file="../xmyttz/view/newfooter.html"/>
+</body>
+</html>

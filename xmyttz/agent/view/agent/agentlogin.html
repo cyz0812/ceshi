@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/agHeader.html"/>
+</head>
+<body>
+<div id="agentlogin">
+	<div class="login_box">
+		<form action="/{$Request.module}/{$Request.controller}/agentlogin" method="post" enctype="multipart/form-data" id="agentlogin_form">
+			<label class="login_username"><i></i><input type="text" name="agent" id="agentcode"></label>
+			<label class="login_pwd"><i></i><input type="password" name="password" id="agentpwd"></label>
+			<button type="button" id="agentlogin_sub">进入管理中心</button>
+		</form>
+	</div>
+</div>
+</body>
+</html>

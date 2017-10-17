@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Yingtou-行业资讯</title>
+    <include file="../xmyttz/view/head.html"/>
+	<link href="/Public/css/index.css" rel="stylesheet" type="text/css" />
+	<script>var nav_active="#nav_news"</script>
+    <link href="/Public/css/news.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<include file="../xmyttz/view/header.html"/>
+<div class="pc">
+<img src="/Public/img/banner_news.jpg" alt="" class="top_img">
+<div class="news">
+	<foreach name="news_sets" item='v'>
+	<div class="news_box_new">
+		<div class="news_time">
+			<p class="day">{$v.date|date="d",###}</p>
+			<p class="ym">{$v.date|date="Y/m",###}</p>
+		</div>
+		<div class="news_title">
+			<p class="title_p"><a href="/{$Request.module}/{$Request.controller}/news_detail/news_id/{$v.id}">{$v.title}<if condition="$v.state eq 1"><img src="__ROOT__/Public/img/imp.jpg" width=16 height=16 style="margin-left:5px;"></if></a></p>
+			<p class="brief">{$v.brief}</p>
+		</div>
+	</div>
+	</foreach>
+	<div style="clear:both;"></div>
+	<div class="page_box" style="text-align: center">{$page}</div>
+</div>
+</div>
+<!-- 移动端 -->
+<div class="phone">
+
+<div class="mt_content">
+	<div id="mt_news">
+		<img src="/Public/img/banner_news.jpg" alt="" class="news_top">
+		<foreach name="news_sets" item='v'>
+		<a href="/{$Request.module}/{$Request.controller}/news_detail/news_id/{$v.id}">
+		<div class="mt_title">
+			<p class="title_p">{$v.title}<if condition="$v.state eq 1">&nbsp;&nbsp;<img src="/Public/img/imp.jpg" width=16 height=16></if></p>
+		</div>
+		</a>
+		</foreach>
+		<div style="clear:both;"></div>
+	</div>
+</div>
+</div>
+<include file="../xmyttz/view/footer.html"/>
+</body>
+</html>

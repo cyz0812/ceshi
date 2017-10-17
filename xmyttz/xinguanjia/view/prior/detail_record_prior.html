@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav"><a href="javascript:history.back(-1)">【返回列表】</a></div>
+		<div class="right_content">
+			<input type="hidden" value="{$deposit.id}" name="deposit_id" id="deposit_id" id="x_deposti_form">
+			<p><span class="left_inp_name">状态：</span><strong><if condition="$deposit.state eq 0">处理中<elseif condition="$deposit.state eq 1" />成功<else />失败</if></strong></p>
+			<p><span class="left_inp_name">订单号：</span><input type="text" value="{$deposit.out_orderid}" class="text" readOnly="true"></p>
+			<notempty name="deposit.type_kind"><p><span class="left_inp_name">市场：</span><input type="text" value="<if condition="$deposit.type_kind eq 'aqihuo'">国际期货<elseif condition="$deposit.type_kind eq 'dqihuo'" />国内期货<elseif condition="$deposit.type_kind eq shares" />国内股票</if>" class="text" readOnly="true"></p></notempty>
+			<notempty name="deposit.contract"><p><span class="left_inp_name">种类：</span><input type="text" value="{$deposit.contract}" class="text" readOnly="true"></p></notempty>
+			<p><span class="left_inp_name">类型：</span><input type="text" value="{$deposit.type}" class="text" readOnly="true"></p>
+			<if condition="$deposit.amount neq 0"><p><span class="left_inp_name">更改金额：</span><input type="text" value="{$deposit.amount}美元" class="text" readOnly="true"></p></if>
+			<notempty name="deposit.hands"><p><span class="left_inp_name">调整手数：</span><input type="text" value="{$deposit.hands}" class="text" readOnly="true"></p></notempty>
+			<p><span class="left_inp_name">姓名：</span><input type="text" value="{$deposit.name}" class="text" readOnly="true" id="deposit_name"></p>
+			<p><span class="left_inp_name">账户账号：</span><notempty name="deposit.account"><input type="text" value="{$deposit.account}" class="text" readOnly="true"><else /><input type="text" value="未开户" class="text" readOnly="true"></notempty></p>
+			<notempty name="deposit.account_password"><p><span class="left_inp_name">账户密码：</span><input type="text" value="{$deposit.account_password}" class="text" readOnly="true"></p></notempty>
+			<p><span class="left_inp_name">手机号：</span><input type="text" value="{$user.phone}" class="text" readOnly="true"></p>
+			<p><span class="left_inp_name">来源：</span><input type="text" value="<if condition="$deposit.belong eq 'agent'">代理网站<elseif condition="$deposit.belong eq 'xmyttz'" />官网<else/>信管家</if>" class="text" readOnly="true"></p>
+			<p><span class="left_inp_name">代理人：</span><input type="text" value="<notempty name='agent.invite_name'>{$agent.invite_name}</notempty>" class="text" readOnly="true" id="deposit_invite" style="color:red"></p>
+			<p><span class="left_inp_name">申请时间：</span><input type="text" value="{$deposit.sendtime}" class="text" readOnly="true"></p>
+			<p><span class="left_inp_name">处理时间：</span><input type="text" value="{$deposit.replytime}" class="text" readOnly="true"></p>
+		</div>
+		<if condition="$deposit.capital_type eq 0">
+			<include file="../xmyttz/view/record_area.html"/>
+		</if>
+	</div>
+</body>
+</html>

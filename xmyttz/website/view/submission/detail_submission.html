@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav"><a href="/{$Request.module}/{$Request.controller}/yt_deposit">【返回列表】</a></div>
+		<div class="right_content">
+			<p><span class="left_inp_name">代理人：</span><input type="text" value="{$submission.agent}" class="text" readOnly="true"></p>
+			<p><span class="left_inp_name">类型：</span><if condition="$submission.type eq 'aqihuo'"><input type="text" value="国际期货" class="text" readOnly="true"><elseif condition="$submission.type eq 'dqihuo'" /><input type="text" value="国内期货" class="text" readOnly="true"><elseif condition="$submission.type eq 'shares'" /><input type="text" value="国内股票" class="text" readOnly="true"></if></p>
+			<p><span class="left_inp_name">开户人：</span><input type="text" value="{$submission.user}" class="text" readOnly="true" id="deposit_name"></p>
+			<p><span class="left_inp_name" style="position:relative;bottom:80px;">手续费：</span><textarea style="width:332px;" readOnly="true">{$submission.commission}</textarea>
+			<p><span class="left_inp_name">是否隔夜：</span><if condition="$submission.overnight eq 1"><input type="text" value="是" class="text" readOnly="true"><elseif condition="$submission.overnight eq 0" /><input type="text" value="否" class="text" readOnly="true"></if></p>
+			<p><span class="left_inp_name">申请时间：</span><input type="text" value="{$submission.senttime}" class="text" readOnly="true"></p>
+			<a href="/{$Request.module}/{$Request.controller}/detail_submission/done/{$submission.id}" class="right_btn capital_btn">完成</a>
+		</div>
+	</div>
+</body>
+</html>

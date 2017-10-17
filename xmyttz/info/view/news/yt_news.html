@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav">新闻管理</div>
+		<div class="right_content">
+			<table class="table_a" border="1">
+                <thead>
+					<tr>
+                        <td width="50%">标题</td>
+                        <td width="30%">创建时间</td>
+                        <td width="20%" align="center" colspan="2">操作</td>
+                    </tr>
+				</thead>
+				<tbody>
+                    <foreach name='article' item='v'>
+	                    <tr class="tbody_a">
+	                        <td class="news_name"><a href="/{$Request.module}/{$Request.controller}/update_news/id/{$v.id}"><if condition="$v.state eq 1"><img src="__ROOT__/Public/img/imp.jpg" width=16 height=16></if>{$v.title}</a></td>
+	                        <td class="news_date">{$v.date|date="Y-m-d H:i:s",###}</td>
+	                        <td><a href="/{$Request.module}/{$Request.controller}/update_news/id/{$v.id}" class="updel_a href_a update_news">修改</a></td>
+	                        <td><a data="{$v.id}" class="updel_a delete_a delete_news">删除</a></td>
+	                    </tr> 
+                    </foreach>
+				</tbody>
+				<tfoot>
+                    <tr>
+                        <td colspan="30">
+							<a href="/{$Request.module}/{$Request.controller}/add_news" class="add_btn">增加新闻</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+		</div>
+	</div>
+</body>
+</html>

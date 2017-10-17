@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<include file="../xmyttz/view/adminHead.html"/>
+	<script src="/Public/ueditor/ueditor.config.js" type="text/javascript"></script>
+	<script src="/Public/ueditor/ueditor.all.js" type="text/javascript"></script>
+	<script src="/Public/js/admin_ue.js" type="text/javascript"></script>
+</head>
+<body>
+	<div class="right_nav"><a href="/{$Request.module}/{$Request.controller}/yt_about">【返回列表】</a></div>
+	<center>
+		<form action="/{$Request.module}/{$Request.controller}/add_about"method="post" enctype="multipart/form-data" style="position:relative;">
+			<p style="font-size:20px;margin: 0 0 10px 0">标题：<input type="text" name="title" style="padding:0 5px;width:420px;height:30px;margin:10px 0 0 0;font-size:18px;" id="about_add_title"></p>
+			<p style="font-size:16px;margin: 0 0 20px 0;">序号：<input type="text" name="serial" id="help_serial"  style="padding:0 5px;width:30px;height:20px;margin:10px 0 0 0;font-size:16px;text-align:center;"><span style="color:#666;font-size:14px;margin:0 0 0 10px;">留空则默认排在末尾</span></p>
+			<textarea name="content" id="myEditor" style="width:95%;height:500px;margin:20px auto;"></textarea>
+			<script type="text/javascript">
+				UE.getEditor('myEditor')
+			</script>
+			<p style="margin:0 0 30px 0;"><button id="about_add_sub" class="sub" type="submit">增加</button><a href="/{$Request.module}/{$Request.controller}/yt_about" class="back_a" >返回</a></p>
+		</form>
+	</center>
+
+<script src="/ueditor/ueditor.parse.js"></script>
+</body>
+</html>

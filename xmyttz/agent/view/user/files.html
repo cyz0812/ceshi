@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YT-文件下载</title>
+<include file="../xmyttz/view/aghead.html"/>
+	<style>
+		*{margin:0; padding:0;}
+		a{text-decoration: none;}
+		img{max-width: 100%; height: auto;}
+		.weixin-tip{display: none; position: fixed; left:0; top:0; bottom:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80);  height: 100%; width: 100%; z-index: 100;}
+		.weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}
+		.newbanb {
+			min-width: 1263px;
+			padding: 113px 0;
+		}
+		.footer .top {
+			width: 100%;
+			height: 0px;
+			margin: 0 auto;
+		}
+		.file {
+			width: 88%;
+		}
+		.user_right {
+
+			 border: 0;
+		}
+		.user_right h4 span {
+			display: inline-block;
+			height: 22px;
+			line-height: 22px;
+			font-size: 20px;
+			padding: 0 10px;
+			border-left: 10px solid #ccc;
+		}
+		.file p {
+			padding: 0 19px;
+			line-height: 37px;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+<include  file="../xmyttz/view/newheader.html" />
+
+<div class="user_right file">
+<h4><span>相关教程文件下载</span><a href="/agent/user/user">返回个人中心</a></h4>
+<div id="file_html">
+	<foreach name="files" item="v">
+		<p><a href="{$v.path}" download="" class="files" data="{$v.path}">{$v.name}</a></p>
+	</foreach>
+</div>
+</div>
+<img src="/Public/img/loading.jpg" alt="" id="loading_img">
+<div id="overlay"></div>
+<div id="error_system">
+	<div class="error_system_box">
+		<img src="/Public/img/error.png" alt=""><div class="error_system_content"><p id="error_system_text"></p></div>
+	</div>
+</div>
+<div class="weixin-tip">
+	<p><img src="/Public/img/close1.png" id="close" width="15%" style="padding: 0 18px 9px 172px;" alt="">
+		<img src="/Public/img/live_weixin.png" alt="微信打开"/>
+	</p>
+</div>
+<include file="../xmyttz/view/newfooter.html" />
+<script>
+	$('#close').click(function () {
+		$('.weixin-tip').hide();
+    })
+</script>
+</body>
+</html>

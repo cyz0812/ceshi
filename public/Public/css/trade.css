@@ -1,0 +1,61 @@
+@CHARSET "UTF-8";
+#header_bottom .to_trade{
+	background-color:#268bf2;
+	color:#fff;
+}
+#trade .top{
+	height:.4rem;
+}
+#trade .top li {
+	float:left;
+	width:25%;
+	height:.4rem;
+	line-height:.4rem;
+	text-align:center;
+	color:#888;
+	background:#f1f1f1;
+	border-bottom:1px solid #ddd;
+}
+#trade .goods{
+	width:100%;
+	height:.45rem;
+	background:#fff;
+	border-bottom:1px solid #f1f1f1;
+}
+#trade .goods li{
+	float:left;
+	width:25%;
+	height:.45rem;
+	line-height:.45rem;
+	text-align:center;
+	color:#999;
+}
+#trade .goods .type{
+	line-height:1.2;
+}
+#trade .goods .type p strong{
+	display:inline-block;
+	padding:.08rem 0 0 0;
+	color:#444;
+	font-size:15px;
+}
+#trade .goods .type p span{
+	font-size:12px;
+}
+#trade .goods .money{
+	font-weight:bold;
+}
+#trade .goods .updown span{
+	display:inline-block;
+	width:.6rem;
+	height:.25rem;
+	line-height:.25rem;
+	margin:.12rem 0 0 0;
+	color:#fff;
+	background:#ccc;
+	border-radius:4px;
+}
+#trade .goods .deposit{
+	font-weight:bold;
+	color:red;
+}

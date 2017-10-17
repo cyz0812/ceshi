@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav"><a href="/{$Request.module}/{$Request.controller}/yt_erweima">【返回列表】</a></div>
+		<div class="right_content">
+		<form action="/{$Request.module}/{$Request.controller}/add_erweima" method="post" enctype="multipart/form-data">
+			<p>类　　型：　<select name="type" data="{:input('type')}" class="select default_select"><option value="zhifubao">支付宝</option><option value="weixin">微信</option></select></p>
+			<p>名　　称：　<input type="text" name="name" autocomplete="off" class="text num"></p>
+			<p>二维码图：　<input type="file" name="img" id="imageupload" accept="image/gif,image/jpeg,image/jpg,image/png"></p>
+			<p>　　　　　　<img src="" alt="" id="imageview" width=150 height=150></p>
+			<button type="submit" class="sub qihuo_sub" >添加</button><a href="/{$Request.module}/{$Request.controller}/yt_erweima" class="back_a" >返回</a>
+		</form>
+		</div>
+	</div>
+</body>
+</html>

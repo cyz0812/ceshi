@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+#mt_daren .daren_top{
+	height:50px;
+	width:100%;
+	border-bottom:1px solid #dddddd;
+	background:#f8f8f8;
+}
+#mt_daren .daren_top li{
+	float:left;
+	margin:0 9%;
+	height:47px;
+	line-height:47px;
+	width:15.3%;
+	text-align:center;
+	border-bottom:3px solid #f8f8f8;
+	font-size:16px;
+}
+#mt_daren .daren_top li.active{
+	border-bottom:3px solid #268bf2;
+}
+#mt_daren .daren_box {
+	background:#fff;
+}
+#mt_daren .daren_box ul{
+	padding: 0 0 0 20px;
+	height:50px;
+	line-height:50px;
+	border-bottom:1px solid #ddd;
+}
+#mt_daren .daren_box li{
+	float:left;
+	width:50%;
+	height:50px;
+}
+#mt_daren .daren_box .money{
+	width:45%;
+	text-align:right;
+	padding: 0 5% 0 0;
+	font-size:16px;
+	color:#f55;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YT-出金</title>
+    <include file="../xmyttz/view/aghead.html"/>
+	<script>var user_active='.change_amount';var nav_active="#nav_user";var belong = 'agent';</script>
+	<link href="/Public/css/user.css" rel="stylesheet" type="text/css" />
+    <script src="/Public/js/user.js" type="text/javascript"></script>
+	<style>
+		.footer {
+			min-width: 1263px;
+			background: #222;
+			clear: both;
+			text-align: center;
+		}
+		.footer .top {
+			width: 100%;
+			height: 0px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body>
+<include file="../xmyttz/view/newheader.html"></include>
+<nav id="nav">
+	<div class="nav_top"></div>
+	<div class="nav_content"><a href="/agent/login/logout/inviteCode/{:input('get.inviteCode')}" class="logout">安全退出</a></div>
+</nav>
+<div class="user_box">
+<div class="user_right">
+<h4><span>申请出金</span><a href="/{$Request.module}/userinfo/record?day=7&recordtype=withdraw" class="deal_record">出金记录</a></h4>
+	<div class="withdrawal">
+		<input type="hidden" value="{$out_orderid}" id="without_orderid">
+		<input type="hidden" value="{$user.id}" id="withuserid">
+		<input type="hidden" value="{$user.card}" name="usercard" id="usercard">
+		<input type="hidden" value="{:input('type')}" id="type_kind">
+		<input type="hidden" value="{$account_password}" id="login_pass">
+		<input type="hidden" value="{$account}" id="user_account">
+		<div class="withdrawal_card withdrawal_box">
+			<span class="withdraw_span">出金银行卡：</span>
+			<notempty name="user.card"><b class="bankcard">{$user.bankname}<span>{$card}</span></b></notempty>
+		</div>
+		<div class="withdrawal_card withdrawal_box">
+			<span class="withdraw_span">账户账号：</span>
+			<b class="bankcard">{$typename}<span id="withdraw_account">{$account}</span></b>
+		</div>
+		<div class="withdrawal_num withdrawal_box">
+			<span class="withdraw_span">出金金额：</span>
+			<input type="text" name="payamount" id="webwithdraw_payamount" class="payamount" placeholder="请输入出金金额" autocomplete="off"><b class="danwei">元</b><label for="withdraw_all" class="checkall"><input type="checkbox" name="all" class="all" id="withdraw_all">全部</label>
+		</div>
+		<div class="withdrawal_btn_box withdrawal_box">
+			<span class="withdraw_span">&nbsp;</span>
+			<button class="withdrawal_btn" type="button" id="webwithdraw_btn">确认出金</button>
+			<button class="withdrawal_btn" type="button" onClick="location.href='/{$Request.module}/user/user'" style="margin-left:20px;">返回中心</button>
+		</div>
+		<div class="withdrawal_tishi">
+			<h5><img src="/Public/img/recharge_tishi.png" alt="">出金提示：</h5>
+			<p>1. 出金手续费为单笔2元，例如：出金1000元，实际到账998元。</p>
+			<p>2. 出金时间：周一至周五每个工作日的8:30-18:30期间；</p>
+			<p>3. 出金最低金额为500元,全部出金的不受此限制；</p>
+			<p>4. 出金卡号为绑定卡号，如需更改请向客服申请：</p>
+			<p>5. 为保证提现成功，请确保您的银行卡账号及开户行信息准确无误，相关信息可拨打银行客服电话查询。</p>
+		</div>
+	</div>
+</div>
+</div>
+<div class="phone">
+<!--<div id="header">-->
+	<!--<a href="javascript:history.back(-1)" class="back"><img src="/Public/img/mt_back.png" alt="" width=25 height=25></a>-->
+	<!--<img src="/Public/img/list.png" alt="" class="list">-->
+	<!--出金-->
+<!--</div>-->
+</div>
+<div class="withdrawal_out tanchu_system" id="webwithdraw_yes">
+<div class="tanchu_system_box">
+	<h3>出金<a href="/{$Request.module}/{$Request.controller}/webWithdraw">&times;</a></h3>
+	<div class="question"><img src="/Public/img/success.png" alt=""><p>出金申请提交成功，我们会尽快处理，一般情况2小时内到账，请耐心等待！</p></div>
+	<div class="answer">
+		<a href="/{$Request.module}/user/record" class="withdrawal_out_close">确定</a>
+	</div>
+</div>
+</div>
+<div class="tanchu_system" id="need_card">
+<div class="tanchu_system_box">
+	<h3>请先绑定银行卡<a href="javascript:;" onClick="javascript:history.back(-1);">&times;</a></h3>
+	<div class="question"><img src="/Public/img/warning.png" alt=""><div class="tanchu_content"><p>需要绑定银行卡后，才能使用出金功能</p></div></div>
+	<div class="answer">
+		<a href="/{$Request.module}/user/addcard" >前往绑定银行卡</a>	
+	</div>
+</div>
+</div>
+<include file="../xmyttz/view/newfooter.html" />
+</body>
+</html>

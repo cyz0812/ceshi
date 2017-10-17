@@ -1,0 +1,61 @@
+*{
+	margin:0;
+	padding:0;
+}
+.contract-body{
+	width:90%;
+	margin:20px auto;
+	border:1px solid #ccc;
+	padding:40px;
+}
+.contract h1{
+	font-size:18px;
+	color:#333;
+	text-align:center;
+	margin:0 0 30px 0;
+}
+.contract .words p{
+	color:#444;
+	margin:0 0 15px 0;
+	line-height:1.5;
+	font-size:14px;
+	text-indent:28px;
+}
+.contract h4{
+	margin-bottom:10px;
+}
+table{ 
+	border-collapse:collapse; 
+	width:800px !important;
+	box-sizing:border-box;
+} 
+table tr{ 
+	border:1px solid #000; 
+	width:auto !important;
+}
+table tr td{
+	
+	
+}
+table tr td p span{
+	display:inline-block;
+	text-align:left;
+}
+@media (max-width:667px) {
+	.contract-body{
+	margin:15px auto;
+	padding:15px;
+	}
+	.contract h1{
+		font-size:18px;
+		color:#333;
+		text-align:center;
+		margin:0 0 15px 0;
+	}
+	.contract .words p{
+		color:#444;
+		margin:0 0 10px 0;
+		line-height:1.5;
+		font-size:14px;
+	}
+}

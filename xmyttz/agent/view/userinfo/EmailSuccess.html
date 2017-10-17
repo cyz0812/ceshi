@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YT-邮箱认证</title>
+	<include file="../xmyttz/view/head.html"/>
+	<link href="/Public/css/index.css" rel="stylesheet" type="text/css" />
+	<style>
+		.newbanb {
+			min-width: 1263px;
+			padding: 113px 0;
+		}
+		.footer .top {
+			width: 100%;
+			height: 0px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="white">
+
+	</div>
+	<center style="border-top:3px solid #0379b5;padding-top:70px;color:#666;">
+		<if condition="$emailverify eq 'success'">
+			<img src="/Public/img/verify_success.png" alt="">
+		<elseif condition="$emailverify eq 'error'" />
+			<p style="margin-bottom:20px;font-size:18px;">邮箱认证失败，请重新认证或联系客服</p>
+		<elseif condition="$emailverify eq 'warning'" />
+			<p style="margin-bottom:20px;font-size:18px;">邮箱已认证，请勿重复认证</p>
+		</if>
+		<p style="color:#999;margin-top:10px;">5秒后自动跳转到用户界面</p>
+		<p><a href="/agent/user/user" style="text-decoration:none;color:#09d;margin:10px;">点击直接跳转</a></p>
+	</center>
+	<script type="text/javascript">setTimeout(function(){location.href="/agent/user/user"},5000)</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav"><a href="/{$Request.module}/{$Request.controller}/yt_adminlist">【返回列表】</a></div>
+		<div class="right_content">
+		<form action="/{$Request.module}/{$Request.controller}/update_adminlist/update/{$list.id}" method="post" enctype="multipart/form-data">
+			<p>名称：　<input type="text" name="name" autocomplete="off" class="text" value="{$list.name}"></p>
+			<p>链接：　<input type="text" name="url" autocomplete="off" class="text" value="{$list.url}"></p>
+			<p>模块：　<input type="text" name="module" autocomplete="off" class="text" value="{$list.module}"></p>
+			<p>父级：　<input type="text" name="path" autocomplete="off" class="text" value="{$list.path}"></p>
+			<p>排序：　<input type="text" name="order_num" autocomplete="off" class="text" value="{$list.order_num}"></p>
+			<button type="submit" class="sub" >修改</button><a href="/{$Request.module}/{$Request.controller}/yt_adminlist" class="back_a" >返回</a>
+		</form>
+		</div>
+	</div>
+</body>
+</html>

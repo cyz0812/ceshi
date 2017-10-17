@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+<script>
+	var appUrl="__APP__";
+</script>
+</head>
+<body>
+	<div id="">
+		<div class="right_nav"><a href="/{$Request.module}/{$Request.controller}/yt_download">【返回列表】</a></div>
+		<div class="right_content">
+		<form action="/{$Request.module}/{$Request.controller}/add_downloadphone" method="post" enctype="multipart/form-data">
+			<p>名　称：　<input type="text" name="name" autocomplete="off" class="text name"></p>
+			<p>二维码：　<input type="file" name="img" id="imageupload" accept="image/gif,image/jpeg,image/jpg,image/png"></p>
+			<p>　　　　　<img src="" alt="" id="imageview" width=200 height=200></p>
+			<p style="height:100px;"><b style="font-weight:normal;position:relative;bottom:70px;padding:0;">备　注：　</b><textarea name="remark" style="width:330px;height:90px;font-size:16px;padding:5px 10px;"></textarea></p>
+			<button type="submit" class="sub" >添加</button><a href="/{$Request.module}/{$Request.controller}/yt_download" class="back_a" >返回</a>
+		</form>
+		</div>
+	</div>
+</body>
+</html>

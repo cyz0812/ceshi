@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YT-个人设置</title>
+    <include file="../xmyttz/view/head.html"/>
+	<link href="/Public/css/index.css" rel="stylesheet" type="text/css" />
+    <script>var user_active=".userInfo";var nav_active="#nav_user";</script>
+    <link href="/Public/css/user.css" rel="stylesheet" type="text/css" />
+    <script src="/Public/js/user.js" type="text/javascript"></script>
+	<style>
+		.newbanb {
+			min-width: 1263px;
+			padding: 113px 0;
+		}
+		.footer .top {
+			width: 100%;
+			height: 0px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body>
+<include file="../xmyttz/view/newheader.html"/>
+<div class="pc">
+<div class="user_box">
+	<include file="../xmyttz/view/user_left.html"/>
+    <div class="user_right">
+		<h4><span>我的资料</span><a href="/agent/user/user">返回</a></h4>
+		<div class="pc_info_box">
+			<ul>
+				<li>
+					<div class="info_img">
+						<img src="/Public/img/user_info/name_logo.png" alt="">
+					</div>
+					<div class="info_right">
+						<p><strong>修改昵称</strong><span>已设置：{$username}</span></p>
+						<p class="p_bottom">设置后将显示你的个性昵称</p>	
+					</div>
+					<div class="info_a"><a href="/{$Request.module}/{$Request.controller}/setname">修改</a></div>
+				</li>
+				<li>
+					<div class="info_img">
+						<img src="/Public/img/user_info/face_logo.png" alt="">
+					</div>
+					<div class="info_right">
+						<p><strong>设置头像</strong><span><notempty name="user.face">已设置<else />未设置</notempty></span></p>
+						<p class="p_bottom">设置后将显示你的个性头像</p>	
+					</div>
+					<div class="info_a"><a href="/{$Request.module}/{$Request.controller}/setface">修改</a></div>
+				</li>
+				<!-- <li>
+					<div class="info_img">
+						<img src="__ROOT__/Public/img/user_info/IDcard_logo.png" alt="">
+					</div>
+					<div class="info_right">
+						<p><strong>实名认证</strong><notempty name="user.idcard"><span>已认证</span><else /><span style="color:#f55;">未认证</span></notempty></notempty></p>
+						<notempty name="user.idcard"><p class="p_bottom"><else /><p class="p_bottom" style="color:#f55;"></notempty>配资用户需身份证认证,才能进行资金操作</p>
+					</div>
+					<div class="info_a"><notempty name="user.idcard"><span class="already">已认证</span><else /><a href="__CONTROLLER__/verifyname" style="background:#f55;">认证</a></notempty></div>
+				</li> -->
+				<li>
+					<div class="info_img">
+						<img src="/Public/img/user_info/email_logo.png" alt="">
+					</div>
+					<div class="info_right">
+						<p><strong>邮箱绑定</strong><notempty name="user.email"><span>已绑定</span><else /><span style="color:#f55;">未绑定</span></notempty></p>
+						<notempty name="user.email"><p class="p_bottom"><else /><p class="p_bottom" style="color:#f55;"></notempty>绑定邮箱可用于密码找回</p>
+					</div>
+					<div class="info_a"><notempty name="user.email"><a href="/{$Request.module}/{$Request.controller}/verifyemail">查看</a><else /><a href="/{$Request.module}/{$Request.controller}/verifyemail" style="background:#f55;">绑定</a></notempty></div>
+				</li>
+				<li>
+					<div class="info_img">
+						<img src="/Public/img/user_info/card_logo.png" alt="">
+					</div>
+					<div class="info_right">
+						<input type="hidden" value="{$user.card}" id="userinfo_card">
+						<p><strong>银行卡</strong><notempty name="user.card"><span>已绑定</span><else /><span style="color:#f55;">未绑定</span></notempty></p>
+						<notempty name="user.card"><p class="p_bottom"><else /><p class="p_bottom" style="color:#f55;"></notempty>配资用户绑定银行卡,才能进行资金操作</p>
+					</div>
+					<div class="info_a"><notempty name="user.card"><a href="/{$Request.module}/user/setcard">查看</a><else /><a href="/{$Request.module}/user/addcard" style="background:#f55;" id="userinfo_addcard">绑定</a></notempty></div>
+				</li>
+				<li>
+					<div class="info_img">
+						<img src="/Public/img/user_info/phone_logo.png" alt="">
+					</div>
+					<div class="info_right">
+						<p><strong>绑定手机</strong><span>已绑定：{$mobile}</span></p>
+						<p class="p_bottom">手机号码是您的重要身份凭证</p>	
+					</div>
+					<div class="info_a"><a href="/agent/userinfo/setphone">修改</a></div>
+				</li>
+				<li>
+					<div class="info_img">
+						<img src="/Public/img/user_info/login_pwd_logo.png" alt="">
+					</div>
+					<div class="info_right">
+						<p><strong>登录密码</strong><span>已设置</span></p>
+						<p class="p_bottom">登录时需要输入的密码</p>	
+					</div>
+					<div class="info_a"><a href="/{$Request.module}/{$Request.controller}/setpwd">修改</a></div>
+				</li>
+				<li>
+					<div class="info_img">
+						<img src="/Public/img/user_info/deal_pwd_logo.png" alt="">
+					</div>
+					<div class="info_right">
+						<p><strong>交易密码</strong><notempty name="user.deal_password"><span>已设置</span><else /><span style="color:#f55;">未设置</span></notempty></p>
+						<notempty name="user.deal_password"><p class="p_bottom"><else /><p class="p_bottom" style="color:#f55;"></notempty>保障资金安全，提现需要设置提现密码</p>
+					</div>
+					<div class="info_a"><notempty name="user.deal_password"><!-- <a href="__CONTROLLER__/resetDealpwd" class="reset_deal">重置密码</a> --><a href="/{$Request.module}/{$Request.controller}/dealpwd">修改</a><else /><a href="/{$Request.module}/{$Request.controller}/dealpwd" style="background:#f55;">设置</a></notempty></div>
+				</li>
+				<!-- <li>
+					<div class="info_img">
+						<img src="__ROOT__/Public/img/user_info/account_logo.png" alt="">
+					</div>
+					<div class="info_right">
+						<p><strong>期货账户</strong><notempty name="user.account"><span>已绑定</span><else /><span style="color:#f55;">未绑定</span></notempty></p>
+						<notempty name="user.account"><p class="p_bottom"><else /><p class="p_bottom" style="color:#f55;"></notempty>已有期货账户的用户请先绑定</p>
+					</div>
+					<div class="info_a"><notempty name="user.account"><a href="__CONTROLLER__/account">查看</a><else /><a href="__CONTROLLER__/account" style="background:#f55;">绑定</a></notempty></div>
+				</li> -->
+			</ul>
+		</div>
+	</div>
+	<div style="clear:both;"></div>
+</div>
+</div>
+<div id="overlay"></div>
+<!-- 移动端 -->
+<div class="phone">
+<!--<div id="header">-->
+	<!--<a href="javascript:history.back(-1)" class="back"><img src="/Public/img/mt_back.png" alt="" width=25 height=25></a>-->
+	<!--<img src="/Public/img/list.png" alt="" class="list">-->
+	<!--个人信息-->
+<!--</div>-->
+<div class="mt_content">
+<div id="meinfo">
+	<div class="info_box">
+		<ul>
+			<li>
+				<a href="/{$Request.module}/{$Request.controller}/setname">修改昵称
+				<img src="/Public/img/user_info/name_logo.png" alt="">
+				<span class="gt">&gt;</span>
+				<span class="right_span">{$user.username}</span>
+				</a>
+			</li>
+			<li>
+				<a href="/{$Request.module}/{$Request.controller}/setface">设置头像
+				<img src="/Public/img/user_info/face_logo.png" alt="">
+				<span class="gt">&gt;</span>
+				<span class="right_span"><notempty name="user.face"><img src="{$user.face}" alt="" class="me_face"><else /><img src="/Public/img/face.png" alt="" class="me_face"></notempty></span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="info_box">
+		<ul>
+			<li>
+				<notempty name="user.email"><a href="/{$Request.module}/{$Request.controller}/verifyemail"><else /><a href="/{$Request.module}/{$Request.controller}/verifyemail"></notempty>我的邮箱
+				<img src="/Public/img/user_info/email_logo.png" alt="">
+				<span class="gt">&gt;</span>
+				<span class="right_span"><notempty name="user.email">查看<else />绑定</notempty></span>
+				</a>
+			</li>
+			<li>
+				<notempty name="user.card"><a href="/{$Request.module}/user/setcard"><else /><a href="/{$Request.module}/user/addcard"></notempty>我的银行卡
+				<img src="/Public/img/user_info/card_logo.png" alt="">
+				<span class="gt">&gt;</span>
+				<span class="right_span"><notempty name="user.card">查看<else />绑定</notempty></span>
+				</a>
+			</li>
+			<li>
+				<a href="/agent/userinfo/setphone">手机修改
+				<img src="/Public/img/user_info/phone_logo.png" alt="">
+				<span class="gt">&gt;</span>
+				<span class="right_span">{$mobile}</span>
+				</a>
+			</li>
+			<!-- <li>
+				<a href="">微信绑定
+				<img src="__ROOT__/Public/img/meinfo1.png" alt="">
+				<span class="gt">&gt;</span>
+				<span class="right_span">未绑定</span>
+				</a>
+			</li> -->
+		</ul>
+	</div>
+	<div class="info_box">
+		<ul>
+			<li>
+				<a href="/{$Request.module}/{$Request.controller}/setpwd">登录密码修改
+				<img src="/Public/img/user_info/login_pwd_logo.png" alt="">
+				<span class="gt">&gt;</span>
+				</a>
+			</li>
+			<li>
+				<a href="/{$Request.module}/{$Request.controller}/dealpwd">交易密码
+				<img src="/Public/img/user_info/deal_pwd_logo.png" alt="">
+				<span class="gt">&gt;</span>
+				<span class="right_span"><empty name="user.deal_password">未设置</empty></span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+</div>
+</div>
+<!-- 移动端 END -->
+<include file="../xmyttz/view/newfooter.html"/>
+</body>
+</html>

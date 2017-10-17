@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav">交易规则管理</div>
+		<div class="right_content">
+			<table class="table_a" border="1">
+                <thead>
+					<tr>
+                        <td width="20%">名称</td>
+                        <td width="50%">所在目录</td>
+                        <td width="20%">最后修改时间</td>
+                        <td width="10%" align="center" colspan="2">操作</td>
+                    </tr>
+				</thead>
+				<tbody>
+                    <foreach name='rules' item='v'>
+	                    <tr class="tbody_a">
+	                        <td><a href="/{$Request.module}/{$Request.controller}/update_rule/id/{$v.id}">{$v.name}</a></td>
+							<td>{$v.path}</td>
+	                        <td>{$v.date}</td>
+	                        <td><a href="/{$Request.module}/{$Request.controller}/update_rule/id/{$v.id}" class="updel_a href_a update_rule">修改</a></td>
+	                        <td><a data="/yt_rule/delete/{$v.id}" class="updel_a delete_a to_delete">删除</a></td>
+	                    </tr> 
+                    </foreach>
+				</tbody>
+				<!-- <tfoot>
+                    <tr>
+                        <td colspan="30">
+							<a href="__CONTROLLER__/add_rule" class="add_btn">增加</a>
+                        </td>
+                    </tr>
+                </tfoot> -->
+            </table>
+		</div>
+	</div>
+</body>
+</html>

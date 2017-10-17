@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Yingtou-国际期货</title>
+    <include file="../xmyttz/view/head.html"/>
+	<script>var nav_active="#nav_aqihuo"</script>
+    <link href="/Public/css/peizi.css" rel="stylesheet" type="text/css" />
+	<script src="/Public/js/peizi.js" type="text/javascript"></script>
+	<link href="/Public/css/index.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<include file="../xmyttz/view/header.html"/>
+<!-- 导航END -->
+<div class="phone">
+<div id="header">
+		<a href="javascript:history.back(-1)" class="back"><img src="/Public/img/mt_back.png" alt="" width="25" height="25"></a>
+		<img src="/Public/img/list.png" alt="" class="list">
+		产品介绍
+	</div></div>
+<div class="qihuo_box">
+
+	<input type="hidden" value="{:input('type')}" id="aqi_type_id">
+	<input type="hidden" value="aqihuo" id="capitalType">
+	<!--<div class="capital_step"><span>开户步骤-></span><span><img src="/Public/img/step1.png" alt="">绑定银行卡</span><span><img src="__ROOT__/Public/img/step2.png" alt="">选择品种</span><span><img src="__ROOT__/Public/img/step3.png" alt="">网上充值</span><span><img src="__ROOT__/Public/img/step4.png" alt="">确认支付</span><span><img src="__ROOT__/Public/img/step5.png" alt="">获得账户</span></div>-->
+	<div class="qihuo_content">
+		<div class="qihuo_type">
+			<div class="type_left">
+				<p>
+					<div class="qihuo_method">
+						<ul>
+							<li class="li_type">更换品种<img src="/Public/img/drop_up.png" alt=""></li>
+							<foreach name='goods' item='v'>
+								<li><a id="aqi_{$v.type}" href="/{$Request.module}/{$Request.controller}/aqihuo/type/{$v.type}">{$v.type_name}</a></li>
+							</foreach>
+							<div style="clear:both"></div>
+						</ul>
+					</div>
+				</p>
+				
+			</div>
+			<div class="type_right">
+				<a class="pro_soft soft" href="/help/help/help" target="_blank">操作演示</a>
+				<a class="pro_soft" href="/download/download/download" target="_blank">软件下载</a>
+				<div class="qihuo_btn peizi_capital">
+					<dl>
+						<dd>
+							<input type="button" value="注册并开户" class="now" onClick="location.href='/personal/pay/aqihuoPay'"/>
+						</dd>
+					</dl>
+				</div>	</div>
+
+		</div>
+		<div class="qihuo_img">{$good.content|html_entity_decode=###}</div>
+
+		
+		<div class="qihuo_row_box">
+			<div class="nav_tab">
+				<ul>
+					<li class="tab_active nav_tab_left">操盘达人</li>
+					<li class="nav_tab_right">操盘动态</li>
+				</ul>
+			</div>
+			<div class="list_tab list_tab_left">
+				<ul class="qihuo_row_title">
+					<li>用户名</li>
+					<li>获得资金</li>
+					<li>投入本金</li>
+					<li>获利百分比</li>
+					<li>盈利金额</li>
+				</ul>
+				<div style="clear:both;"></div>
+				<div class="scroll_list" id="row_daren">
+					<i class="stop to_top"></i>
+					<i class="stop to_up"></i>
+					<i class="stop to_down"></i>
+					<div class="move_list">
+						<ul class="cnt">
+							<li>1</li><li>获得资金</li><li>投入本金</li><li>获利百分比</li><li>盈利金额</li>
+						</ul>
+						<ul class="cnt">
+							<li>2</li><li>获得资金</li><li>投入本金</li><li>获利百分比</li><li>盈利金额</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="list_tab list_tab_right" style="display: none">
+				<ul class="qihuo_row_title">
+					<li>用户名</li>
+					<li>获得资金</li>
+					<li>投入本金</li>
+					<li>申请时间</li>
+				</ul>
+				<div style="clear:both;"></div>
+				<div class="scroll_list" id="row_info">
+					<i class="to_top"></i>
+					<i class="to_up"></i>
+					<i class="to_down"></i>
+					<div class="move_list">
+						<ul class="cnt">
+							<li>用户名</li><li>获得资金</li><li>投入本金</li><li>2016.10.10 17:09:08</li>
+						</ul>
+						<ul class="cnt">
+							<li>用户名</li><li>获得资金</li><li>投入本金</li><li>2016.10.10 16:09:08</li>
+						</ul>
+						<ul class="cnt">
+							<li>用户名</li><li>获得资金</li><li>投入本金</li><li>2016.10.10 15:09:08</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div style="clear:both;"></div>
+	</div>
+</div>
+<!-- more -->
+<div class="" id="know_more">
+	<div class="more_top"><img src="/Public/img/close.png" alt="" ></div>
+	<div class="more_content">
+		<h3>风险提示</h3>
+		<p>股市有风险，投资需谨慎！市场风险莫测，务请谨慎行事！</p>
+		<h3>利息</h3>
+		<p>按月计算，每月利息先付后用，8月9日操盘，8月9日支付第一个月利息，9月9日支付第二个月利息，利息不包含印花税，过户费和佣金，印花税，过户费和佣金直接由券商和交易所收取</p>
+		<h3>您投入的本金</h3>
+		<p>您自己投资的期货资金最低1000.</p>
+		<h3>资金使用期限</h3>
+		<p>资金使用期限按自然月计算，如8月9日到9月9日（包含节假日）。</p>
+		<h3>开始交易时间</h3>
+		<p>可以选择下一个交易日交易，也可以选择当天交易（当天交易，当天计算利息）。</p>
+		<h3>操盘到期</h3>
+		<p>操盘到期时，需在到期当日把所有证券账户变现为现金，且不能再做挂单和买入操作</p>
+		<h3>亏损强平线</h3>
+		<p>当亏损高于强平线时，我们将有权把您的股票进行平仓，为避免平仓发生，请及时关注风险保证金是否充足。</p>
+	</div>
+	<button>知道了</button>
+</div>
+<!-- other type -->
+<div class="" id="other_type">
+	<div class="other_top"><img src="/Public/img/close.png" alt="" class="other_type_close"></div>
+	<center>
+		<img src="/Public/img/other_type.png" alt="">
+		<p><button class="other_type_close">关闭</button></p>
+	</center>
+</div>
+<!-- other_lost -->
+<div class="" id="input_num">
+	<div class="input_top"><img src="/Public/img/close.png" alt="" class="input_num_close"></div>
+	<p>请输入交易手数<span>（1-100）</span></p>
+	<p><input type="text" id="lots_num"> 手</p>
+	<p><button id="input_num_btn">确定</button><button class="input_num_close">取消</button></p>
+</div>
+<div class="tanchu_system" id="need_login">
+	<div class="tanchu_system_box">
+		<h3>请先登录<a href="javascript:;" class="tanchu_close">&times;</a></h3>
+		<div class="question"><img src="/Public/img/warning.png" alt=""><div class="tanchu_content"><p>需要登陆后，才能申请配资</p></div></div>
+		<div class="answer">
+			<a href="/login/login/login" >前往登录界面</a>
+		</div>
+	</div>
+</div>
+<div class="tanchu_system" id="put_amount_box">
+	<div class="tanchu_system_box account_deal_box">
+		<h3>追加本金<a href="javascript:;" class="tanchu_close">&times;</a></h3>
+		<div class="deal_box">
+			<p>入金金额：<input type="text" id="account_amount" class="tanchu_input" style="font-size:16px;"> 元</p>
+			<p style="color:#888;font-size:14px;height:30px;line-height:50px;">过程中将会收取0.3%手续费</p>
+		</div>
+		<div class="answer">
+			<a href="javascript:;" class="tanchu_btn" id="account_amount_btn">确定</a>
+		</div>
+	</div>
+</div>
+<div class="dealconfirm" id="deposit_dealconfirm">
+<form name="direct" id="depoist_pay_form" action="/allscore/allscore_pay.php" method="get" target="_blank" style="background:#fff;">
+	<input type="hidden" value="网银充值" name="subject">
+	<notempty name="$user.id" ><input type="hidden" value="" name="body"><else><input type="hidden" value="{$user.id}" name="body"></else></notempty>
+
+	<input type="hidden" value="{$out_orderid}" name="out_orderid">
+	<input type="hidden" value="http://{$Think.server.http_host}/allscore/notify_url.php" name="notify_url">
+	<input type="hidden" value="http://{$Think.server.http_host}/allscore/return_url_capital.php" name="return_url">
+	<input type="hidden" name="goodPrice" id="deposit_goodPrice">
+	
+	<h3>[ {$good.type_name} ] 本金追加 <span class="deposit_confirm_close">&times;</span></h3>
+	<div class="confirm_content">
+		<p><span class="confirm_left">追加金额</span><span class="confirm_right">&nbsp;<span id="deposit_confirm_money" class="red"></span>元</span></p>
+		<p><span class="confirm_left">信管家账户</span><span class="confirm_right">&nbsp;<span class="account">{$user.a_account}</span></span></p>
+		<p class="hide select_bank_p" id="">
+			<span class="confirm_left">余额不足</span>
+			<span class="confirm_right">
+				<select name="defaultBank" style="border:none;height:40px;font-size:14px;color:#666;background:#f7f7f7;" id="deposit_bank">
+					<option value="0">请选择充值银行</option>
+					<option value="ICBC">中国工商银行</option>
+					<option value="CCB">中国建设银行</option>
+					<option value="ABC">中国农业银行</option>
+					<option value="COMM">交通银行</option>
+					<option value="BOC">中国银行</option>
+					<option value="CEB">中国光大银行</option>
+					<option value="CIB">兴业银行</option>
+					<option value="CITIC">中信银行</option>
+					<option value="CMBC">中国民生银行</option>
+					<option value="SPDB">浦发银行</option>
+					<option value="PSBC">中国邮政储蓄银行</option>
+					<option value="NJCB">南京银行</option>
+					<option value="CMB">招商银行</option>
+					<option value="GDB">广发银行</option>
+				</select>
+			</span>
+		</p>
+		<p class="hide balance_enough_p" id=""><span class="confirm_left">余额充足</span><span class="confirm_middle">请点击【确认支付】</span><span class="confirm_right"></span></p>
+	</div>
+	<p class="balance_p">您的余额为<span id="deposit_confirm_balance" class="red user_balance">{$user.balance}</span>元，<span class="deposit_d_html">本次支付还差元</span></p>
+	<div class="confirm_btn">
+		<a href="javascript:;" id="deposit_confirm_btn">确认支付</a>
+		<a href="__CONTROLLER__/recharge" id="deposit_confirm_recharge">去充值</a>
+		<a href="javascript:;" class="deposit_confirm_close">返回修改</a>
+	</div>
+</form>
+</div>
+<div class="dealconfirm" id="dealconfirm">
+<form name="direct" id="pay_form" action="__ROOT__/allscore/allscore_pay.php" method="get" target="_blank" style="background:#fff;">
+	<input type="hidden" value="网银充值" name="subject">
+	<input type="hidden" value="{$user.id}" name="body">
+	<input type="hidden" value="{$out_orderid}" name="out_orderid" id="out_orderid">
+	<input type="hidden" value="http://{$Think.server.http_host}/allscore/notify_url.php" name="notify_url">
+	<input type="hidden" value="http://{$Think.server.http_host}/allscore/return_url_capital.php" name="return_url">
+	<input type="hidden" name="goodPrice" id="goodPrice">
+	<h3>[ {$good.type_name} ] 支付投资 <span class="confirm_close">&times;</span></h3>
+	<div class="confirm_content">
+		<p><span class="confirm_left">投资本金</span><span class="confirm_middle"><span id="confirm_money" class="red"></span>元</span><span class="confirm_right">申请<span class="red" id="confirm_hands"></span>手配资资金<span class="confirm_total_money red" id="confirm_peizi_money"></span>美元</span></p>
+		<p><span class="confirm_left">信管家账户</span><span class="confirm_middle"><span class="empty_account">未开户（支付完成后自动开户）</span><span class="notempty_account account">{$user.a_account}</span></span><span class="confirm_right"><span class="empty_account">若已有账户，请先绑定账户<a href="javascript:;" id="bind_account">去绑定</a></span><span class="notempty_account">配资成功后将以短信通知，请注意查收</span></span></p>
+		<p><span class="confirm_left">使用期限</span><span class="confirm_middle">不能隔仓</span><span class="confirm_right"></span></p>
+		<p class="hide select_bank_p" id="select_bank_p"><span class="confirm_left">余额不足</span><span class="confirm_middle"><select name="defaultBank" style="border:none;height:40px;font-size:14px;color:#666;background:#f7f7f7;" id="select_bank">
+				<option value="0">请选择银行</option>
+				<option value="ICBC">中国工商银行</option>
+				<option value="CCB">中国建设银行</option>
+				<option value="ABC">中国农业银行</option>
+				<option value="COMM">交通银行</option>
+				<option value="BOC">中国银行</option>
+				<option value="CEB">中国光大银行</option>
+				<option value="CIB">兴业银行</option>
+				<option value="CITIC">中信银行</option>
+				<option value="CMBC">中国民生银行</option>
+				<option value="SPDB">浦发银行</option>
+				<option value="PSBC">中国邮政储蓄银行</option>
+				<option value="NJCB">南京银行</option>
+				<option value="CMB">招商银行</option>
+				<option value="GDB">广发银行</option>
+			</select></span><span class="confirm_right">点击【去充值】</span></p>
+		<p class="hide balance_enough_p" id="balance_enough_p"><span class="confirm_left">余额充足</span><span class="confirm_middle">请点击【确认支付】</span><span class="confirm_right"></span></p>
+	</div>
+	<div class="total">总计：<span class="confirm_money" style="font-size:35px;color:#f55;"></span> 元</div>
+	<p class="balance_p">您的余额为<span id="confirm_balance" class="red user_balance">{$user.balance}</span>元，<span class="d_html"></span></p>
+	<div class="confirm_btn">
+		<a href="javascript:;" id="confirm_btn">确认支付</a>
+		<a href="javascript:;" id="confirm_recharge">去充值</a>
+		<a href="javascript:;" class="confirm_close">返回修改</a>
+	</div>
+</form>
+</div>
+<div class="tanchu_system setuser_box" id="add_account">
+	<div class="tanchu_system_box">
+		<h3>信管家账户（国际期货）</h3>
+		<p class="input_p"><span>信管家账号</span><input type="text" name="a_account" placeholder="请输入信管家账户账号" id="account_input"></p>
+		<p class="input_p"><span>信管家密码</span><input type="text" name="a_account_password" onfocus="this.type='password'" placeholder="请输入信管家登录密码" id="account_password_input"></p>
+		<p class="input_btn_p"><button class="account_btn" type="button" id="account_btn">确认绑定</button><button class="account_btn" type="button" id="account_close">取消</button></p>
+	</div>
+</div>
+<div class="recharge_yn tanchu_system" id="recharge_yn">
+	<div class="tanchu_system_box">
+		<h3>充值<a  href="__CONTROLLER__/recharge">&times;</a></h3>
+		<div class="question"><img src="/Public/img/warning.png" alt=""><div class="tanchu_content"><p>请在新打开的页面进行支付，支付完成前请不要关闭该窗口。</p></div></div>
+		<div class="answer">
+			<a href="javascript:;" class="success" id="recharge_success">已经成功充值</a>
+			<a href="__SELF__" class="error">重新选择</a>	
+		</div>
+	</div>
+</div>
+<div class="recharge_yn tanchu_system" id="recharge_error">
+	<div class="tanchu_system_box">
+		<h3>充值错误<a href="__CONTROLLER__/recharge">&times;</a></h3>
+		<div class="question"><img src="/Public/img/warning.png" alt=""><div class="tanchu_content"><p>没有检测到充值信息，请确认是否成功充值。</p><p>高峰期可能造成充值延迟，可以稍后查询充值记录或直接联系客服。</p></div></div>
+		<div class="answer">
+			<a href="__CONTROLLER__/dealRecord" class="error">关闭</a>	
+		</div>
+	</div>
+</div>
+<div class="dealconfirm" id="addcard_system" style="display:none;">
+	<form action="__SELF__" method="post" id="addcardform">
+		<h3>绑定银行卡<span class="confirm_close">&times;</span></h3>
+		<input type="hidden" name="bankname" id="bankname" value="中国工商银行">
+		
+		<p>
+			<span>银行名称</span>
+			<select name="bankcode" class="bank_code_box" id="addcard_bankcode">
+				<option value="ICBC" selected = "selected">中国工商银行</option>
+				<option value="CCB">中国建设银行</option>
+				<option value="ABC">中国农业银行</option>
+				<option value="COMM">交通银行</option>
+				<option value="BOC">中国银行</option>
+				<option value="CEB">中国光大银行</option>
+				<option value="BJBANK">北京银行</option>
+				<option value="BJRCB">北京农商银行</option>
+				<option value="CIB">兴业银行</option>
+				<option value="CITIC">中信银行</option>
+				<option value="CMBC">中国民生银行</option>
+				<option value="CMB">招商银行</option>
+				<option value="SPDB">浦发银行</option>
+				<option value="PSBC">中国邮政储蓄银行</option>
+				<option value="NBBANK">宁波银行</option>
+				<option value="SDB">深圳发展银行</option>
+				<option value="HXBANK">华夏银行</option>
+				<option value="HZCB">杭州银行</option>
+				<option value="NJCB">南京银行</option>
+				<option value="GDB">广发银行</option>
+			</select>
+		</p>
+		<p><span>银行卡号</span><input type="text" name="card" id="card" autocomplete="off" placeholder="请输入您的银行卡号"><b class="red">　*</b></p>
+		<p><span>持卡人</span><input type="text" name="name" id="idname" autocomplete="off" placeholder="请输入持卡人的姓名"><b class="red">　*</b></p>
+		<p><span>身份证号</span><input type="text" name="idcard" id="idcard" autocomplete="off" placeholder="请输入持卡人的身份证号"><b class="red">　*</b></p>
+		<p class="small_select">
+			<span>开户省</span>
+			<select id="province" class="bank_code_box select_province" runat="server" name="cardprovince" ></select>
+			<span class="select_city_span">开户市</span>
+			<select id="city" runat="server" class="bank_code_box select_city" name="cardcity"></select>
+		</p>
+		<p><span>支行名称</span><input type="text" name="bankbranchname" id="bankbranchname" autocomplete="off" placeholder="(选填)单笔金额5万以上需填">（选填）</p>
+		<p><span>预留手机号</span><input type="text" name="cardphone" id="cardphone" placeholder="请输入银行预留手机号" autocomplete="off"><b class="red">　*</b></p>
+		<button type="button" class="addcard_sub" id="addcard_btn">确认绑定</button>
+	</form>
+</div>
+<include file="../xmyttz/view/footer.html"/>
+<script src="/Public/js/city.js" type="text/javascript"></script>
+</body>
+</html>

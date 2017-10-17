@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+#header_bottom .to_advantage{
+	background-color:#268bf2;
+	color:#fff;
+}
+body{
+	background:#f1f1f1;
+}
+@media (max-width:768px) {
+	.advantage_contain{
+		border-top:5px solid #f1f1f1;
+		background:#f1f1f1;
+		font-size: 14px;
+		color: #666;
+		line-height: 28px;
+		padding:0 0 20px 0;
+		margin:0 0 15px 0;
+		border-bottom:1px solid #ccc;
+		background:#fff;
+	}
+	.advantage_contain .box{
+		
+	}
+	.advantage_contain .box dl{display:block;height:100px;padding:15px 0px;border-bottom:1px dashed #ccc;}
+	.advantage_contain .box dl dt{width:120px;float:left;}
+	.advantage_contain .box dl dt img{display:block;width:90px;height:90px;border-radius:100%;border:5px solid #ddd;}
+	.advantage_contain .box dl dd{margin-left:120px;}
+	.advantage_contain .box dl dd .dd-t{font-size:18px;font-weight:bold;}
+	.advantage_contain .box dl dd .dd-t span{display:inline-block;padding-right:20px;font-size:19px;margin-bottom:5px;padding-top:5px;}
+	.advantage_contain .box dl dd .dd-c{font-size:14px;line-height:28px;color:#333;}
+}
+@media (max-width:360px) {
+	.advantage_contain .box dl dd .dd-c{font-size:12px;}
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YT-个人中心</title>
+	<include file="../xmyttz/view/head.html"/>
+
+	<link href="/Public/css/user.css" rel="stylesheet" type="text/css" />
+
+	<script src="/Public/js/user.js" type="text/javascript"></script>
+	<style>
+		.footer {
+			min-width: 1263px;
+
+			background: #222;
+			clear:both;
+			text-align:center;
+		}
+		.footer .top {
+			 width: 100%;
+			 height: 0px;
+			 margin: 0 auto;
+		 }
+		#header_bottom .to_me {
+			background-color: #268bf2;
+			color: #fff;
+		}
+		.shuoming li a img{
+			width: 100px;
+			opacity: 0.7;
+
+		}
+		.shuoming li{
+			float: left;
+
+			margin:0 72px 0 ;
+			text-align: center;
+			font-size: 18px;
+
+		}
+		*{margin:0; padding:0;}
+		a{text-decoration: none;}
+		img{max-width: 100%; height: auto;}
+		.weixin-tip{display: none; position: fixed; left:0; top:0; bottom:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80);  height: 100%; width: 100%; z-index: 100;}
+		.weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}
+	</style>
+
+</head>
+
+<body>
+<include file="../xmyttz/view/newheader.html"/>
+<div class="weixin-tip">
+	<p><img src="/Public/img/close1.png" id="close" width="15%" style="padding: 0 18px 9px 172px;" alt="">
+		<img src="/Public/img/live_weixin.png" alt="微信打开"/>
+	</p>
+</div>
+<!-- 导航END -->
+<div class="pc" style="background-size:100% 260px;">
+	<div class="user_box">
+		<!--<div style="color: #000;">开户步骤-></div><div class="capital_step" style="margin: -62px 90px;"><span><img src="/Public/img/step1.png" alt=""><span class="font">手机注册</span></span><span><img src="/Public/img/step2.png" alt=""><span class="font">选择市场点击开户</span></span><span><img src="/Public/img/step3.png" alt=""><span class="font">填写绑定出金银行卡</span></span><span><img src="/Public/img/step4.png" alt=""><span class="font">入金申请交易账户</span></span><span><img src="/Public/img/step5.png" alt=""><span class="font">手机接收交易账号和密码</span></span><span><img src="/Public/img/setp6.png" alt=""><span class="font">登录网站下载风控规则并仔细阅读</span></span><span><img src="/Public/img/setp7.png" alt=""><span class="font">登入网站查看交易软件下载方法</span></span><span><img src="/Public/img/setp8.png" alt=""><span class="font">按照以上两步下载交易软件</span></span><span><img src="/Public/img/setp9.png" alt=""><span class="font">账号和密码登录进行交易</span></span></div>-->
+		<div class="user_right">
+			<div class="overview">
+				<div class="face_img_box">
+					<a href="/{$Request.module}/userinfo/setface"><notempty name="user.face"><img src="{$user.face}" alt="" class="face_img"><else /><img src="/Public/img/face.png" alt="" class="face_img"></notempty></a>
+				</div>
+				<div class="right_info_box">
+					<p>您好！<span class="user_name">{$user.username}</span><span class="last_time">上次登录时间：&nbsp;&nbsp;<span><empty name="user.login_time">首次登陆<else />{$user.login_time|date="Y-m-d H:i:s",###}</empty></span></span></p>
+					<p class="renzheng">
+						安全等级：
+						<a href="/{$Request.module}/userinfo/setphone" class="a2" title="手机认证"><notempty name="user.phone"><img src="/Public/img/user_info/phone_state.png" alt=""><else /><img src="/Public/img/user_info/phone_state0.png" alt=""></notempty></a>
+						<a href="/agent/userinfo/verifyemail" class="a1" title="邮箱认证"><notempty name="user.email"><img src="/Public/img/user_info/email_state.png" alt=""><else /><img src="/Public/img/user_info/email_state0.png" alt=""></notempty></a>
+						<a href="/agent/userinfo/setcard" class="a4" title="银行卡绑定"><notempty name="user.card"><img src="/Public/img/user_info/card_state.png" alt=""><else /><img src="/Public/img/user_info/card_state0.png" alt=""></notempty></a>
+					</p>
+				</div>
+				<div style="clear:both"></div>
+			</div>
+			<hr>
+			<div class="qihuo">
+				<div class="qihuo_box aqihuo_box">
+					<h5><span class="qihuo_type">国际期货</span><a href="{$a_rule}" download="国际期货风控规则" class="download_rule" id="rule_aqihuo">国际期货风控规则下载</a><a href="/{$Request.module}/Userinfo/dealRecord?market=aqihuo" class="to_record">查看出入金记录</a></h5>
+					<p><span class="qihuo_account">交易账号：</span><notempty name="user.a_account"><span class="account_code">{$user.a_account}</span><a href="/{$Request.module}/adjust/adjust" class="to_pay">调整手数</a><a href="/{$Request.module}/Withdraw/withdraw/type/aqihuo" class="to_pay">出金</a><a href="/{$Request.module}/Pay/aqihuoPay" class="to_pay">入金</a><else /><span class="account_code">无</span><span class="to_bind">（如已有账号，请向客服咨询绑定方法。）</span><a href="/{$Request.module}/Pay/aqihuoPay" class="to_pay">开户</a></notempty></p>
+				</div>
+				<div class="qihuo_box dqihuo_box">
+					<h5><span class="qihuo_type">国内期货</span><a href="{$a_tutorial}" download="国内期货风控规则" class="download_rule" id="rule_dqihuo">国内期货风控规则下载</a><a href="/{$Request.module}/Userinfo/dealRecord?market=dqihuo" class="to_record">查看出入金记录</a></h5>
+					<p><span class="qihuo_account">交易账号：</span><notempty name="user.d_account"><span class="account_code">{$user.d_account}</span><a href="/{$Request.module}/Withdraw/withdraw/type/dqihuo" class="to_pay">出金</a><a href="/{$Request.module}/Pay/dqihuoPay" class="to_pay">入金</a><else /><span class="account_code">无</span><a href="/{$Request.module}/Pay/dqihuoPay" class="to_pay">开户</a><span class="to_bind">（如已有账号，请向客服咨询绑定方法。）</span></notempty></p>
+				</div>
+					<div class="shuoming">
+						<ul style="margin: 20px 69px">
+							<li ><a href="/agent/user/files"><img   src="/Public/img/nav_goods.png"  alt=""><p style="border-bottom: 0;">软件使用说明 </p></a></li>
+							<li ><a href="/agent/user/old"><img  src="/Public/img/newbanb2.png"  alt=""><p style="border-bottom: 0;">旧户绑定说明</p></a></li>
+							<li ><a href="/agent/user/news"><img   src="/Public/img/newbanb3.png"  alt=""><p style="border-bottom: 0;">新户绑定说明</p></a></li>
+						</ul>
+					</div>
+				<!--<div class="record">-->
+					<!--<div class="record_top">最近操作记录<a href="/{$Request.module}/Userinfo/dealRecord">更多</a></div>-->
+					<!--<div class="tagContent">-->
+						<!--&lt;!&ndash; 最近交易记录 &ndash;&gt;-->
+						<!--<table width="100%" border="0" cellspacing="0" cellpadding="0">-->
+							<!--<tbody>-->
+							<!--<tr class="top">-->
+								<!--<td width="25%">订单号</td>-->
+								<!--<td width="15%">市场</td>-->
+								<!--<td width="15%">类型</td>-->
+								<!--<td width="15%">金额（元）</td>-->
+								<!--&lt;!&ndash; <td>余额（元）</td> &ndash;&gt;-->
+								<!--<td width="20%">时间</td>-->
+								<!--<td width="10%">状态</td>-->
+							<!--</tr>-->
+							<!--<foreach name='user_record' item='v'>-->
+								<!--<tr class="body">-->
+									<!--<td>{$v.out_orderid}</td>-->
+									<!--<td><if condition="$v.type eq 'aqihuo'">国际期货<elseif condition="$v.type eq 'dqihuo'" />国内期货<elseif condition="$v.type eq 'shares'" />国内股票</if></td>-->
+									<!--<td>{$v.subject}</td>-->
+									<!--&lt;!&ndash; <if condition="($v.method eq 'recharge') or ($v.method eq 'transform')"><td style="color:#f55;">+<elseif condition="($v.method eq 'capital') or ($v.method eq 'withdrawal') or ($v.method eq 'deposit')" /><td style="color:#0bb782;">-<else /><td style="color:#0379b5;"></if><if condition="$v.amount eq 0">全部<else />{$v.amount}</if></td> &ndash;&gt;-->
+									<!--<td style="color:#0379b5;">{$v.amount}</td>-->
+									<!--<td>{$v.trans_time}</td>-->
+									<!--<td>{$v.state}</td>-->
+								<!--</tr>-->
+							<!--</foreach>-->
+							<!--</tbody>-->
+						<!--</table>-->
+					<!--</div>-->
+					<!--<a href="/{$Request.module}/Userinfo/dealRecord" class="go_dealrecord">查看更多</a>-->
+				<!--</div>-->
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+	<include file="../xmyttz/view/newfooter.html" />
+</div>
+
+<!-- 移动端 -->
+<div class="phone">
+	<!--<div id="header">-->
+		<!--<img src="/Public/img/list.png" alt="" class="list">-->
+		<!--我-->
+	<!--</div>-->
+	<div class="mt_content">
+		<div id="me">
+			<div class="user_name_box">
+				<center class="username">
+					<empty name="user.face"><img src="/Public/img/face.png" alt="" class="face"><else /><img src="{$user.face}" alt="" class="face"></empty>
+					<div class="small_user_box">
+						<p>用户名称：{$user.username}</p>
+						<p>上次登录：<empty name="user.login_time">首次登陆<else />{$user.login_time|date="m-d H:i",###}</empty></p>
+						<div class="right_info_box">
+						<p class="renzheng">
+							<span>安全等级：</span>
+							<a href="/{$Request.module}/userinfo/setphone" class="a2" title="手机认证"><notempty name="user.phone"><img src="/Public/img/user_info/phone_state.png"  width="15" height="15" alt=""><else /><img src="/Public/img/user_info/phone_state0.png"width="15" height="15" alt=""></notempty></a>
+							<a href="/{$Request.module}/userinfo/verifyemail" class="a1" title="邮箱认证"><notempty name="user.email"><img src="/Public/img/user_info/email_state.png" width="15" height="15"   alt=""><else /><img src="/Public/img/user_info/email_state0.png" width="15" height="15" alt=""></notempty></a>
+							<a href="/{$Request.module}/user/setcard" class="a4" title="银行卡绑定"><notempty name="user.card"><img src="/Public/img/user_info/card_state.png"  width="15" height="15" alt=""><else /><img src="/Public/img/user_info/card_state0.png" width="15" height="15" alt=""></notempty></a>
+						</p></div>
+					</div>
+				</center>
+				<p style="margin: -110px 288px;"><a href="/agent/login/logout"><img src="/Public/img/me_logout.png" alt=""><span style="font-size:12px;display:inline-block;width: 35px;color: white;margin: -15px 0px 0px 11px">退出</span></a></p>
+			</div>
+
+			<div class="me_box">
+				<ul>
+					<!--<li><a href="/agent/userinfo/userInfo"><img src="/Public/img/me_xinxi.png" alt="">个人信息</a></li>-->
+					<li style="width:22%;height: 89px"> <a href="/agent/pay/aqihuoPay"><img src="/Public/img/me_jilu.png" alt="">国际期货</a></li>
+					<li style="width: 77%;height: auto">	<div class="qihuo"><div class="qihuo_box aqihuo_box">
+						<h5><a href="{$a_rule}" download="" class="download_rule" style="color: #42a7db;" id="rule_aqihuo">国际风控规则</a><a href="/{$Request.module}/Userinfo/dealRecord?market=aqihuo" style="color: #42a7db;font-size: 14px" class="to_record">充值提款记录</a></h5>
+						<p><span class="qihuo_account">交易账号：</span><notempty name="user.a_account"><span style="font-size:14px;left:207px;position: absolute;" class="account_code">{$user.a_account}</span><p style="margin: 0px 47px 0px 0px"><a href="/{$Request.module}/adjust/adjust" class="to_pay">调整手数</a><a href="/{$Request.module}/Withdraw/withdraw/type/aqihuo" class="to_pay">提款</a><a href="/{$Request.module}/Pay/aqihuoPay" class="to_pay">充值</a><else /><span style="position: absolute;left: 215px;" class="account_code">无</span><span class="to_bind"></span><a href="/{$Request.module}/Pay/aqihuoPay" class="to_pay" style="    margin: 15px 29px 0 0">开户</a></p></notempty></p>
+					</div></div></li>
+					<!--<li><a href="/agent/userinfo/dealRecord"><img src="/Public/img/me_mingxi.png" alt="">充值提款记录查询</a></li>-->
+					<!--<li><a href="{$a_rule}" download="国际期货风控规则" class="download_rule" id="rule_aqihuo"><img src="/Public/img/me_dingdan.png" alt="" >国际期货市场规则</a></li>-->
+					<li style="width:22%;height:89px;"><a href="/agent/pay/dqihuoPay"><img src="/Public/img/me_dingdan.png" alt="">国内期货</a></li>
+					<li style="width: 77%;height: 100%"><div style="height: 89px" class="qihuo"><div class="qihuo_box dqihuo_box">
+						<h5><a href="{$a_tutorial}" download="" class="download_rule"style="color: #42a7db;" id="rule_dqihuo">国内风控规则</a><a href="/{$Request.module}/Userinfo/dealRecord?market=dqihuo" style="color: #42a7db;font-size: 14px" class="to_record">充值提款记录</a></h5>
+						<p><span class="qihuo_account" style="margin-right: 148px;">交易账号：</span><notempty name="user.d_account"><span style="font-size:14px;left:213px;position: absolute;" class="account_code">{$user.d_account}</span><p style="margin: 0px 46px 0px 0px"><a href="/{$Request.module}/adjust/adjust" class="to_pay">调整手数</a>&nbsp;&nbsp;<a href="/{$Request.module}/Withdraw/withdraw/type/dqihuo" class="to_pay">提款</a>&nbsp;<a href="/{$Request.module}/Pay/dqihuoPay" class="to_pay">充值</a><else /><span style="position: absolute;left: 215px;" class="account_code">无</span><span class="to_bind"></span><a href="/{$Request.module}/Pay/dqihuoPay" style=" margin: 15px 29px 0 0"  class="to_pay">开户</a></p></notempty>
+						<!--<p><span class="account_code">{$user.d_account}</span><a href="/{$Request.module}/Withdraw/withdraw/type/dqihuo" class="to_pay" style="float: none;display: inline-block">出金</a><a href="/{$Request.module}/Pay/dqihuoPay" class="to_pay" style="float: none;height: 25px;display: inline-block">入金</a><a href="" class="to_pay" style="float: none;display: inline-block">调整手数</a></p>-->
+					</div></div></li>
+					<!--<li><a href="{$a_tutorial}"class="download_rule" id="rule_dqihuo" download="国内期货风控规则"  ><img src="/Public/img/me_dingdan.png" alt="">国内期货市场规则</a></li>-->
+					<!--<li><a href="/agent/withdraw/withdraw/type/aqihuo"><img src="/Public/img/me_dingdan.png" alt="">国际出金</a></li>-->
+					<!--<li><a href="/agent/pay/dqihuoPay"><img src="/Public/img/me_jilu.png" alt="">国内入金</a></li>-->
+					<!--<li><a href="/agent/withdraw/withdraw/type/dqihuo"><img src="/Public/img/me_dingdan.png" alt="">国内出金</a></li>-->
+					<!--<li><a href="/agent/userinfo/dealRecord"><img src="/Public/img/me_mingxi.png" alt="">资金明细</a></li>-->
+					<!-- <li><a href="/{$Request.module}/{$Request.controller}/account"><img src="/Public/img/me_jilu.png" alt="">期货账户</a></li>
+                    <li><a href="/{$Request.module}/{$Request.controller}/myinvite"><img src="/Public/img/me_tuiguang.png" alt="">推广赚钱</a></li>
+                    <li><a style="background:#f9f9f9;"><img src="/Public/img/me_jilu.png" alt="">#交易记录#</a></li>
+                    <li><a style="background:#f9f9f9;"><img src="/Public/img/me_jifen.png" alt="">#我的积分#</a></li>
+                    <li><a style="background:#f9f9f9;"><img src="/Public/img/me_youhui.png" alt="">#我的优惠#</a></li>
+                    <li><a style="background:#f9f9f9;"><img src="/Public/img/me_dingdan.png" alt="">#我的订单#</a></li> -->
+					<div style="clear:both;"></div>
+					<div style="color:red;font-size: 12px">
+					 <p style="color:red;font-size: 12px">&nbsp;&nbsp;&nbsp;&nbsp;01.两市场品种和时间不同，“风控规则”也不同。</p> <p style="color:red;font-size: 12px">&nbsp;&nbsp;&nbsp;&nbsp;02.交易前请先阅读“风控规则”,如有不明请咨询客服。</p> </div>
+
+				</ul>
+
+				<div class="me_box">
+					<ul style="margin:0px 13px;border-top: none; border-left: none; ">
+						<li style="border-right: none; border-bottom: none; "><a href="/agent/user/files"><img  src="/Public/img/nav_goods.png" style="opacity: 0.7" alt=""><p style="color: #42a7db">软件使用说明 </p></a></li>
+						<li style="border-right: none; border-bottom: none; "><a href="/agent/user/old"><img src="/Public/img/newbanb2.png" style="opacity: 0.7" alt=""><p style="padding: 0 8px;color: #42a7db">旧户绑定说明  </p></a></li>
+						<li style="border-right: none; border-bottom: none; "><a href="/agent/user/news"><img src="/Public/img/newbanb3.png" style="opacity: 0.7" alt=""><p style="padding: 0 8px;color: #42a7db">新号开户说明  </p></a></li>
+					</ul>
+				<div style="padding:  0 22px;"></div>
+				<div style=""></div>
+				<!--<div   style="padding:30px 0 0 0;color:red;font-size: 16px">&nbsp;&nbsp;&nbsp;&nbsp;备注：您好，请您在交易前，先下载并仔细阅读相应市场的风控规则，两个市场的交易品种·时间不同，风控规则也不同。</div>-->
+			</div>
+
+		</div>
+	</div>
+</div>
+	<script>
+        $('.download_rule').click(function () {
+
+            var winHeight = $(window).height();
+            var ua = navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                $(".weixin-tip").css("height",winHeight);
+                $(".weixin-tip").show();
+            } else {
+                return true;
+            }
+
+        })
+		$('#close').click(function () {
+            $(".weixin-tip").hide();
+        })
+	</script>
+<!-- 移动端 END -->
+<include file="../xmyttz/view/newfooter.html"/>
+</body>
+</html>

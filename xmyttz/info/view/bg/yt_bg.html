@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav">首页图片</div>
+		<div class="right_content">
+			<table class="table_a" border="1">
+                <thead>
+					<tr>
+                        <td>序号</td>
+                        <td>名称</td>
+                        <td>图片</td>
+                        <td>创建时间</td>
+                        <td align="center" colspan="2">操作</td>
+                    </tr>
+				</thead>
+				<tbody>
+                    <foreach name='bg' item='v'>
+	                    <tr class="banner_bg" height="110px" style="vertical-align:middle;">
+	                        <td class="bg_num" width="10%">{$v.num}</td>
+	                        <td class="bg_name" width="10%">{$v.name}</td>
+	                        <td class="bg_img" width="40%"><img src="{$v.img}" height="100" width="320" style="vertical-align:middle;"></td>
+	                        <td class="bg_date" width="20%">{$v.date|date="Y-m-d h:i:s",###}</td>
+	                        <td><a href="/{$Request.module}/{$Request.controller}/update_bg/id/{$v.id}" class="updel_a href_a update_bg">修改</a></td>
+	                        <td><a data="{$v.id}" class="updel_a delete_a delete_bg">删除</a></td>
+	                    </tr> 
+                    </foreach>
+				</tbody>
+				<tfoot>
+                    <tr>
+                        <td colspan="30">
+							<a href="/{$Request.module}/{$Request.controller}/add_bg" class="add_btn">增加图片</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+		</div>
+	</div>
+</body>
+</html>

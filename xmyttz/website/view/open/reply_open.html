@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="../xmyttz/view/adminHead.html"/>
+</head>
+<body>
+	<div id="right">
+		<div class="right_nav"><a href="/{$Request.module}/{$Request.controller}/yt_open">【返回列表】</a></div>
+		<div class="right_content">
+			<input type="hidden" value="{$capital.type_kind}" id="type_kind">
+			<input type="hidden" value="{$capital.id}" id="capital_id">
+			<input type="hidden" value="{$capital.userid}" id="capital_userid">
+			<input type="hidden" value="{$capital.out_orderid}" id="capital_out_orderid">
+			<p><span class="left_inp_name">手机号：</span><b id="capital_phone">{$capital.phone}</b></p>
+			<p><span class="left_inp_name">入金金额：</span><b id="capital_amount">{$capital.amount}</b>元</p>
+			<p><span class="left_inp_name">账户账号：</span><if condition="($capital.account eq '未开户') or ($capital.account eq '')"><input type="text" name="account" autocomplete="off" id="capital_account" placeholder="填写新开账户账号" class="reply_input"><else /><input type="text" value="{$capital.account}" readonly="true" id="capital_account" class="reply_input"></if></p>
+			<p><span class="left_inp_name">账户密码：</span><empty name="capital.account_password"><input type="text" name="password" autocomplete="off" id="capital_pwd" placeholder="填写新开账户密码" class="reply_input"><else /><input type="text" value="{$capital.account_password}" readonly="true" autocomplete="off" class="reply_input"></empty></p>
+			<p><span class="left_inp_name">代理代码：</span><input type="text" id="invite_code" autocomplete="off"  placeholder="填写代理代码" class="reply_input"></p>
+			<p><span class="left_inp_name">代理手机：</span><input type="text" id="invite_phone"  autocomplete="off"  placeholder="填写代理手机号" class="reply_input"></p>
+		<button type="button" class="right_btn capital_btn" id="reply_open_agent" >完成并回复</button>
+		</div>
+	</div>
+</body>
+</html>

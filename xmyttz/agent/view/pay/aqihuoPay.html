@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YT-国际期货</title>
+    <include file="../xmyttz/view/aghead.html"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+	<script>var user_active='.recharge';var nav_active="#nav_user";var belong='agent'</script>
+    <link href="/Public/css/user.css" rel="stylesheet" type="text/css" />
+    <script src="/Public/js/user.js" type="text/javascript"></script>
+	<style>
+		.newbanb {
+			min-width: 1263px;
+			padding: 113px 0;
+		}
+		.footer .top {
+			width: 100%;
+			height: 0px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body>
+<include file="../xmyttz/view/newheader.html"></include>
+
+<div class="">
+<div class="user_box">
+<div class="user_right">
+
+<h4><span>账户充值</span><a href="/{$Request.module}/user/record?day=7" class="deal_record">充值记录</a></h4>
+	<notempty name="user.a_account">
+		<div class="tishi">
+			<p>提示：1.入金可随时切换不同银行的多张银行卡，不受出金绑定银行卡的限制</p>
+			<p>　　　2.充值时间为交易日上午08:30至次日05:30，充值由第三方机构收取充值金额的0.3%作为通道费，例充1万扣30,单笔最高10万元，最低500元，到帐后处理时间为15分钟左右，如开户充值则需30分钟左右，请耐心等待！</p>
+			<p>　　　3.提款时间为交易日上午08:30至当日18:30。提款收取每笔2元，出金最低金额为500元，全部出金的不受此限制。</p>
+		</div><else/><div class="tishi">
+		<p>01.开户约30分钟内，将以手机短信方式发送至手机。</p>
+		<p>02.请绑定提款银行卡，为唯一提款卡号以保障资金安全。</p>
+		<p>03.支付宝首次使用，请用手机下载并安装。</p>
+		<p>04.入金可换多张银行卡，不受绑定的提款银行卡限制。</p>
+		<p>05.充值时间为交易日早08:30至次日早05：00。</p>
+		<p>06.充值由第三方机构收取0.3%通道费，例1万元扣30元。</p>
+		<p>07.单笔最高10万，最低500，到帐处理时间15分钟内。</p>
+		<p>08.提醒收到账号密码后，请及时使用电脑登录修改密码。</p>
+		<p>09.提醒勿相信代操盘稳盈利说词，勿将密码告之他人。</p>
+		<p>10.提醒交易前确认交易手续费，交易表示接受账户设置。</p>
+		<p>11.提醒所有投资者牢记期市风险，量力而行，理性参与。</p>
+		<p>12.以上开户如未及时处理，及时与我司客服联系。</p>
+	</div>
+	</notempty>
+	<div class="recharge">
+		<input type="hidden" value="{$user.card}" id="recharge_card">
+		<input type="hidden" value="{$user.id}" id="userid">
+		<input type="hidden" value="{$out_orderid}" id="out_orderid">
+		<input type="hidden" value="aqihuo" id="agent_type">
+		<input type="hidden" value="{$user.a_account}" id="account">
+		<input type="hidden" value="网银充值" id="subject">
+		<form action="http://xmmrtc.com/llapi/llpayqrcode_new.php" method="post" id="weixin_form">
+			<input type="hidden" value="{$out_orderid}" name="no_order">
+			<input type="hidden" value="http://xmmrtc.com/llpay/notify_url_xmyt.php" name="notify_url">
+			<input type="hidden" value="0" name="pay_type">
+			<input type="hidden" name=" user_id" value="{$user.id}">
+			<input type="hidden" name="money_order" class="amount">
+		</form>
+		<div class="recharge_method recharge_box">
+			<span>充值方式：</span>
+			<ul>
+			<foreach name="payway" item="v">
+				<li  data="show"  class="payway"><a href="javascript:;" id="{$v.sign}">{$v.name}</a></li>
+			</foreach>
+			</ul>
+		</div>
+		<div class="recharge_type recharge_box">
+			<span>充值类型：</span>
+			<ul>
+				<li class="active"><a href="/{$Request.module}/{$Request.controller}/aqihuoPay">国际期货</a></li>
+				<li class=""><a href="/{$Request.module}/{$Request.controller}/dqihuoPay">国内期货</a></li>
+			</ul>
+		</div>
+		<notempty name="user.a_account"><div class="recharge_type recharge_box">
+			<span>充值账号：</span>
+			<ul>
+				<li class="active">{$user.a_account}</li>
+			</ul>
+		</div></notempty>
+		<div class="recharge_box recharge_zfb hide zhifubao">
+			<span>支付宝号：</span>
+			<ul>
+				<input type="text" name="zfb_num" id="zfb_num" placeholder="请输入支付宝账号">
+			</ul>
+		</div>
+		<div class="recharge_num recharge_box">
+			<span>充值金额：</span>
+			<input style="display: none;" type="text" />
+			<input type="text" id="goodPrice" placeholder="请输入金额" autocomplete="off"><b class="danwei">元</b><i class="beizhu pc">（备注：最低入金50元可激活开户）</i>
+		</div>
+		<div class="select_bank recharge_box hide allscore webllpay">
+			<span>充值银行：</span>
+			<form name="direct" action="http://xmmrtc.com/allscore/allscore_pay.php" method="get" id="allscore_form" >
+				<input type="hidden" value="网银充值" name="subject">
+				<input type="hidden" value="{$user.id}" name="body">
+				<input type="hidden" value="{$out_orderid}" name="out_orderid">
+				<input type="hidden" value="http://xmmrtc.com/allscore/notify_url_agent.php" name="notify_url">
+				<input type="hidden" value="http://xmmrtc.com/allscore/return_url_agent.php" name="return_url">
+				<input type="hidden" name="goodPrice" class="amount">
+				<ul class="wsyh allscore hide">
+					<li class="active"><label for="ICBC"><img src="/Public/img/banklogo/bank_gs.png" alt="">工商银行</label><input type="radio" checked="checked" name="defaultBank" id="ICBC" value="ICBC"></li>
+					<li><label for="CCB"><img src="/Public/img/banklogo/bank_js.png" alt="">建设银行</label><input type="radio" name="defaultBank" id="CCB" value="CCB"></li>
+					<li><label for="ABC"><img src="/Public/img/banklogo/bank_ny.png" alt="">农业银行</label><input type="radio" name="defaultBank" id="ABC" value="ABC"></li>
+					<li><label for="BOC"><img src="/Public/img/banklogo/bank_zg.png" alt="">中国银行</label><input type="radio" name="defaultBank" id="BOC" value="BOC"></li>
+					<li><label for="CIB"><img src="/Public/img/banklogo/bank_xy.png" alt="">兴业银行</label><input type="radio" name="defaultBank" id="CIB" value="CIB"></li>
+					<li><label for="PSBC"><img src="/Public/img/banklogo/bank_yzcx.png" alt="">邮储银行</label><input type="radio" name="defaultBank" id="PSBC" value="PSBC"></li>
+					<li><label for="GDB"><img src="/Public/img/banklogo/bank_gf.png" alt="">广发银行</label><input type="radio" name="defaultBank" id="GDB" value="GDB"></li>
+					<li><label for="CITIC"><img src="/Public/img/banklogo/bank_zx.png" alt="">中信银行</label><input type="radio" name="defaultBank" id="CITIC" value="CITIC"></li>
+					<li><label for="CMB"><img src="/Public/img/banklogo/bank_zs.png" alt="">招商银行</label><input type="radio" name="defaultBank" id="CMB" value="CMB"></li>
+					<li><label for="CMBC"><img src="/Public/img/banklogo/bank_ms.png" alt="">民生银行</label><input type="radio" name="defaultBank" id="CMBC" value="CMBC"></li>
+					<li><label for="CEB"><img src="/Public/img/banklogo/bank_gd.png" alt="">光大银行</label><input type="radio" name="defaultBank" id="CEB" value="CEB"></li>
+					<li><label for="SHBANK"><img src="/Public/img/banklogo/bank_sh.png" alt="">上海银行</label><input type="radio" name="defaultBank" id="SHBANK" value="SHBANK"></li>
+					<li><label for="BJBANK"><img src="/Public/img/banklogo/bank_bj.png" alt="">北京银行</label><input type="radio" name="defaultBank" id="BJBANK" value="BJBANK"></li>
+				</ul>
+			</form>
+			<form name="llpayment" action="http://www.xmmrtc.com/webllpay/llpayapi.php" method="POST" id="webllpay_form">
+				<input type="hidden" value="付款" name="name_goods" id="webllpay_subject">
+				<input type="hidden" value="http://xmmrtc.com/webllpay/notify_url_web.php" name="notify_url">
+				<input type="hidden" value="{$out_orderid}" name="no_order">
+				<input type="hidden" name=" user_id" value="{$user.id}">
+				<input type="hidden" name="pay_type" value="1">
+				<input type="hidden" name="busi_partner" value="109001">
+				<input type="hidden" name="money_order" id="money_order" class="amount">
+				<ul class="wsyh webllpay hide">
+					<li class="active"><label><img src="/Public/img/banklogo/bank_gs.png" alt="">工商银行<input type="radio" checked="checked" name="bank_code" value="01020000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_js.png" alt="">建设银行<input type="radio" name="bank_code" value="01050000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_jt.png" alt="">交通银行<input type="radio" name="bank_code" value="03010000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_ny.png" alt="">农业银行<input type="radio" name="bank_code" value="01030000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_zg.png" alt="">中国银行<input type="radio" name="bank_code" value="01040000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_xy.png" alt="">兴业银行<input type="radio" name="bank_code" value="03090000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_yzcx.png" alt="">邮储银行<input type="radio" name="bank_code" value="01000000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_gf.png" alt="">广发银行<input type="radio" name="bank_code" value="03060000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_zx.png" alt="">中信银行<input type="radio" name="bank_code" value="03020000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_zs.png" alt="">招商银行<input type="radio" name="bank_code" value="03080000"></label></li>
+					<li><label><img src="/Public/img/banklogo/bank_pf.png" alt="">浦发银行<input type="radio" name="bank_code" value="03100000"></label></li>
+				</ul>
+			</form>
+			<div style="clear:both;"></div>
+		</div>
+		<empty name="user.a_account">
+		<div class="recharge_box qihuo_type">
+			<span>品种选择：</span>
+			<div class="contract" id="contract">
+				<label class="low"><input name="contract" type="radio" value="无品种" checked="selected">充值金额太低，所有品种均不可交易，仅激活开立交易帐号。</label>
+				<label class="mhi"><input name="contract" type="radio" disabled="true" value="小恒指、小H股、人民币、富时">小恒指、小H股、人民币、富时</label>
+				<label class="mdx"><input name="contract" type="radio" disabled="true" value="小德指">小德指</label>
+				<label class="hsi"><input name="contract" type="radio" disabled="true" value="大恒指、原油、天然气、黄金、精铜、小标、小纳、小道、外汇">大恒指、原油、天然气、黄金、精铜、小标、小纳、小道、外汇</label>
+				<label class="dax"><input name="contract" type="radio" disabled="true" value="大德指、白银">大德指、白银</label>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div class="recharge_box qihuo_hands">
+			<span>手数选择：</span>
+			<ul class="hands" id="hands">
+				<li class="active">1手</li>
+				<li>2手</li>
+				<li>3手</li>
+				<li>4手</li>
+				<li>5手</li>
+				<li>6手</li>
+				<li>7手</li>
+				<li>8手</li>
+				<li>9手</li>
+				<li>10手</li>
+			</ul>
+			<div style="clear:both;"></div>
+		</div></empty>
+		<div class="recharge_btn_box recharge_box" style="text-align:center;height:100px;clear:both;">
+			<empty name="user.a_account"><p style="margin-top:5px;">
+
+				<input type="checkbox" id="jbp_contract_cbx" class="checkbox_contract"/>
+				<label for="jbp_contract_cbx" style="color:#666;position:relative;bottom:1.7px;">我已阅读并同意</label>
+				<a href="javascript:;" id="xieyi_aqihuo" class="showxieyi" style="color:#04a7db;">《开户协议》</a>
+			</p></empty>
+
+			<button type="button" class="recharge_btn hide allscore" id="gotoPay"><notempty name="user.a_account">立即充值<else/>充值并开户</notempty></button>
+			<button type="button" class="recharge_btn hide webllpay" id="webllpay_btn"><notempty name="user.a_account">立即充值<else/>充值并开户</notempty></button>
+			<button type="button" class="recharge_btn hide zhifubao" id="zfb_next"><notempty name="user.a_account">立即充值<else/>充值并开户</notempty></button>
+			<button type="button" class="recharge_btn hide weixin" id="weixin_btn"><notempty name="user.a_account">立即充值<else/>充值并开户</notempty></button>
+			<button type="button" class="recharge_btn" onClick="location.href='/{$Request.module}/User/user'" style="margin-left:40px;">返回中心</button>
+		</div>
+	</div>
+
+</div>
+<div style="clear:both;"></div>
+</div>
+</div>
+<div class="phone">
+<!--<div id="header">-->
+	<!--<a href="javascript:history.back(-1)" class="back"><img src="/Public/img/mt_back.png" alt="" width=25 height=25></a>-->
+	<!--<img src="/Public/img/list.png" alt="" class="list">-->
+	<!--国际期货-->
+<!--</div>-->
+</div>
+<div class="recharge_yn tanchu_system">
+	<div class="tanchu_system_box">
+		<h3>提交成功</h3>
+		<div class="question"><img src="/Public/img/success.png" alt=""><div class="tanchu_content"><p>工作日期间，处理时间为30分钟左右,请耐心等待！</p></div></div>
+		<div class="answer">
+			<a href="/agent/user/record">确定</a>
+		</div>
+	</div>
+</div>
+<div id="confirm_zfb" class="confirm_ewm">
+	<h3>转账确认</h3>
+	<div class="confirm_list">
+		<div class="list_right">
+			<img src="{$zhifubao}" alt=""/>
+			<p></p>
+		</div>
+		<div>
+			<div class="pc">
+				<div class="list_left">
+					<div>
+						<p class="pc">01.打开手机支付宝，点击左上角“扫一扫”。</p>
+						<p class="pc">02.在扫描页面，对着电脑上的二维码，进行扫描。</p>
+						<p class="pc">03.支付弹窗，输入金额 <b class="confirm_amount" style="color:#f60;"></b> 元，点击“转账”用支付密码完成支付。</p>
+						<p class="pc">04.支付宝首页，点击下方“我的”，接着点击“账单”。</p>
+						<p class="pc">05.账单页面，点击“该笔交易”，找到“订单号”记下后六位。</p>
+						<p class="pc">06.回网站上将“订单后六位”填于下方空格，点击“确认已支付”。</p>
+						<p class="red">   支付宝充值订单号后六位：<input type="text" class="order_num" id="order_num" style="position:absolute;"></p>
+					</div>
+				</div>
+				<div class="answer">
+					<a href="javascript:;" class="success" id="zfb_toPay">确认已经支付</a>
+					<a href="javascript:;" id="confirm_not">重新填写</a>
+				</div>
+			</div>
+			<div class="mt">
+				<div class="list_left">
+					<div>
+						<p class="mt">01.打开手机支付宝，点击左上角“扫一扫”。</p>
+						<p class="mt">02.在扫描页面，对着电脑上的二维码，进行扫描。</p>
+						<p class="mt">03.支付弹窗，输入金额 <b class="confirm_amount" style="color:#f60;"></b> 元，点击“转账”用支付密码完成支付。</p>
+						<p class="mt">04.支付宝首页，点击下方“我的”，接着点击“账单”。</p>
+						<p class="mt">05.账单页面，点击“该笔交易”，找到“订单号”记下后六位。</p>
+						<p class="mt">06.回网站上将“订单后六位”填于下方空格，点击“确认已支付”。</p>
+						<p class="red">   支付宝充值订单号后六位：<input type="text" class="order_num" id="order_num_agent" style="position:absolute;"></p>
+					</div>
+				</div><div class="answer">
+				<a href="javascript:;" class="success" id="zfb_toPay_agent">确认已经支付</a>
+				<a href="javascript:;" id="confirm_not">重新填写</a>
+			</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+</div>
+<include file="../xmyttz/view/newfooter.html" />
+<script>
+	$(function() {
+    $(".payway").eq(0).find('a').click();
+    var screen_width=$(window).width();
+    if(screen_width < 768){
+    <foreach name='payway_phone' item='v'> $('#{$v.sign}').parent().attr('data','hide').hide();</foreach>
+        $(".payway[data='show']").eq(0).find('a').click();
+    }
+
+})
+</script>
+</body>
+</html>

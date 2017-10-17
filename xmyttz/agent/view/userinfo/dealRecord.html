@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YT-交易记录</title>
+    <include file="../xmyttz/view/head.html"/>
+	<link href="/Public/css/index.css" rel="stylesheet" type="text/css" />
+	<script>var user_active='.dealRecord';var nav_active="#nav_user";<notempty name="out_orderid">deal_success=true;<else />deal_success=false;</notempty></script>
+	<link href="/Public/css/user.css" rel="stylesheet" type="text/css" />
+    <script src="/Public/js/user.js" type="text/javascript"></script>
+	<style>
+		.newbanb {
+			min-width: 1263px;
+			padding: 113px 0;
+		}
+		.footer {
+			min-width: 1263px;
+			background: #222;
+			clear: both;
+			text-align: center;
+		}
+		.footer .top {
+			width: 100%;
+			height: 0px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body>
+<include file="../xmyttz/view/newheader.html"/>
+<div class="pc">
+<div class="user_box">
+
+<div class="user_right">
+<h4><span>资金明细</span><a href="/agent/user/user">返回</a></h4>
+	<div class="dealRecord">
+	<form action="{$Request.url}" method="get" id="record_form">
+		<input type="hidden" value="{$withdrawal|default=''}" id="withdrawal_state">
+		<input type="hidden" value="{$out_orderid|default=''}" id="recharge_state">
+		<input  id="state" name="state" type="hidden" value="{:input('state',-1)}" />
+		<input  id="day" name="day" type="hidden" value="{:input('day',7)}" />
+		<input  id="market" name="market" type="hidden" value="{:input('market',-1)}" />
+		<input  id="recordType" name="recordtype" type="hidden" value="{:input('recordtype',-1)}" />
+
+		<div class="deal_state record_box" id="deatilStateId">
+			<span>操作状态：</span>
+			<a href="javascript:;" data="-1">全部</a>
+			<a href="javascript:;" data="1">已支付</a>
+			<a href="javascript:;" data="0">未支付</a>
+		</div>
+		<div class="deal_time record_box" id="deatilTimeId">
+			<span>操作时间：</span>
+			<a href="javascript:;" data="7">一个星期</a>
+			<a href="javascript:;" data="30">一个月</a>
+			<a href="javascript:;" data="90">三个月</a>
+			<a href="javascript:;" data="365">一年</a>
+			<a href="javascript:;" data="-1">全部</a>
+		</div>
+		<div class="deal_market record_box" id="detailMarketId">
+			<span>操作市场：</span>
+			<a href="javascript:;" data="-1">全部</a>
+			<a href="javascript:;" data="aqihuo">国际期货</a>
+			<a href="javascript:;" data="dqihuo">国内期货</a>
+			<a href="javascript:;" data="shares">国内股票</a>
+		</div>
+		<div class="deal_type record_box" id="detailTypeId">
+			<span>操作类型：</span>
+			<a href="javascript:;" data="-1">全部</a>
+			<a href="javascript:;" data="open">开户</a>
+			<a href="javascript:;" data="capital">入金</a>
+			<a href="javascript:;" data="withdraw">出金</a>
+		</div>
+		<div class="record_detail">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr class="top">
+							<td width="25%">订单号</td>                                
+							<td width="15%">市场</td>
+							<td width="15%">类型</td>
+							<td width="15%">金额（元）</td>
+							<!-- <td>余额（元）</td> -->
+							<td width="20%">时间</td> 
+							<td width="10%">状态</td>
+						</tr>
+						<foreach name='user_record' item='v'>
+							<tr class="body">                                 
+								<td>{$v.out_orderid}</td>
+								<td><if condition="$v.type eq 'aqihuo'">国际期货<elseif condition="$v.type eq 'dqihuo'" />国内期货<elseif condition="$v.type eq 'shares'" />国内股票</if></td>
+								<td>{$v.subject}</td>
+								<!-- <if condition="($v.method eq 'recharge') or ($v.method eq 'transform')"><td style="color:#f55;">+<elseif condition="($v.method eq 'capital') or ($v.method eq 'withdrawal') or ($v.method eq 'deposit')" /><td style="color:#0bb782;">-<else /><td style="color:#0379b5;"></if><if condition="$v.amount eq 0">全部<else />{$v.amount}</if></td> -->
+								<td style="color:#0379b5;"><if condition="$v.amount eq 0">全部<else/>{$v.amount}</if></td>
+								<!-- <td style="color:#333;">{$v.balance}</td> -->
+								<td>{$v.trans_time}</td>                                  
+								<td>{$v.state}</td>
+							</tr>
+						</foreach>
+					</tbody>
+				</table>
+			<div style="clear:both"></div>
+		</div>
+	</form>
+	<div class="page_box" >
+	　　{$page}
+	</div>
+	</div>
+	<div id="deal_success_box">
+
+		<button type="button" id="deal_success_close">确定</button>
+	</div>
+</div>
+</div>
+</div>
+<!-- 移动端 -->
+<div class="phone">
+<!--<div id="header">-->
+	<!--<a href="/agent/user/user" class="back"><img src="/Public/img/mt_back.png" alt="" width=25 height=25></a>-->
+	<!--<img src="/Public/img/list.png" alt="" class="list">-->
+	<!--资金明细-->
+<!--</div>-->
+<div class="mt_content">
+	<div id="dealRecord">
+		<div class="record_type" id="record_type"><a href="javascript:;" data="-1">全部</a><a href="javascript:;" data="open">开户</a><a href="javascript:;" data="deposit">入金</a><a href="javascript:;" data="withdraw">出金</a></div>
+		<div class="record_detail">
+			<ul>
+				<foreach name='user_record' item='v'>
+				<li>
+					<p>{$v.subject}<span class="number"><span style="color:#0379b5;">{$v.amount}</span></span></p>
+					<p><span class="time">{$v.trans_time}</span>
+					<span class="record_state">{$v.state}</span></p>
+				</li>
+				</foreach>
+			</ul>
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- 移动端 END -->
+<div id="capital_success_box">
+	<p>资金已成功支付</p>
+	<p>资金到账处理需15分钟左右，请耐心等待</p>
+	<button type="button" id="capital_success_close">确定</button>
+</div>
+<include file="../xmyttz/view/newfooter.html"/>
+</body>
+</html>

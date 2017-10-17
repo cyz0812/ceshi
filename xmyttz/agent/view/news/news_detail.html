@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>YT-行业资讯</title>
+    <include file="../xmyttz/view/head.html"/>
+
+	<script>var nav_active="#nav_news"</script>
+    <link href="/Public/css/news.css" rel="stylesheet" type="text/css" />
+	<style>
+		.newbanb {
+			min-width: 1263px;
+			padding: 113px 0;
+		}
+		.footer .top {
+			width: 100%;
+			height: 0px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body>
+<include file="../xmyttz/view/newheader.html"/>
+
+<!-- 导航END -->
+<div class="pc">
+	<img src="/Public/img/banner_news.jpg" alt="" class="top_img">
+	<div class="news_detail">
+		<div class="show_addr">
+			<span class="now_mbx"></span><a href="/{$Request.module}/{$Request.controller}/news" class="hit">资讯</a><span class="sep"> > </span>文章正文<span id="show_name"></span>
+		</div>
+		<p class="time">{$time}&nbsp;&nbsp;&nbsp;&nbsp;<a href="__CONTROLLER__/index">厦门盈透投资</a></p>
+		<div class="article_box">
+			<div class="article_list">
+				{$content}
+			</div>
+		</div>
+		<a href="javascript :;" onClick="javascript :history.back(-1);" class="back">返回</a>
+	</div>
+</div>
+<!-- 移动端 -->
+<div class="phone">
+<!--<div id="header">-->
+	<!--<a href="javascript:history.back(-1)" class="back"><img src="__ROOT__/Public/img/mt_back.png" alt="" width=25 height=25></a>-->
+	<!--<img src="/Public/img/list.png" alt="" class="list">-->
+	<!--新闻资讯-->
+<!--</div>-->
+<div id="mt_article">
+	{$content}
+</div>
+</div>
+<include file="../xmyttz/view/newfooter.html"/>
+</div>
+</body>
