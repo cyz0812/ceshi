@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Yingtou-出金</title>
+	<title>Yingtou-提款</title>
     <include file="../xmyttz/view/head.html"/>
 	<link href="/Public/css/index.css" rel="stylesheet" type="text/css" />
 	<script>var user_active='.change_amount';var nav_active="#nav_user";var belong = 'xmyttz';</script>
@@ -40,9 +40,12 @@
 <include file="../xmyttz/view/header.html"/>
 <div class="user_box">
 <div class="user_right">
-	<div class="show_addr">
-		<a href="/index/index/index" class="hit">首页</a><span class="sep"> &gt; </span>提款<span id="show_name"></span>
+	<div class="pc">
+		<div class="show_addr">
+			<a href="/index/index/index" class="hit">首页</a><span class="sep"> &gt; </span>提款<span id="show_name"></span>
+		</div>
 	</div>
+
 	<div class="withdrawal">
 		<input type="hidden" value="{$out_orderid}" id="without_orderid">
 		<input type="hidden" value="{$user.id}" id="withuserid">
@@ -114,11 +117,7 @@
 </div>
 </div>
 <div class="phone">
-<div id="header">
-	<a href="javascript:history.back(-1)" class="back"><img src="/Public/img/mt_back.png" alt="" width=25 height=25></a>
-	<img src="/Public/img/list.png" alt="" class="list">
-	出金
-</div>
+
 </div>
 <div class="withdrawal_out tanchu_system" id="webwithdraw_yes">
 <div class="tanchu_system_box">
