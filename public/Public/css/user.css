@@ -2980,6 +2980,7 @@ form{
 		padding: 0;
 		margin: 0;
 		width:auto;
+		height: 1050px;
 		/* padding:35px 10px; */
 	}
 	#addcard .bank_code_box {
@@ -3121,6 +3122,7 @@ form{
 	.user_right {
 		margin: 0;
 		width:auto;
+		height: 1050;
 		/*padding:15px 5px;*/
 	}
 	#addcard .card_box{
