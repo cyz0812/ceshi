@@ -2083,7 +2083,9 @@ form{
 		padding-left:0px;
 	}
 	.user_right .withdrawal .withdrawal_tishi p{
-		margin:0 15px;
+		margin: 0 15px;
+		line-height: 2;
+		font-size: 13px;
 	}
 	#me .user_name_box{
 		/*padding:30px 0;*/
