@@ -764,7 +764,7 @@ $(function(){
 	});
 	function checkamount(money){
 		var pattern = '^-?[1-9]\\d*$|^-?0\\.\\d*$|^-?[1-9]\\d*\\.\\d*$';
-		var regDot = /^(\d+\.\d{1,1}|\d+)$/;
+		var regDot = /^(\d+\.\d{2,2}|\d+)$/;
 		var reg = new RegExp(pattern, 'g');
 		if (!money || !reg.test(money)) {
 			$('#error_system').show();
@@ -796,7 +796,7 @@ $(function(){
 		}
 		if (!regDot.test(money)) {
 			$('#error_system').show();
-			$('#error_system_text').text('金额只能输入一位小数');
+			$('#error_system_text').text('金额只能输入两位小数');
 			setTime=setTimeout(function(){$('#error_system').hide()},keepTime);
 			return false;
 		}
@@ -804,7 +804,7 @@ $(function(){
 	}
 	function checkinvest(money){
 		var pattern = '^-?[1-9]\\d*$|^-?0\\.\\d*$|^-?[1-9]\\d*\\.\\d*$';
-		var regDot = /^(\d+\.\d{1,1}|\d+)$/;
+		var regDot = /^(\d+\.\d{2,2}|\d+)$/;
 		var reg = new RegExp(pattern, 'g');
 		if(money.length==0){
 			return false;
@@ -848,7 +848,7 @@ $(function(){
 			$('#invest_money').select();
 			$('#invest_money').css('border','1px solid #f55');
 			$('#error_system').show();
-			$('#error_system_text').text('金额只能输入一位小数');
+			$('#error_system_text').text('金额只能输入两位小数');
 			setTime=setTimeout(function(){$('#error_system').hide()},keepTime);
 			return false;
 		}
