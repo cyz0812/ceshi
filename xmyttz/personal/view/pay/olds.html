@@ -389,7 +389,16 @@
 	<div style="clear: both;padding: 112px 0 0 0">
 		<include file="../xmyttz/view/footer.html"/>
 	</div>
-	<script> </script>
+	<script>$(function() {
+        $(".payway").eq(0).find('a').click();
+        var screen_width=$(window).width();
+        if(screen_width < 768){
+        <foreach name='payway_phone' item='v'> $('#{$v.sign}').attr('data','hide').hide();</foreach>
+            $(".payway[data='show']").eq(0).click();
+        }
+
+    })
+	</script>
 
 	<script>$(function() {
         $(".method_a").eq(0).click();
