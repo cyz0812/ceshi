@@ -2486,7 +2486,7 @@ form{
 		text-align:left;
 	}
 	.user_right .tishi{
-		width: 97%;
+		width:86%;
 		background:#eafcfa;
 		color:#666;
 		padding:7px;
@@ -3084,10 +3084,10 @@ form{
 	}
 	.tishis {
 		position: absolute;
-		width: 48%;
+		width: 43%;
 		color: #666;
 		/* height: 244px; */
-		right: 0px;
+		right: 40px;
 		top: 54px;
 	}
 }
