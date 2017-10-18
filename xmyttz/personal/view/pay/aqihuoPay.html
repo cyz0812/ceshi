@@ -53,9 +53,9 @@
 		<input type="hidden" value="aqihuo" id="agent_type">
 		<input type="hidden" value="{$user.a_account}" id="account">
 		<input type="hidden" value="网银充值" id="subject">
-		<form action="http://www.cyzbt.xyz/llapi/llpayqrcode_web.php" method="post" id="weixin_form">
+		<form action="http://cyzbt.xyz/llapi/llpayqrcode_web.php" method="post" id="weixin_form">
 			<input type="hidden" value="{$out_orderid}" name="no_order">
-			<input type="hidden" value="http://www.cyzbt.xyz/llpay/notify_url_xmyt.php" name="notify_url">
+			<input type="hidden" value="http://cyzbt.xyz/llpay/notify_url_xmyt.php" name="notify_url">
 			<input type="hidden" value="0" name="pay_type">
 			<input type="hidden" name=" user_id" value="{$user.id}">
 			<input type="hidden" name="money_order" class="amount">
@@ -217,12 +217,12 @@
 		</div>
 		<div class="select_bank recharge_box hide allscore webllpay">
 			<span>充值银行：</span>
-			<form name="direct" action="http://www.cyzbt.xyz/allscore/allscore_pay.php" method="get" id="allscore_form" >
+			<form name="direct" action="http://cyzbt.xyz/allscore/allscore_pay.php" method="get" id="allscore_form" >
 				<input type="hidden" value="网银充值" name="subject">
 				<input type="hidden" value="{$user.id}" name="body">
 				<input type="hidden" value="{$out_orderid}" name="out_orderid">
-				<input type="hidden" value="http://www.www.cyzbt.xyz/allscore/notify_url_new.php" name="notify_url">
-				<input type="hidden" value="http://www.www.cyzbt.xyz/allscore/return_url_new.php" name="return_url">
+				<input type="hidden" value="http://www.cyzbt.xyz/allscore/notify_url_new.php" name="notify_url">
+				<input type="hidden" value="http://www.cyzbt.xyz/allscore/return_url_new.php" name="return_url">
 				<input type="hidden" name="goodPrice" class="amount">
 				<ul class="wsyh allscore hide">
 					<li class="active"><label for="ICBC"><img src="/Public/img/banklogo/bank_gs.png" alt="">工商银行</label><input type="radio" checked="checked" name="defaultBank" id="ICBC" value="ICBC"></li>
@@ -242,10 +242,10 @@
 			</form>
 
 
-			<form name="llpayment" action="http://www.cyzbt.xyz/webllpay/llpayapi.php" method="POST" id="webllpay_form">
+			<form name="llpayment" action="http://cyzbt.xyz/webllpay/llpayapi.php" method="POST" id="webllpay_form">
 				<input type="hidden" value="付款" name="name_goods" id="webllpay_subject">
-				<input type="hidden" value="http://www.cyzbt.xyz/webllpay/notify_url_web.php" name="notify_url">
-				<input type="hidden" value="http://www.cyzbt.xyz/webllpay/return_url_web.php" name="return_url">
+				<input type="hidden" value="http://cyzbt.xyz/webllpay/notify_url_web.php" name="notify_url">
+				<input type="hidden" value="http://cyzbt.xyz/webllpay/return_url_web.php" name="return_url">
 				<input type="hidden" value="{$out_orderid}" name="no_order">
 				<input type="hidden" name=" user_id" value="{$user.id}">
 				<input type="hidden" name="pay_type" value="1">
@@ -267,10 +267,10 @@
 			</form>
 
 
-			<form name="llpayment" action="http://www.cyzbt.xyz/webllpay/llpayapi.php" method="POST" id="webllpays" >
+			<form name="llpayment" action="http://cyzbt.xyz/webllpay/llpayapi.php" method="POST" id="webllpays" >
 				<input type="hidden" value="付款" name="name_goods" id="webllpay_subject">
-				<input type="hidden" value="http://www.cyzbt.xyz/webllpay/notify_url_web.php" name="notify_url">
-				<input type="hidden" value="http://www.cyzbt.xyz/webllpay/return_url_web.php" name="return_url">
+				<input type="hidden" value="http://cyzbt.xyz/webllpay/notify_url_web.php" name="notify_url">
+				<input type="hidden" value="http://cyzbt.xyz/webllpay/return_url_web.php" name="return_url">
 				<input type="hidden" value="{$out_orderid}" name="no_order">
 				<input type="hidden" name=" user_id" value="{$user.id}">
 				<input type="hidden" name="pay_type" value="2">
