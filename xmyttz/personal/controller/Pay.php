@@ -225,7 +225,7 @@ class Pay extends Base {
 
         $data = $this->capital();
         $data['belong'] 	  = 'xmyttz';
-        $data['pay_type']     = 02;
+        $data['pay_type']     = 05;
         $data['method']		  = $_POST['method'];
         $data['type']         = '连连快捷支付';
         $data['state']        = '-1';
