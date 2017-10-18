@@ -332,6 +332,7 @@
 				<label for="jbp_contract_cbx" style="color:#666;position:relative;bottom:1.7px;">我已阅读并同意</label>
 				<a href="javascript:;" id="xieyi_aqihuo" class="showxieyi" style="color:#04a7db;">《开户协议》</a>
 				</p></empty>
+			<notempty name="user.a_account">
 			<p style="margin-top:5px;">
 
 				<input type="checkbox" id="jbp_contract_cbx_s" class="checkbox_contract"/>
@@ -344,6 +345,7 @@
 				<label for="jbp_contract_cbx_ss" style="color:red;position:relative;bottom:1.7px;">投资有风险，交易需谨慎，交易前请再次确认已阅读上面风险提示。</label>
 
 			</p>
+			</notempty>
 			<button type="button" class="recharge_btn hide allscore" id="gotoPay"><notempty name="user.a_account">立即充值<else/>充值并开户</notempty></button>
 			<button type="button" class="recharge_btn hide webllpay" id="webllpay_btn"><notempty name="user.a_account">立即充值<else/>充值并开户</notempty></button>
 			<button type="button" class="recharge_btn hide quick" id="quick_btn"><notempty name="user.a_account">立即充值<else/>充值并开户</notempty></button>
