@@ -838,6 +838,37 @@ form{
 	line-height:3;
 	font-size:15px;
 }
+.tishis{
+	position: absolute;
+	width: 53%;
+	color: #666;
+	/*height: 244px;*/
+	right: 0px;
+	top: 118px;
+}
+.tishis p{
+
+	padding: 6px 0 0 0;
+}
+.pol{
+	width: 43%;
+	/*height: 244px;*/
+}
+.pol .str{
+	color:red;
+	margin: -13px 0 0 0;
+}
+.pol p{
+	padding: 7px 0 0 0;
+}
+.tishi .str_o{
+	color:red;
+	margin: -10px 0 0 0;
+}
+.footer{
+	clear:both;
+}
+
 .user_right .recharge .recharge_tishi p strong{
 	color:#f55;
 }
@@ -3448,35 +3479,5 @@ form{
 		width:auto;
 
 	}
-}
-.tishis{
-	position: absolute;
-	width: 53%;
-	color: #666;
-	/*height: 244px;*/
-	right: 0px;
-	top: 118px;
-}
-.tishis p{
-
-	padding: 6px 0 0 0;
-}
-.pol{
-	width: 43%;
-	/*height: 244px;*/
-}
-.pol .str{
-	color:red;
-	margin: -13px 0 0 0;
-}
-.pol p{
-	padding: 7px 0 0 0;
-}
-.tishi .str_o{
-	color:red;
-	margin: -10px 0 0 0;
-}
-.footer{
-	clear:both;
 }
 
