@@ -458,7 +458,7 @@ $(function(){
             showOverlay();
             $.ajax({
                 type:'POST',
-                url:conUrl+'/webllpay_pay',
+                url:conUrl+'/webllpay_quick',
                 data:{
                     'out_orderid': out_orderid,
                     'method'	  : method,

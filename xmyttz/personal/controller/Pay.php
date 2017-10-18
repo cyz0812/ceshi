@@ -208,7 +208,36 @@ class Pay extends Base {
 		}
 		return json($arr);
 	}
-	
+
+//	连连快捷支付
+    public function webllpay_quick(){
+        parent::loginUser();
+        $data_record = $this->record();
+        $data_record['belong']  = 'xmyttz';
+        $data_record['method']  = $_POST['method'];
+        $data_record['subject'] = '网银充值';
+        $data_record['state']   = '未支付';
+        $record_row = Record::getadd($data_record);
+        if(!$record_row){
+            $arr['flag']=0;
+            return json($arr);
+        }
+
+        $data = $this->capital();
+        $data['belong'] 	  = 'xmyttz';
+        $data['pay_type']     = 02;
+        $data['method']		  = $_POST['method'];
+        $data['type']         = '连连快捷支付';
+        $data['state']        = '-1';
+        $capital_row = Capital::getadd($data);
+        if(!!$capital_row){
+            $arr['flag']=1;
+        }else{
+            $arr['flag']=0;
+        }
+        return json($arr);
+    }
+
 	//连连微信支付
 	public function weixin_pay(){
 		parent::loginUser();
