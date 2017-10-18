@@ -3051,6 +3051,14 @@ form{
 		position:relative;
 		top:5px;
 	}
+	.tishis {
+		position: absolute;
+		width: 48%;
+		color: #666;
+		/* height: 244px; */
+		right: 0px;
+		top: 118px;
+	}
 }
 @media (max-width:397px){
 	#need_dealpwd_box p{
