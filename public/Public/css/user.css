@@ -114,7 +114,7 @@ form{
 	/* font-size: 13px; */
 }
 .user_box.capital_step span{
-display: inline-block;
+	display: inline-block;
 }
 .user_box .capital_step img {
 	width: 100px;
@@ -363,7 +363,7 @@ display: inline-block;
 	border-bottom:1px dashed #ddd;
 }
 .user_right .tagContent .top{
-	
+
 }
 .user_right .tagContent .top td{
 	border:1px solid #ddd;
@@ -636,7 +636,7 @@ display: inline-block;
 	border:1px solid #0379b5;
 }
 .user_right .recharge .recharge_box ul li.active i{
-	
+
 }
 .user_right .recharge .recharge_box .beizhu{
 	position:absolute;
@@ -662,7 +662,7 @@ display: inline-block;
 	display:none;
 }
 .user_right .recharge .select_bank ul li.active,.user_right .recharge .bank_box ul li.active {
-	
+
 }
 .user_right .recharge .bank_box ul li img{
 	display:inline-block;
@@ -672,7 +672,7 @@ display: inline-block;
 	float:left;
 }
 .user_right .recharge .select_bank{
-	 height:auto;
+	height:auto;
 }
 .user_right .recharge .select_bank ul,.user_right .recharge .prior{
 	width:814px;
@@ -689,12 +689,12 @@ display: inline-block;
 
 }
 .qihuo_num .num{
-	    position: absolute;
-    width: 400px;
-    height: 112px;
-    padding-left: 23px;
-    /* margin-top: 14px; */
-    top: 584px;
+	position: absolute;
+	width: 400px;
+	height: 112px;
+	padding-left: 23px;
+	/* margin-top: 14px; */
+	top: 584px;
 }
 .qihuo_num .num label{
 	float: left;
@@ -861,7 +861,7 @@ display: inline-block;
 	display: -webkit-box;
 	cursor: pointer;
 	color: #aaa;
-	    margin: 2px 358px 0px 0px;
+	margin: 2px 358px 0px 0px;
 
 	width: 450px;
 }
@@ -898,11 +898,11 @@ display: inline-block;
 	bottom:0;
 	margin:auto;
 	width:700px;
-    height: 270px;
-    background: #fff;
-    box-shadow: 0 0 10px 1px;
-    z-index: 10000;
-    font-size: 14px;
+	height: 270px;
+	background: #fff;
+	box-shadow: 0 0 10px 1px;
+	z-index: 10000;
+	font-size: 14px;
 }
 #confirm_zfb .pc{
 	display:block;
@@ -911,23 +911,23 @@ display: inline-block;
 	display:none;
 }
 #confirm_zfb h3 {
-    padding: 5px 15px;
-    height: 25px;
-    line-height: 25px;
-    text-align: center;
-    background: #f9f9f9;
-    font-weight: normal;
-    border-bottom: 1px solid #ccc;
-    color: #333;
+	padding: 5px 15px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	background: #f9f9f9;
+	font-weight: normal;
+	border-bottom: 1px solid #ccc;
+	color: #333;
 }
 #confirm_zfb .confirm_list .list_left{
-    float: left;
-    margin-top: 5px;
-    color: #0379b5;
+	float: left;
+	margin-top: 5px;
+	color: #0379b5;
 }
 #confirm_zfb .confirm_list .list_left p {
-    margin: 0 0 0 20px;
-    line-height: 25px;
+	margin: 0 0 0 20px;
+	line-height: 25px;
 }
 #confirm_zfb .confirm_list .list_left p input{
 	width:120px;
@@ -935,10 +935,10 @@ display: inline-block;
 	padding:0 8px;
 }
 #confirm_zfb .confirm_list .list_right {
-    width: 150px;
-    height: 150px;
-    float: right;
-    margin-top: 5px;
+	width: 150px;
+	height: 150px;
+	float: right;
+	margin-top: 5px;
 }
 #confirm_zfb .confirm_list .list_right img{
 	width:140px;
@@ -949,15 +949,15 @@ display: inline-block;
 	clear:both
 }
 #confirm_zfb .answer a {
-    display: inline-block;
-    width: 100px;
-    height: 35px;
-    line-height: 35px;
-    border-radius: 4px;
-    background: #f4f4f4;
-    margin: 10px;
-    color: #333;
-    border: 1px solid #ccc;
+	display: inline-block;
+	width: 100px;
+	height: 35px;
+	line-height: 35px;
+	border-radius: 4px;
+	background: #f4f4f4;
+	margin: 10px;
+	color: #333;
+	border: 1px solid #ccc;
 }
 #confirm_zfb .answer a:hover{
 	opacity:0.8;
@@ -1209,7 +1209,7 @@ display: inline-block;
 }
 .select_checkbox a{
 	color:#006091;
-	
+
 }
 .select_checkbox a:hover{
 	color:#0087ca;
@@ -1354,7 +1354,7 @@ display: inline-block;
 /* 头像修改 */
 #setface{
 	padding:10px 0;
-	
+
 }
 #setface .face_bg{
 	text-align:center;
@@ -1583,7 +1583,7 @@ display: inline-block;
 	height:35px;
 	line-height:45px;
 	color:#666;
-	margin:0 0 15px 0; 
+	margin:0 0 15px 0;
 }
 #addcard .card_box p:last-child,#verifyname .card_box p:last-child{
 	border-bottom:none;
@@ -1672,7 +1672,7 @@ display: inline-block;
 	background:#0379b5;
 	border-radius:4px;
 	color:#fff;
-	font-size:18px;	
+	font-size:18px;
 }
 #setphone .phone_btn{
 	display:block;
@@ -1682,7 +1682,7 @@ display: inline-block;
 	background:#0379b5;
 	border-radius:4px;
 	color:#fff;
-	font-size:18px;	
+	font-size:18px;
 	border:none;
 }
 /* 修改登录密码 */
@@ -1856,7 +1856,7 @@ display: inline-block;
 	float:none;
 }
 #account .account_box .border_btn_p{
-	
+
 }
 #account .border_box .account_small_btn{
 	margin:0;
@@ -2174,10 +2174,10 @@ display: inline-block;
 		text-align:center;
 		background:#fff;
 		border-right: 1px solid #ddd;
-		 border-bottom:1px solid #ddd;
+		border-bottom:1px solid #ddd;
 	}
- .qihuo h5 {
-	 /*text-align: left;*/
+	.qihuo h5 {
+		/*text-align: left;*/
 		line-height: 23px;
 		/*background: #f7f8f9;*/
 		/*padding: 0 20px;*/
@@ -2186,20 +2186,20 @@ display: inline-block;
 		color: #42a7db;
 		/*border-bottom: 1px solid #eee;*/
 	}
- .qihuo h5 .download_rule {
+	.qihuo h5 .download_rule {
 		cursor: pointer;
 		font-weight: normal;
 		font-size: 14px;
 		color: #42a7db;
-	 margin: 0 78px 25px 2px;
+		margin: 0 78px 25px 2px;
 	}
-	 .qihuo p {
-		 /*text-align: left;*/
-		 margin-right: 22px;
-		 height: 33px;
-		 font-size: 14px;
+	.qihuo p {
+		/*text-align: left;*/
+		margin-right: 22px;
+		height: 33px;
+		font-size: 14px;
 		/*line-height: 29px;*/
-		 color:#888;
+		color:#888;
 		/*padding: 0 20px;*/
 		/*position: relative;*/
 		/*background: #fff;*/
@@ -2212,25 +2212,25 @@ display: inline-block;
 	.user_right .qihuo p .account_code {
 		color: #f60;
 	}
-	 .qihuo p .to_bind {
+	.qihuo p .to_bind {
 		position: absolute;
 		right: 130px;
 		font-size: 12px;
 		color: #888;
 	}
-	 .qihuo p .to_pay {
-		 display: inline-block;
-		 width: 63px;
-		 height: 30px;
-		 line-height: 23px;
-		 text-align: center;
-		 float: right;
-		 margin: 0 5px;
-		 background: #42a7db;
-		 color: #fff;
-		 border-radius: 4px;
-		 position: relative;
-		 /*left: -119px;*/
+	.qihuo p .to_pay {
+		display: inline-block;
+		width: 63px;
+		height: 30px;
+		line-height: 23px;
+		text-align: center;
+		float: right;
+		margin: 0 5px;
+		background: #42a7db;
+		color: #fff;
+		border-radius: 4px;
+		position: relative;
+		/*left: -119px;*/
 	}
 	.qihuo p .to_pay {
 		height:25px;
@@ -3097,7 +3097,7 @@ display: inline-block;
 	}
 	#addcard .card_box p input{
 		width:235px;
-}
+	}
 	#addcard .card_box .addcard_sub{
 		width:80%;
 		margin:53px auto;
@@ -3401,13 +3401,13 @@ display: inline-block;
 
 	}
 	.qihuo_num .num{
-		    width: 300px;
-    height: 112px;
-    /* padding-left: 60px; */
-    margin-top: 14px;
-    position: none;
-    left: 63px;
-    top: 354px;
+		width: 300px;
+		height: 112px;
+		/* padding-left: 60px; */
+		margin-top: 14px;
+		position: none;
+		left: 63px;
+		top: 354px;
 	}
 	.qihuo_num .num label{
 		float: left;
